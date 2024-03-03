@@ -5,6 +5,7 @@ package BankManagementSystem.src.DataBases;
 import java.sql.*;
 
 import BankManagementSystem.src.Bank;
+import BankManagementSystem.src.Users.Customer;
 import BankManagementSystem.src.Users.User;
 
 public class Database {
@@ -38,28 +39,28 @@ public class Database {
             }
         } catch (SQLException se) {
             // Handle errors for JDBC
-            // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-            // se.printStackTrace();
-            // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            se.printStackTrace();
+            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
         } catch (Exception e) {
-            // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-            // e.printStackTrace();
-            // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            e.printStackTrace();
+            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
         } finally {
             // Finally block used to close resources
             try {
                 if (stmt != null) stmt.close();
             } catch (SQLException se) {
-                // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-                // se.printStackTrace();
-                // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                se.printStackTrace();
+                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
             }
             try {
                 if (conn != null) conn.close();
             } catch (SQLException se) {
-                // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-                // se.printStackTrace();
-                // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                se.printStackTrace();
+                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
             }
         }
 
@@ -89,30 +90,30 @@ public class Database {
             
         } catch (SQLException se) {
             // Handle errors for JDBC
-            // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-            // se.printStackTrace();
-            // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            se.printStackTrace();
+            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
             fl = false;
         } catch (Exception e) {
-            // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-            // e.printStackTrace();
-            // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            e.printStackTrace();
+            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
             fl = false;
         } finally {
             // Finally block used to close resources
             try {
                 if (stmt != null) stmt.close();
             } catch (SQLException se) {
-                // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-                // se.printStackTrace();
-                // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                se.printStackTrace();
+                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
             }
             try {
                 if (conn != null) conn.close();
             } catch (SQLException se) {
-                // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-                // se.printStackTrace();
-                // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                se.printStackTrace();
+                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
             }
         }
         return fl;
@@ -153,29 +154,29 @@ public class Database {
         } catch (SQLException se) {
             // Handle errors for JDBC
             fl = false;
-            // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-            // se.printStackTrace();
-            // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            se.printStackTrace();
+            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
         } catch (Exception e) {
             fl = false;
-            // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-            // e.printStackTrace();
-            // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            e.printStackTrace();
+            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
         } finally {
             // Finally block used to close resources
             try {
                 if (stmt != null) stmt.close();
             } catch (SQLException se) {
-                // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-                // se.printStackTrace();
-                // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                se.printStackTrace();
+                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
             }
             try {
                 if (conn != null) conn.close();
             } catch (SQLException se) {
-                // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-                // se.printStackTrace();
-                // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                se.printStackTrace();
+                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
             }
         }
         return fl;
@@ -211,29 +212,29 @@ public class Database {
         } catch (SQLException se) {
             // Handle errors for JDBC
             fl = false;
-            // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-            // se.printStackTrace();
-            // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            se.printStackTrace();
+            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
         } catch (Exception e) {
             fl = false;
-            // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-            // e.printStackTrace();
-            // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            e.printStackTrace();
+            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
         } finally {
             // Finally block used to close resources
             try {
                 if (stmt != null) stmt.close();
             } catch (SQLException se) {
-                // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-                // se.printStackTrace();
-                // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                se.printStackTrace();
+                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
             }
             try {
                 if (conn != null) conn.close();
             } catch (SQLException se) {
-                // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-                // se.printStackTrace();
-                // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                se.printStackTrace();
+                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
             }
         }
         return fl;
@@ -260,7 +261,9 @@ public class Database {
             stmt.executeUpdate("CREATE TABLE appdatabase."+ tablename+"("
             + "id INT AUTO_INCREMENT PRIMARY KEY,"
             + "userId Int NOT NULL,"
+            + "custId Int NOT NULL,"
             + "bankId Int NOT NULL,"
+            + "branch_Code Int NOT NULL,"
             + "accountNumber BIGINT NOT NULL"
             +")");
             fl = true;
@@ -268,29 +271,29 @@ public class Database {
         } catch (SQLException se) {
             // Handle errors for JDBC
             fl = false;
-            // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-            // se.printStackTrace();
-            // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            se.printStackTrace();
+            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
         } catch (Exception e) {
             fl = false;
-            // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-            // e.printStackTrace();
-            // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            e.printStackTrace();
+            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
         } finally {
             // Finally block used to close resources
             try {
                 if (stmt != null) stmt.close();
             } catch (SQLException se) {
-                // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-                // se.printStackTrace();
-                // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                se.printStackTrace();
+                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
             }
             try {
                 if (conn != null) conn.close();
             } catch (SQLException se) {
-                // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-                // se.printStackTrace();
-                // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                se.printStackTrace();
+                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
             }
         }
         return fl;
@@ -322,29 +325,29 @@ public class Database {
         } catch (SQLException se) {
             // Handle errors for JDBC
             currentUser = null;
-            // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-            // se.printStackTrace();
-            // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            se.printStackTrace();
+            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
         } catch (Exception e) {
             currentUser = null;
-            // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-            // e.printStackTrace();
-            // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            e.printStackTrace();
+            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
         } finally {
             // Finally block used to close resources
             try {
                 if (stmt != null) stmt.close();
             } catch (SQLException se) {
-                // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-                // se.printStackTrace();
-                // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                se.printStackTrace();
+                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
             }
             try {
                 if (conn != null) conn.close();
             } catch (SQLException se) {
-                // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-                // se.printStackTrace();
-                // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                se.printStackTrace();
+                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
             }
         }
         return currentUser;
@@ -375,29 +378,29 @@ public class Database {
         } catch (SQLException se) {
             // Handle errors for JDBC
             currentUser = null;
-            // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-            // se.printStackTrace();
-            // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            se.printStackTrace();
+            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
         } catch (Exception e) {
             currentUser = null;
-            // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-            // e.printStackTrace();
-            // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            e.printStackTrace();
+            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
         } finally {
             // Finally block used to close resources
             try {
                 if (stmt != null) stmt.close();
             } catch (SQLException se) {
-                // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-                // se.printStackTrace();
-                // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                se.printStackTrace();
+                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
             }
             try {
                 if (conn != null) conn.close();
             } catch (SQLException se) {
-                // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-                // se.printStackTrace();
-                // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                se.printStackTrace();
+                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
             }
         }
         return currentUser;
@@ -428,29 +431,29 @@ public class Database {
         } catch (SQLException se) {
             // Handle errors for JDBC
             fl = false;
-            // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-            // se.printStackTrace();
-            // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            se.printStackTrace();
+            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
         } catch (Exception e) {
             fl = false;
-            // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-            // e.printStackTrace();
-            // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            e.printStackTrace();
+            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
         } finally {
             // Finally block used to close resources
             try {
                 if (stmt != null) stmt.close();
             } catch (SQLException se) {
-                // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-                // se.printStackTrace();
-                // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                se.printStackTrace();
+                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
             }
             try {
                 if (conn != null) conn.close();
             } catch (SQLException se) {
-                // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-                // se.printStackTrace();
-                // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                se.printStackTrace();
+                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
             }
         }
         return fl;
@@ -474,40 +477,98 @@ public class Database {
             stmt = conn.createStatement();
             stmt.execute("Use AppDatabase");
             int affected_rows = stmt.executeUpdate("Insert into Banks(bankId, name, ownerId, address) values("
-            +currentBank.bankId+", '"+currentBank.name+"', '"+currentUser.userId+"', '"+currentBank.address
+            +currentBank.bankId+", '"+currentBank.name+"', "+currentUser.userId+", '"+currentBank.address
             +"')");
             return currentBank;
             
         } catch (SQLException se) {
             // Handle errors for JDBC
             currentBank = null;
-            // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-            // se.printStackTrace();
-            // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            se.printStackTrace();
+            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
         } catch (Exception e) {
             currentBank = null;
-            // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-            // e.printStackTrace();
-            // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            e.printStackTrace();
+            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
         } finally {
             // Finally block used to close resources
             try {
                 if (stmt != null) stmt.close();
             } catch (SQLException se) {
-                // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-                // se.printStackTrace();
-                // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                se.printStackTrace();
+                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
             }
             try { 
                 if (conn != null) conn.close();
             } catch (SQLException se) {
-                // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-                // se.printStackTrace();
-                // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                se.printStackTrace();
+                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
             }
         }
         return currentBank;
     }
 
+
+
+    public static boolean addUserInUserInfoTable(Customer currenCustomer, String bankName, long accountNumber, int branch_code){
+        Connection conn = null;
+        Statement stmt = null;
+        boolean fl = false;
+        try {
+            // Step 1: Register JDBC driver
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            
+            // Step 2: Open a connection
+            String jdbcUrl = "jdbc:mysql://localhost:3306/";
+            String username = "root";
+            String password = "Saurav@2942";
+            conn = DriverManager.getConnection(jdbcUrl, username, password);
+            
+            stmt = conn.createStatement();
+            stmt.execute("Use AppDatabase");
+            ResultSet rs = stmt.executeQuery("select bankId from banks where name = '"+bankName+"'");
+            int bankId = -1;
+            if(rs.next()) bankId = rs.getInt("bankId");
+            int affected_rows = stmt.executeUpdate("Insert into usersBankInfo(userId, bankId, custId, accountNumber, branch_Code) values("
+            +currenCustomer.userId+", "+bankId+", "+currenCustomer.custId+", "+accountNumber+", "
+            + branch_code
+            +")");
+            if(affected_rows>0) fl = true;
+            return fl;
+            
+        } catch (SQLException se) {
+            // Handle errors for JDBC
+            fl = false;
+            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            se.printStackTrace();
+            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+        } catch (Exception e) {
+            fl = false;
+            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            e.printStackTrace();
+            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+        } finally {
+            // Finally block used to close resources
+            try {
+                if (stmt != null) stmt.close();
+            } catch (SQLException se) {
+                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                se.printStackTrace();
+                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            }
+            try { 
+                if (conn != null) conn.close();
+            } catch (SQLException se) {
+                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                se.printStackTrace();
+                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            }
+        }
+        return fl;
+    }
 
 }

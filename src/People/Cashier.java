@@ -1,5 +1,5 @@
 package BankManagementSystem.src.People;
 
-public class Employee {
+public class Cashier {
     
 }
