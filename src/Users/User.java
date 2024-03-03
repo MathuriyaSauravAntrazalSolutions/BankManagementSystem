@@ -32,9 +32,16 @@ public class User{
                 2. SignUp
                 3. Exit
                 Please Enter a Key!""");
-        int key = sc.nextInt(); sc.nextLine();
-        if(key<=0 || key >3){
+        int key;
+        try{
+            key = sc.nextInt(); sc.nextLine();
+            if(key<=0 || key >3){
+                System.out.println("Invalid Key Please Enter Valid Key!");
+                key = User.AskUser();
+            }
+        }catch(Exception e){
             System.out.println("Invalid Key Please Enter Valid Key!");
+            sc.nextLine();
             key = User.AskUser();
         }
         return key;
@@ -64,8 +71,18 @@ public class User{
         System.out.print("enter your EmailId:");
         String emailId = sc.nextLine();
         // System.out.println(emailId);
-        System.out.print("enter your Phone:");
-        long phone = Long.parseLong(sc.nextLine());
+        long phone;
+        while(true){
+            try{
+                System.out.print("enter your Phone:");
+                phone = Long.parseLong(sc.nextLine());
+                // System.out.println(phone);
+                break;
+            }
+            catch(Exception e){
+                System.out.println("Please Specify A Number!");
+            }
+        }
         // System.out.println(emailId);
         System.out.print("enter your username:");
         String username = sc.nextLine();
@@ -90,10 +107,17 @@ public class User{
                 2. Register Bank.
                 3. Exit
                 Please Enter a Key!""");
-        int key = sc.nextInt(); sc.nextLine();
-        if(key<=0 || key >3){
+                int key;
+        try{
+            key = sc.nextInt(); sc.nextLine();
+            if(key<=0 || key >3){
             System.out.println("Invalid Key Please Enter Valid Key!");
-            key = User.AskUser();
+            key = User.AskCurrentUser();
+        }
+        }catch(Exception e){
+            System.out.println("Invalid Key Please Enter Valid Key!");
+            sc.nextLine();
+            key = User.AskCurrentUser();
         }
         return key;
     }

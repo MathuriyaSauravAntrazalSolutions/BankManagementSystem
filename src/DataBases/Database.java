@@ -130,7 +130,7 @@ public class Database {
             + "emailId VARCHAR(255) NOT NULL,"
             + "phone BIGINT NOT NULL,"
             + "firstName VARCHAR(255) NOT NULL,"
-            + "lastName VARCHAR(255) NOT NULL"
+            + "lastName VARCHAR(255)"
             +")");
             fl = true;
             

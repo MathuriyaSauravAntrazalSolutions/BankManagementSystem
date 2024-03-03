@@ -21,34 +21,34 @@ public class App {
     public static void main(String[] args) throws Exception {
         System.out.println("Welcome To My App!");
         boolean check = Database.createDatabase(app_info.APPDATABASE.name()); // making whole apps database;
-        if(check){
-            System.out.println("Database For App Created Successfully!");
-        }
-        else{
-            System.out.println("Database for app already exists!");
-        }
+        // if(check){
+        //     System.out.println("Database For App Created Successfully!");
+        // }
+        // else{
+        //     System.out.println("Database for app already exists!");
+        // }
         // creating users table in app database;
         check = Database.createUserTable(app_info.USERS.name());
-        if(check){
-            System.out.println("Users Table For App Created Successfully!");
-        }
-        else{
-            System.out.println("Users Table for app already exists!");
-        }
+        // if(check){
+        //     System.out.println("Users Table For App Created Successfully!");
+        // }
+        // else{
+        //     System.out.println("Users Table for app already exists!");
+        // }
         check = Database.createBankTable(app_info.BANKS.name());
-        if(check){
-            System.out.println("Banks Table For App Created Successfully!");
-        }
-        else{
-            System.out.println("Banks Table for app already exists!");
-        }
+        // if(check){
+        //     System.out.println("Banks Table For App Created Successfully!");
+        // }
+        // else{
+        //     System.out.println("Banks Table for app already exists!");
+        // }
         check = Database.createUserInfoTable(app_info.USERSBANKINFO.name());
-        if(check){
-            System.out.println("UsersBankInfo Table For App Created Successfully!");
-        }
-        else{
-            System.out.println("UsersBankInfo Table for app already exists!");
-        }
+        // if(check){
+        //     System.out.println("UsersBankInfo Table For App Created Successfully!");
+        // }
+        // else{
+        //     System.out.println("UsersBankInfo Table for app already exists!");
+        // }
         int key = User.AskUser();
         while(true){
             if(key==3){
@@ -88,7 +88,7 @@ public class App {
             }
             else if(key == 1){
                 currentUser = User.signIn();
-                if(currentUser==null) key = User.AskUser();
+                if(currentUser==null) key = User.AskCurrentUser();
                 else break;
             }
             else if(key==2){
@@ -100,25 +100,22 @@ public class App {
                 }
                 currentBank = Database.InsertBankInTable(currentUser, currentBank);
                 if(currentBank!=null){
-                    System.out.println("Bank: "+currentBank.name+"  has Registered");
+                    System.out.println("Bank: "+currentBank.name+" has Registered");
                     boolean fl = currentBank.createBankDatabaseAndTables();
-                    if(fl){
-                        System.out.println("Bank Database Created");
-                    }
-                    else {
-                        System.out.println("Something Went Wrong");
-                    }
+                    // if(fl){
+                    //     System.out.println(currentBank.name+" Bank Database Created");   
+                    // }
+                    // else {
+                    //     System.out.println("Something Went Wrong");
+                    // }
                     break;
                 }
                 else{
-                    System.out.println("Something wnt wrong!");
+                    System.out.println("Something went wrong!");
                     key = User.AskCurrentUser();
                     continue;
                 }
             }
         }
-
-
-
     }
 }
