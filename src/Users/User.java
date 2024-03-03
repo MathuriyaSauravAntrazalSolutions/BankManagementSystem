@@ -26,6 +26,7 @@ public class User{
 
     // using recursion here
     public static final int AskUser(){
+        System.out.println(("=".repeat(15)));
         System.out.println("""
                 Follow These Steps To Use Me!
                 1. Sign-In
@@ -48,6 +49,7 @@ public class User{
     }
 
     public static final User signIn(){
+            System.out.println(("=".repeat(15)));
             System.out.print("enter your username:");
             String username = sc.nextLine();
             // System.out.println(username);
@@ -62,6 +64,7 @@ public class User{
     }
 
     public static final User signUp(){
+        System.out.println(("=".repeat(15)));
         System.out.print("enter your FirstName:");
         String firstName = sc.nextLine();
         // System.out.println(FirstName);
@@ -101,6 +104,7 @@ public class User{
 
 
     public static final int AskCurrentUser(){
+        System.out.println(("=".repeat(15)));
         System.out.println("""
                 Welcome To This App! How Can I Help You
                 1. Personal Banking

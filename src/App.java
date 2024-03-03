@@ -19,6 +19,7 @@ public class App {
     public static Bank currentBank = null;
     static Scanner sc = new Scanner(System.in);
     public static void main(String[] args) throws Exception {
+        System.out.println(("=".repeat(15)));
         System.out.println("Welcome To My App!");
         boolean check = Database.createDatabase(app_info.APPDATABASE.name()); // making whole apps database;
         // if(check){
@@ -52,6 +53,7 @@ public class App {
         int key = User.AskUser();
         while(true){
             if(key==3){
+                System.out.println(("=".repeat(15)));
                 System.out.println("Bye! Visit Us Again :)");
                 System.exit(0);
             }
@@ -63,16 +65,19 @@ public class App {
             else if(key==2){
                 currentUser = User.signUp();
                 if(currentUser==null){
+                    System.out.println(("=".repeat(15)));
                     System.out.println("This User Already Exists Please Sign In!");
                     key = User.AskUser();
                     continue;
                 }
                 currentUser = Database.InsertUserInTable(currentUser);
                 if(currentUser!=null){
+                    System.out.println(("=".repeat(15)));
                     System.out.println("User: "+currentUser.firstName+" "+currentUser.lastName+" has Registered");
                     break;
                 }
                 else{
+                    System.out.println(("=".repeat(15)));
                     System.out.println("Something wnt wrong!");
                     key = User.AskUser();
                     continue;
@@ -83,6 +88,7 @@ public class App {
         key = User.AskCurrentUser();
         while(true){
             if(key==3){
+                System.out.println(("=".repeat(15)));
                 System.out.println("Bye! Visit Us Again :)");
                 System.exit(0);
             }
@@ -92,12 +98,14 @@ public class App {
             else if(key==2){
                 currentBank = Bank.registerBank();
                 if(currentBank == null){
+                    System.out.println(("=".repeat(15)));
                     System.out.println("This Bank Already Exists");
                     key = User.AskCurrentUser();
                     continue;
                 }
                 currentBank = Database.InsertBankInTable(currentUser, currentBank);
                 if(currentBank!=null){
+                    System.out.println(("=".repeat(15)));
                     System.out.println("Bank: "+currentBank.name+" has Registered");
                     boolean fl = currentBank.createBankDatabaseAndTables();
                     // if(fl){
@@ -107,11 +115,13 @@ public class App {
                     //     System.out.println("Something Went Wrong");
                     // }
                     currentBank.registerBranches();
+                    System.out.println(("=".repeat(15)));
                     System.out.println("Thanks For Registering Your Bank With Us :)");
                     key = User.AskCurrentUser();
                     continue;
                 }
                 else{
+                    System.out.println(("=".repeat(15)));
                     System.out.println("Something went wrong!");
                     key = User.AskCurrentUser();
                     continue;

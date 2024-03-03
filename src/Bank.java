@@ -24,6 +24,7 @@ public class Bank extends BankDatabase{
     }
 
     public static Bank registerBank(){
+        System.out.println(("=".repeat(15)));
         System.out.print("enter your Bank Name:");
         String bankName = sc.nextLine();
         // System.out.println(bankName);
@@ -71,20 +72,28 @@ public class Bank extends BankDatabase{
             }
         } catch (SQLException se) {
             // Handle errors for JDBC
-            // se.printStackTrace();
+                // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                // se.printStackTrace();
+                // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
         } catch (Exception e) {
+            // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
             // e.printStackTrace();
+            // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
         } finally {
             // Finally block used to close resources
             try {
                 if (stmt != null) stmt.close();
             } catch (SQLException se) {
+                // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
                 // se.printStackTrace();
+                // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
             }
             try {
                 if (conn != null) conn.close();
             } catch (SQLException se) {
+                // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
                 // se.printStackTrace();
+                // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
             }
         }
 
@@ -161,22 +170,30 @@ public class Bank extends BankDatabase{
             
         } catch (SQLException se) {
             // Handle errors for JDBC
-            // se.printStackTrace();
+                // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                // se.printStackTrace();
+                // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
             fl = false;
         } catch (Exception e) {
+            // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
             // e.printStackTrace();
+            // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
             fl = false;
         } finally {
             // Finally block used to close resources
             try {
                 if (stmt != null) stmt.close();
             } catch (SQLException se) {
+                // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
                 // se.printStackTrace();
+                // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
             }
             try {
                 if (conn != null) conn.close();
             } catch (SQLException se) {
+                // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
                 // se.printStackTrace();
+                // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
             }
         }
         return fl;
@@ -210,21 +227,29 @@ public class Bank extends BankDatabase{
         } catch (SQLException se) {
             // Handle errors for JDBC
             fl = false;
-            // se.printStackTrace();
+                // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                // se.printStackTrace();
+                // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
         } catch (Exception e) {
             fl = false;
+            // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
             // e.printStackTrace();
+            // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
         } finally {
             // Finally block used to close resources
             try {
                 if (stmt != null) stmt.close();
             } catch (SQLException se) {
+                // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
                 // se.printStackTrace();
+                // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
             }
             try { 
                 if (conn != null) conn.close();
             } catch (SQLException se) {
+                // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
                 // se.printStackTrace();
+                // System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
             }
         }
         return fl;
@@ -232,6 +257,7 @@ public class Bank extends BankDatabase{
 
 
     public void registerBranches(){
+        System.out.println(("=".repeat(15)));
         System.out.println("Register Branches!");
         int numberOfBranches;
         while(true){
@@ -244,8 +270,10 @@ public class Bank extends BankDatabase{
                 System.out.println("Please Specify A Number!");
             }
         }
+        System.out.println(("=".repeat(15)));
         System.out.println("Please Specify "+ numberOfBranches +" Bank Branches In This Formate:\nBranch Name:Address");
         int branchCode = this.getId("branchCode", "branches");
+        System.out.println(("=".repeat(15)));
         while(numberOfBranches>0){
             String branchString = sc.nextLine();
             if(!branchString.contains(":")){
@@ -259,11 +287,11 @@ public class Bank extends BankDatabase{
             numberOfBranches--;
         }
         boolean fl = this.addBranchToTable();
-        if(fl){
-            System.out.println("Branches Added Successfully!");
-        }
-        else{
-            System.out.println("Something Went Wrong:)");
-        }
+        // if(fl){
+        //     System.out.println("Branches Added Successfully!");
+        // }
+        // else{
+        //     System.out.println("Something Went Wrong:)");
+        // }
     }
 }
