@@ -1,7 +1,10 @@
 package BankManagementSystem.src;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.sql.*;
+
+import BankManagementSystem.src.Branches.Branch;
 import BankManagementSystem.src.DataBases.BankDatabase;
 import BankManagementSystem.src.DataBases.Database;
 
@@ -9,6 +12,7 @@ public class Bank extends BankDatabase{
     public final String name;
     public final String address;
     public final int bankId;
+    public ArrayList<Branch> branches; 
     static Scanner sc = new Scanner(System.in);
 
 
@@ -16,6 +20,7 @@ public class Bank extends BankDatabase{
         this.name = name;
         this.address = address;
         this.bankId = bankId;
+        this.branches = new ArrayList<>();
     }
 
     public static Bank registerBank(){
@@ -30,7 +35,7 @@ public class Bank extends BankDatabase{
         String address = sc.nextLine();
         // System.out.println(address);
         int bankId = Database.getId("bankId", "banks");
-        Bank currentBank = new Bank(bankName, address, bankId); // creating new user
+        Bank currentBank = new Bank(bankName, address, bankId); // creating new Bank
         return currentBank;
     }
 
@@ -66,20 +71,20 @@ public class Bank extends BankDatabase{
             }
         } catch (SQLException se) {
             // Handle errors for JDBC
-            System.out.println(se.getMessage());
+            // se.printStackTrace();
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            // e.printStackTrace();
         } finally {
             // Finally block used to close resources
             try {
                 if (stmt != null) stmt.close();
             } catch (SQLException se) {
-                System.out.println("3. "+se.getMessage());
+                // se.printStackTrace();
             }
             try {
                 if (conn != null) conn.close();
             } catch (SQLException se) {
-                System.out.println("4. "+se.getMessage());
+                // se.printStackTrace();
             }
         }
 
@@ -128,6 +133,7 @@ public class Bank extends BankDatabase{
             + "id INT AUTO_INCREMENT PRIMARY KEY,"
             + "branchCode INT NOT NULL,"
             + "name VARCHAR(255) NOT NULL,"
+            + "balance BIGINT NOT NULL,"
             + "address VARCHAR(255)"
             +")");
             stmt.executeUpdate("CREATE TABLE IF NOT Exists "+this.name+"."+"transactions("
@@ -155,24 +161,109 @@ public class Bank extends BankDatabase{
             
         } catch (SQLException se) {
             // Handle errors for JDBC
-            se.printStackTrace();
+            // se.printStackTrace();
             fl = false;
         } catch (Exception e) {
-            e.printStackTrace();
+            // e.printStackTrace();
             fl = false;
         } finally {
             // Finally block used to close resources
             try {
                 if (stmt != null) stmt.close();
             } catch (SQLException se) {
-                System.out.println("3. "+se.getMessage());
+                // se.printStackTrace();
             }
             try {
                 if (conn != null) conn.close();
             } catch (SQLException se) {
-                System.out.println("4. "+se.getMessage());
+                // se.printStackTrace();
             }
         }
         return fl;
+    }
+
+
+
+    public boolean addBranchToTable(){
+        boolean fl = true;
+        Connection conn = null;
+        Statement stmt = null;
+        try {
+            // Step 1: Register JDBC driver
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            
+            // Step 2: Open a connection
+            String jdbcUrl = "jdbc:mysql://localhost:3306/";
+            String username = "root";
+            String password = "Saurav@2942";
+            conn = DriverManager.getConnection(jdbcUrl, username, password);
+            
+            stmt = conn.createStatement();
+            stmt.execute("Use "+this.name);
+            for(Branch br: branches){
+                int affected_rows = stmt.executeUpdate("Insert into branches(branchCode, name, address, balance) values("
+                +br.branchCode+", '"+br.branchName+"', '"+br.branchAddress
+                +"', "+0+")");
+            }
+            fl = true;
+            
+        } catch (SQLException se) {
+            // Handle errors for JDBC
+            fl = false;
+            // se.printStackTrace();
+        } catch (Exception e) {
+            fl = false;
+            // e.printStackTrace();
+        } finally {
+            // Finally block used to close resources
+            try {
+                if (stmt != null) stmt.close();
+            } catch (SQLException se) {
+                // se.printStackTrace();
+            }
+            try { 
+                if (conn != null) conn.close();
+            } catch (SQLException se) {
+                // se.printStackTrace();
+            }
+        }
+        return fl;
+    }
+
+
+    public void registerBranches(){
+        System.out.println("Register Branches!");
+        int numberOfBranches;
+        while(true){
+            try{
+                System.out.print("Number Of Branches: ");
+                numberOfBranches = Integer.parseInt(sc.nextLine());
+                break;
+            }
+            catch(Exception e){
+                System.out.println("Please Specify A Number!");
+            }
+        }
+        System.out.println("Please Specify "+ numberOfBranches +" Bank Branches In This Formate:\nBranch Name:Address");
+        int branchCode = this.getId("branchCode", "branches");
+        while(numberOfBranches>0){
+            String branchString = sc.nextLine();
+            if(!branchString.contains(":")){
+                System.out.println("Please Specify Branch Details In Specify Formate");
+                continue;
+            }
+            String[] arg = branchString.split(":");
+            Branch branch = new Branch(branchCode, arg[0], arg[1]);
+            branches.add(branch);
+            branchCode++;
+            numberOfBranches--;
+        }
+        boolean fl = this.addBranchToTable();
+        if(fl){
+            System.out.println("Branches Added Successfully!");
+        }
+        else{
+            System.out.println("Something Went Wrong:)");
+        }
     }
 }

@@ -87,9 +87,7 @@ public class App {
                 System.exit(0);
             }
             else if(key == 1){
-                currentUser = User.signIn();
-                if(currentUser==null) key = User.AskCurrentUser();
-                else break;
+                break;
             }
             else if(key==2){
                 currentBank = Bank.registerBank();
@@ -108,7 +106,10 @@ public class App {
                     // else {
                     //     System.out.println("Something Went Wrong");
                     // }
-                    break;
+                    currentBank.registerBranches();
+                    System.out.println("Thanks For Registering Your Bank With Us :)");
+                    key = User.AskCurrentUser();
+                    continue;
                 }
                 else{
                     System.out.println("Something went wrong!");
@@ -117,5 +118,10 @@ public class App {
                 }
             }
         }
+
+
+        // now we will impliment normal user
+        System.out.println("Now We Will Begin With Main Part");
+        
     }
 }
