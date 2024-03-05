@@ -2,8 +2,12 @@ package BankManagementSystem.src.Users;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Set;
+
+import javax.xml.crypto.Data;
 
 import BankManagementSystem.src.Bank;
+import BankManagementSystem.src.Constants;
 import BankManagementSystem.src.Accounts.Account;
 import BankManagementSystem.src.DataBases.Database;
 import BankManagementSystem.src.People.Manager;
@@ -30,27 +34,38 @@ public class Customer extends User {
     }
 
     public static Customer askCustomerDetails(User currentUser){
-        System.out.println(("=".repeat(15)));
         long panNumber, adharNumber;
         while(true){
             try{
-                System.out.print("enter your PanCard Number:");
+                System.out.println(Constants.repeat);
+                System.out.print("Enter your PanCard Number:");
                 panNumber = Long.parseLong(sc.nextLine());
+                if(String.valueOf(panNumber).length()!=12){
+                    System.out.println("Number Length Shold Be 12"); 
+                    continue;
+                }
                 // System.out.println(panNumber);
                 break;
             }
             catch(Exception e){
+                System.out.println(Constants.repeat);
                 System.out.println("Please Specify A Number!");
             }
         }
         while(true){
             try{
-                System.out.print("enter your Adhar Number:");
+                System.out.println(Constants.repeat);
+                System.out.print("Enter your Adhar Number:");
                 adharNumber = Long.parseLong(sc.nextLine());
                 // System.out.println(adharNumber);
+                if(String.valueOf(adharNumber).length()!=12){
+                    System.out.println("Number Length Shold Be 12"); 
+                    continue;
+                }
                 break;
             }
             catch(Exception e){
+                System.out.println(Constants.repeat);
                 System.out.println("Please Specify A Number!");
             }
         }
@@ -60,52 +75,92 @@ public class Customer extends User {
 
 
     public int askCustomer(){
-        System.out.println(("=".repeat(15)));
-        System.out.println("""
-                Hello Please Follow These Options:
-                1. Add Account
-                2. Delete Account
-                3. Update Account
-                4. Banking
-                5. Exit
-                Please Enter a Key!""");
-                int key;
+        System.out.println(Constants.repeat+"\n");
+        System.out.println(Constants.askCustomer);
+        System.out.println(Constants.repeat);
+        int key;
         try{
+            System.out.print("Key: ");
             key = sc.nextInt(); sc.nextLine();
             if(key<=0 || key >5){
-            System.out.println("Invalid Key Please Enter Valid Key!");
-            key = User.AskCurrentUser();
-        }
+                System.out.println(Constants.repeat);
+                System.out.println("Invalid Key Please Enter Valid Key!");
+                key = this.askCustomer();
+            }
         }catch(Exception e){
+            System.out.println(Constants.repeat);
             System.out.println("Invalid Key Please Enter Valid Key!");
             sc.nextLine();
-            key = User.AskCurrentUser();
+            key = this.askCustomer();
+        }
+        return key;
+    }
+
+
+
+    public int askBanking(){
+        System.out.println(Constants.repeat+"\n");
+        System.out.println(Constants.askBanking);
+        System.out.println(Constants.repeat);
+        int key;
+        try{
+            System.out.print("Key: ");
+            key = sc.nextInt(); sc.nextLine();
+            if(key<=0 || key >6){
+                System.out.println(Constants.repeat);
+                System.out.println("Invalid Key Please Enter Valid Key!");
+                key = this.askBanking();
+            }
+        }catch(Exception e){
+            System.out.println(Constants.repeat);
+            System.out.println("Invalid Key Please Enter Valid Key!");
+            sc.nextLine();
+            key = this.askBanking();
         }
         return key;
     }
 
 
     public boolean addAccount(){
-        System.out.println(("=".repeat(15)));
+        System.out.println(Constants.repeat);
         boolean fl = true;
         System.out.println("Choose Bank To Open An Account");
+        ArrayList<String> banks = Database.getBanksList();
+        int i = 1;
+        for(String bankName: banks){
+            System.out.println(i+". "+bankName);
+            i++;
+        }
+        System.out.println(Constants.repeat);
+        System.out.print("Bank Name: ");
         String bankName = sc.nextLine();
-        fl = Database.checkForBankExist(bankName);
-        if(!fl){
+        System.out.println(Constants.repeat);
+        int bankId = Database.checkForBankExist(bankName);
+        if(bankId<1001){
             System.out.println("Bank Does Not Exists");
             return fl;
         }
         // depends on bank which customer id he has bcoz for defferent banks user would have different customer id's
-        // getting if user is customer of bank
-        this.custId = Bank.getCustomerId(this, bankName);
+        // getting if user is customer of bank than custId else -1
+        this.custId = Bank.getExistingCustomerId(this, bankName, bankId);
         System.out.println("Choose Bank Branch To Open An Account");
+        ArrayList<String> bankBranches = Database.getBankBranchList(bankId);
+        i = 1;
+        for(String branchName: bankBranches){
+            System.out.println(i+". "+branchName);
+            i++;
+        }
+        System.out.println(Constants.repeat);
+        System.out.print("Bank Branch Name: ");
         String branchName = sc.nextLine();
-        fl = Bank.checkForBranchExist(bankName, branchName);
+        System.out.println(Constants.repeat);
+        fl = Bank.checkForBranchExist(bankName, branchName, bankId);
         if(!fl){
             System.out.println("Bank Branch Does Not Exists");
             return fl;
         }
-        System.out.println("Choose Account Type To Open An Account\n1. Personal Account\n2. Joint Account");
+        System.out.println("\nChoose Account Type To Open An Account\n1. Personal Account\n2. Joint Account\n");
+        System.out.println(Constants.repeat);
         int num;
         while(true){
             try{
@@ -120,7 +175,7 @@ public class Customer extends User {
         }
         String type = (num==1)?"Personal":"Joint";
         // checking if user has an account in banks branch already
-        fl = Bank.checkForCustomerExist(this, bankName, branchName, type); // if account already exist
+        fl = Bank.checkForActiveCustomerAcountExistOfSameType(this, bankName, branchName, type, bankId); // if account already exist
         if(fl){
             System.out.println("Customers Account Already Exists");
             return false;
@@ -140,31 +195,34 @@ public class Customer extends User {
         String anotherCustomer=null;
         if(num==2) {
             System.out.println("Give Another Authorised Customer's Name For Joint Account!");
+            System.out.print("Enter The Name: ");
             anotherCustomer = sc.nextLine();
         }
-        fl = Manager.addAccount(this, bankName, branchName, type, balance, anotherCustomer);
+        fl = Manager.addAccount(this, bankName, branchName, type, balance, anotherCustomer, bankId);
         return fl;
     }
 
 
     public boolean deleteAccount(){
+        System.out.println(Constants.repeat);
         this.accounts = Database.findAccounts(this);
         if(accounts==null || accounts.size() < 1){
             System.out.println("No Accounts Exists! Please Add One");
-            return false;
+            return true;
         }
         System.out.println("Your Accounts are Listed Below");
         int i = 1;
         for(Account account:accounts){
-            System.out.println("=".repeat(15));
+            System.out.println(Constants.repeat);
             System.out.println(i+". "+account.toString());
-            System.out.println("=".repeat(15));
             i++;
         }
         int key;
         while(true){
             try{
+                System.out.println(Constants.repeat);
                 System.out.println("Choose Key To remove account");
+                System.out.print("Key: ");
                 key = Integer.parseInt(sc.nextLine());
                 // System.out.println(key);
                 break;
@@ -176,7 +234,90 @@ public class Customer extends User {
         boolean fl = Manager.removeAccount(accounts.get(key-1));
         if(fl){
             this.accounts = Database.findAccounts(this);
+            System.out.println("Account Deleted :)");
         }
+        return fl;
+    }
+
+
+    public boolean updateAccount(){
+        System.out.println(Constants.repeat);
+        System.out.println("You Can Change The Branch Of Your Account Only\n1. Change Branch\n2. Go Back");
+        int key;
+        while(true){
+            System.out.print("Key: ");
+            try{
+                key = Integer.parseInt(sc.nextLine());
+                if(key!=1 && key!=2){
+                    System.out.println(Constants.repeat);
+                    System.out.println("Please Specify A Valid Key");
+                    System.out.println(Constants.repeat);
+                    continue;
+                }
+                break;
+            }
+            catch(Exception e){
+                System.out.println(Constants.repeat);
+                System.out.println("Please Specify A Valid Key");
+                System.out.println(Constants.repeat);
+            }
+        }
+        if(key==2) return true;
+        this.accounts = Database.findAccounts(this);
+        if(accounts==null || accounts.size() < 1){
+            System.out.println("No Accounts Exists! Please Add One");
+            return true;
+        }
+        System.out.println("Your Accounts are Listed Below");
+        int i = 1;
+        for(Account account:accounts){
+            System.out.println(Constants.repeat);
+            System.out.println(i+". "+account.toString());
+            i++;
+        }
+        key = 0;
+        while(true){
+            try{
+                System.out.println(Constants.repeat);
+                System.out.println("Choose Key To Update Account");
+                System.out.print("Key: ");
+                key = Integer.parseInt(sc.nextLine());
+                // System.out.println(key);
+                break;
+            }
+            catch(Exception e){
+                System.out.println("Please Specify A Number!");
+            }
+        }
+        int bankId = accounts.get(key-1).bankId;
+        String bankName = accounts.get(key-1).bankName;
+        int branchCode = accounts.get(key-1).branch_code;
+        ArrayList<String> bankBranches = Database.getBankBranchList(bankId);
+        if(bankBranches.size()==1){
+            System.out.println("No Bank Branches Available To Switch");
+            return false;
+        }
+        String brName = Database.getBranchName(bankId, branchCode); 
+        System.out.println("Choose Bank Branch To Update With");
+        i = 1;
+        for(String branchName: bankBranches){
+            if(branchName.equalsIgnoreCase(brName)) continue;
+            System.out.println(i+". "+branchName);
+            i++;
+        }
+        System.out.println(Constants.repeat);
+        System.out.print("Bank Branch Name: ");
+        String branchName = sc.nextLine();
+        System.out.println(Constants.repeat);
+        boolean fl = Bank.checkForBranchExist(bankName, branchName, bankId);
+        if(!fl){
+            System.out.println("Bank Branch Does Not Exists");
+            return fl;
+        }
+        branchCode = Database.getBranchCode(bankId, branchName);
+        fl = Manager.updateAccount(accounts.get(key-1), branchCode);
+        this.accounts = Database.findAccounts(this);
+        System.out.println("Account Updated :)");
         return fl;
     }
 

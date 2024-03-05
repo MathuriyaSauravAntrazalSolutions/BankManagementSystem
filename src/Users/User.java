@@ -2,7 +2,9 @@ package BankManagementSystem.src.Users;
 
 import java.util.Scanner;
 
+import BankManagementSystem.src.Constants;
 import BankManagementSystem.src.DataBases.Database;
+import BankManagementSystem.src.Validation.Validator;
 
 public class User{
     public final int userId;
@@ -26,22 +28,21 @@ public class User{
 
     // using recursion here
     public static final int AskUser(){
-        System.out.println(("=".repeat(15)));
-        System.out.println("""
-                Follow These Steps To Use Me!
-                1. Sign-In
-                2. SignUp
-                3. Exit
-                Please Enter a Key!""");
+        System.out.println(Constants.repeat+"\n");
+        System.out.println(Constants.askNewUser);
+        System.out.println(Constants.repeat);
         int key;
         try{
+            System.out.print("Key: ");
             key = sc.nextInt(); sc.nextLine();
             if(key<=0 || key >3){
-                System.out.println("Invalid Key Please Enter Valid Key!");
+                System.out.println(Constants.repeat);
+                System.out.println(Constants.inValidKeyError);
                 key = User.AskUser();
             }
         }catch(Exception e){
-            System.out.println("Invalid Key Please Enter Valid Key!");
+            System.out.println(Constants.repeat);
+            System.out.println(Constants.inValidKeyError);
             sc.nextLine();
             key = User.AskUser();
         }
@@ -49,37 +50,82 @@ public class User{
     }
 
     public static final User signIn(){
-            System.out.println(("=".repeat(15)));
-            System.out.print("enter your username:");
+            System.out.println(Constants.repeat);
+            System.out.print("enter your username: ");
             String username = sc.nextLine();
-            // System.out.println(username);
-            System.out.print("enter your password:");
-            String password = sc.nextLine();
-            // System.out.println(password);
+            boolean fl = Database.checkForUserExist(username);
+            String password;
+            while(true){
+                System.out.print("Enter Your Password: ");
+                password = sc.nextLine();
+                boolean tl = Validator.isValidPassword(password);
+                if(!tl){
+                    System.out.println(Constants.repeat+"\n");
+                    System.out.println(Constants.passwordError);
+                    System.out.println(Constants.repeat);
+                    continue;
+                }
+                break;
+            }
             User currentUser = Database.checkForUserExist(username, password); // cheking if user exists
-            if(currentUser==null){
-                System.out.println("user dont exists! Please Signup");
+            if(currentUser==null && fl == true){
+                System.out.println("Wrong Password Sign-In Again!");   
+            }
+            else if(currentUser==null && fl == false){
+                System.out.println("User dont exists! Please Signup");
             }
             return currentUser;
     }
 
     public static final User signUp(){
-        System.out.println(("=".repeat(15)));
-        System.out.print("enter your FirstName:");
-        String firstName = sc.nextLine();
-        // System.out.println(FirstName);
-        System.out.print("enter your LastName:");
-        String lastName = sc.nextLine();
-        // System.out.println(lastName);
-        System.out.print("enter your EmailId:");
-        String emailId = sc.nextLine();
-        // System.out.println(emailId);
+        boolean fl = false;
+        System.out.println(Constants.repeat);
+        String firstName;
+        while(true){
+            System.out.print("Enter Your FirstName: ");
+            firstName = sc.nextLine();
+            // System.out.println(firstName);
+            fl = Validator.isValidName(firstName);
+            if(!fl){
+                System.out.println("Name Should Not Contain Any Number Or Special Characters");
+                continue;
+            }
+            break;
+        }
+        String lastName;
+        while(true){
+            System.out.print("Enter Your LastName: ");
+            lastName = sc.nextLine();
+            // System.out.println(lastName);
+            fl = Validator.isValidName(lastName);
+            if(!fl){
+                System.out.println("Name Should Not Contain Any Number Or Special Characters");
+                continue;
+            }
+            break;
+        }
+        String emailId;
+        while(true){
+            System.out.print("Enter Your EmailId: ");
+            emailId = sc.nextLine();
+            // System.out.println(emailId);
+            fl = Validator.isValidEmail(emailId);
+            if(!fl){
+                System.out.println("Please Enter a Valid Email Address");
+                continue;
+            }
+            break;
+        }
         long phone;
         while(true){
             try{
-                System.out.print("enter your Phone:");
+                System.out.print("Enter Your 10 Degit Phone Number: ");
                 phone = Long.parseLong(sc.nextLine());
                 // System.out.println(phone);
+                if(String.valueOf(phone).length() != 10){
+                    System.out.println("Must be 10 Degit Number!");
+                    continue;
+                }
                 break;
             }
             catch(Exception e){
@@ -87,39 +133,58 @@ public class User{
             }
         }
         // System.out.println(emailId);
-        System.out.print("enter your username:");
-        String username = sc.nextLine();
-        // System.out.println(username);
-        System.out.print("enter your password:");
-        String password = sc.nextLine();
+        String username;
+        while(true){
+            System.out.print("Enter Your Username: ");
+            username = sc.nextLine();
+            // System.out.println(username);
+            fl = Database.checkForUserExist(username);
+            if(fl){
+                System.out.println("This username is not available :(");
+                continue;
+            }
+            break;
+        }
+        String password;
+        while(true){
+            System.out.print("Enter Your Password: ");
+            password = sc.nextLine();
+            fl = Validator.isValidPassword(password);
+            if(!fl){
+                System.out.println(Constants.repeat+"\n");
+                System.out.println(Constants.passwordError);
+                System.out.println(Constants.repeat);
+                continue;
+            }
+            break;
+        }
         // System.out.println(password);
         User currentUser = Database.checkForUserExist(username, password);
         if(currentUser!=null){
             return null;
         }
-        int userId = Database.getId("userId", "users");
+        int userId = Database.getId("userId", "users"); // will work fine
         currentUser = new User(userId, firstName, lastName, username, password, emailId, phone); // creating new user
         return currentUser;
     }
 
 
     public static final int AskCurrentUser(){
-        System.out.println(("=".repeat(15)));
-        System.out.println("""
-                Welcome To This App! How Can I Help You
-                1. Personal Banking
-                2. Register Bank.
-                3. Exit
-                Please Enter a Key!""");
-                int key;
+        System.out.println(Constants.repeat+"\n");
+        System.out.println(Constants.askCurrentUser);
+        System.out.println(Constants.repeat);
+        int key;
         try{
+            System.out.print("Key: ");
             key = sc.nextInt(); sc.nextLine();
             if(key<=0 || key >3){
-            System.out.println("Invalid Key Please Enter Valid Key!");
-            key = User.AskCurrentUser();
+                System.out.println(Constants.repeat);
+                System.out.println(Constants.inValidKeyError);
+                key = User.AskCurrentUser();
         }
         }catch(Exception e){
-            System.out.println("Invalid Key Please Enter Valid Key!");
+            System.out.println(Constants.repeat);
+            System.out.println(Constants.inValidKeyError);
             sc.nextLine();
             key = User.AskCurrentUser();
         }

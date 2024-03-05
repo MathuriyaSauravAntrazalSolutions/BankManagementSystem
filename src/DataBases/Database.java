@@ -6,11 +6,13 @@ import java.sql.*;
 import java.util.ArrayList;
 
 import BankManagementSystem.src.Bank;
+import BankManagementSystem.src.Constants;
 import BankManagementSystem.src.Accounts.Account;
 import BankManagementSystem.src.Users.Customer;
 import BankManagementSystem.src.Users.User;
 
 public class Database {
+
     public static int getId(String column, String tableName){
         int uniqueNumber = 1001;
         Connection conn = null;
@@ -27,7 +29,7 @@ public class Database {
             
             // Step 3: Execute a query to create a database
             stmt = conn.createStatement();
-            stmt.execute("Use AppDatabase");
+            stmt.execute(Queries.USE_APP_DB_QUERY);
             // Query to find the maximum existing number in the table
             String query = "SELECT MAX("+column+") FROM "+tableName;
 
@@ -41,35 +43,36 @@ public class Database {
             }
         } catch (SQLException se) {
             // Handle errors for JDBC
-            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            System.out.println();
             se.printStackTrace();
-            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            System.out.println(Constants.errorRepeat);
         } catch (Exception e) {
-            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            System.out.println(Constants.errorRepeat);
             e.printStackTrace();
-            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            System.out.println(Constants.errorRepeat);
         } finally {
             // Finally block used to close resources
             try {
                 if (stmt != null) stmt.close();
             } catch (SQLException se) {
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                System.out.println(Constants.errorRepeat);
                 se.printStackTrace();
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                System.out.println(Constants.errorRepeat);
             }
             try {
                 if (conn != null) conn.close();
             } catch (SQLException se) {
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                System.out.println(Constants.errorRepeat);
                 se.printStackTrace();
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                System.out.println(Constants.errorRepeat);
             }
         }
 
         return uniqueNumber;
     }
 
-    public static boolean createDatabase(String databaseName) {
+
+    public static boolean createDatabase() {
         Connection conn = null;
         Statement stmt = null;
         boolean fl = false;
@@ -85,46 +88,43 @@ public class Database {
             
             // Step 3: Execute a query to create a database
             stmt = conn.createStatement();
-            String sqlCreateDB = "CREATE DATABASE "+databaseName;
-            stmt.executeUpdate(sqlCreateDB);
+            stmt.executeUpdate(Queries.CREATE_APP_DB_QUERY);
             // System.out.println("AppDatabase created successfully");
             fl = true;
             
         } catch (SQLException se) {
             // Handle errors for JDBC
-            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            System.out.println(Constants.errorRepeat);
             se.printStackTrace();
-            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            System.out.println(Constants.errorRepeat);
             fl = false;
         } catch (Exception e) {
-            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            System.out.println(Constants.errorRepeat);
             e.printStackTrace();
-            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            System.out.println(Constants.errorRepeat);
             fl = false;
         } finally {
             // Finally block used to close resources
             try {
                 if (stmt != null) stmt.close();
             } catch (SQLException se) {
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                System.out.println(Constants.errorRepeat);
                 se.printStackTrace();
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                System.out.println(Constants.errorRepeat);
             }
             try {
                 if (conn != null) conn.close();
             } catch (SQLException se) {
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                System.out.println(Constants.errorRepeat);
                 se.printStackTrace();
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                System.out.println(Constants.errorRepeat);
             }
         }
         return fl;
     }
 
 
-
-
-    public static boolean createUserTable(String tablename) {
+    public static boolean createUserTable() {
         Connection conn = null;
         Statement stmt = null;
         boolean fl = false;
@@ -140,52 +140,43 @@ public class Database {
             
             // Step 3: Execute a query to create a usertable
             stmt = conn.createStatement();
-            stmt.execute("Use AppDatabase");
-            stmt.executeUpdate("CREATE TABLE appdatabase."+ tablename+"("
-            + "id INT AUTO_INCREMENT PRIMARY KEY,"
-            + "userId INT NOT NULL,"
-            + "username VARCHAR(255) NOT NULL,"
-            + "password VARCHAR(255) NOT NULL,"
-            + "emailId VARCHAR(255) NOT NULL,"
-            + "phone BIGINT NOT NULL,"
-            + "firstName VARCHAR(255) NOT NULL,"
-            + "lastName VARCHAR(255)"
-            +")");
+            stmt.execute(Queries.USE_APP_DB_QUERY);
+            stmt.executeUpdate(Queries.CREATE_USERS_TABLE_QUERY);
             fl = true;
             
         } catch (SQLException se) {
             // Handle errors for JDBC
             fl = false;
-            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            System.out.println(Constants.errorRepeat);
             se.printStackTrace();
-            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            System.out.println(Constants.errorRepeat);
         } catch (Exception e) {
             fl = false;
-            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            System.out.println(Constants.errorRepeat);
             e.printStackTrace();
-            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            System.out.println(Constants.errorRepeat);
         } finally {
             // Finally block used to close resources
             try {
                 if (stmt != null) stmt.close();
             } catch (SQLException se) {
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                System.out.println(Constants.errorRepeat);
                 se.printStackTrace();
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                System.out.println(Constants.errorRepeat);
             }
             try {
                 if (conn != null) conn.close();
             } catch (SQLException se) {
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                System.out.println(Constants.errorRepeat);
                 se.printStackTrace();
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                System.out.println(Constants.errorRepeat);
             }
         }
         return fl;
     }
 
 
-    public static boolean createBankTable(String tablename) {
+    public static boolean createBanksTable() {
         Connection conn = null;
         Statement stmt = null;
         boolean fl = false;
@@ -201,49 +192,43 @@ public class Database {
             
             // Step 3: Execute a query to create a usertable
             stmt = conn.createStatement();
-            stmt.execute("Use AppDatabase");
-            stmt.executeUpdate("CREATE TABLE appdatabase."+ tablename+"("
-            + "id INT AUTO_INCREMENT PRIMARY KEY,"
-            + "bankId Int NOT NULL,"
-            + "name VARCHAR(50) NOT NULL,"
-            + "ownerId int NOT NULL,"
-            + "address VARCHAR(50) NOT NULL"
-            +")");
+            stmt.execute(Queries.USE_APP_DB_QUERY);
+            stmt.executeUpdate(Queries.CREATE_BANKS_TABLE_QUERY);
             fl = true;
             
         } catch (SQLException se) {
             // Handle errors for JDBC
             fl = false;
-            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            System.out.println(Constants.errorRepeat);
             se.printStackTrace();
-            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            System.out.println(Constants.errorRepeat);
         } catch (Exception e) {
             fl = false;
-            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            System.out.println(Constants.errorRepeat);
             e.printStackTrace();
-            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            System.out.println(Constants.errorRepeat);
         } finally {
             // Finally block used to close resources
             try {
                 if (stmt != null) stmt.close();
             } catch (SQLException se) {
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                System.out.println(Constants.errorRepeat);
                 se.printStackTrace();
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                System.out.println(Constants.errorRepeat);
             }
             try {
                 if (conn != null) conn.close();
             } catch (SQLException se) {
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                System.out.println(Constants.errorRepeat);
                 se.printStackTrace();
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                System.out.println(Constants.errorRepeat);
             }
         }
         return fl;
     }
 
 
-    public static boolean createUserInfoTable(String tablename) {
+    public static boolean createUsersBanksInfoTable() {
         Connection conn = null;
         Statement stmt = null;
         boolean fl = false;
@@ -259,43 +244,199 @@ public class Database {
             
             // Step 3: Execute a query to create a usertable
             stmt = conn.createStatement();
-            stmt.execute("Use AppDatabase");
-            stmt.executeUpdate("CREATE TABLE appdatabase."+ tablename+"("
-            + "id INT AUTO_INCREMENT PRIMARY KEY,"
-            + "userId Int NOT NULL,"
-            + "custId Int NOT NULL,"
-            + "bankId Int NOT NULL,"
-            + "branch_Code Int NOT NULL,"
-            + "accountNumber BIGINT NOT NULL"
-            +")");
+            stmt.execute(Queries.USE_APP_DB_QUERY);
+            stmt.executeUpdate(Queries.CREATE_USERS_BANKS_INFO_TABLE_QUERY);
             fl = true;
             
         } catch (SQLException se) {
             // Handle errors for JDBC
             fl = false;
-            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            System.out.println(Constants.errorRepeat);
             se.printStackTrace();
-            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            System.out.println(Constants.errorRepeat);
         } catch (Exception e) {
             fl = false;
-            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            System.out.println(Constants.errorRepeat);
             e.printStackTrace();
-            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            System.out.println(Constants.errorRepeat);
         } finally {
             // Finally block used to close resources
             try {
                 if (stmt != null) stmt.close();
             } catch (SQLException se) {
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                System.out.println(Constants.errorRepeat);
                 se.printStackTrace();
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                System.out.println(Constants.errorRepeat);
             }
             try {
                 if (conn != null) conn.close();
             } catch (SQLException se) {
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                System.out.println(Constants.errorRepeat);
                 se.printStackTrace();
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                System.out.println(Constants.errorRepeat);
+            }
+        }
+        return fl;
+    }
+
+
+    public static User InsertUserInTable(User currentUser) {
+        Connection conn = null;
+        Statement stmt = null;
+        try {
+            // Step 1: Register JDBC driver
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            
+            // Step 2: Open a connection
+            String jdbcUrl = "jdbc:mysql://localhost:3306/";
+            String username = "root";
+            String password = "Saurav@2942";
+            conn = DriverManager.getConnection(jdbcUrl, username, password);
+            
+            stmt = conn.createStatement();
+            stmt.execute(Queries.USE_APP_DB_QUERY);
+            int affected_rows = stmt.executeUpdate("Insert into users(userId, username, password, emailId, firstName, lastName, phone) values("
+            +currentUser.userId+", '"+currentUser.username+"', '"+currentUser.password+"', '"+currentUser.emailId+"','"
+            +currentUser.firstName+"', '"+currentUser.lastName+"', "+currentUser.phone
+            +")");
+            return currentUser;
+            
+        } catch (SQLException se) {
+            // Handle errors for JDBC
+            currentUser = null;
+            System.out.println(Constants.errorRepeat);
+            se.printStackTrace();
+            System.out.println(Constants.errorRepeat);
+        } catch (Exception e) {
+            currentUser = null;
+            System.out.println(Constants.errorRepeat);
+            e.printStackTrace();
+            System.out.println(Constants.errorRepeat);
+        } finally {
+            // Finally block used to close resources
+            try {
+                if (stmt != null) stmt.close();
+            } catch (SQLException se) {
+                System.out.println(Constants.errorRepeat);
+                se.printStackTrace();
+                System.out.println(Constants.errorRepeat);
+            }
+            try {
+                if (conn != null) conn.close();
+            } catch (SQLException se) {
+                System.out.println(Constants.errorRepeat);
+                se.printStackTrace();
+                System.out.println(Constants.errorRepeat);
+            }
+        }
+        return currentUser;
+    }
+
+
+    public static Bank InsertBankInTable(User currentUser, Bank currentBank) {
+        Connection conn = null;
+        Statement stmt = null;
+        try {
+            // Step 1: Register JDBC driver
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            
+            // Step 2: Open a connection
+            String jdbcUrl = "jdbc:mysql://localhost:3306/";
+            String username = "root";
+            String password = "Saurav@2942";
+            conn = DriverManager.getConnection(jdbcUrl, username, password);
+            
+            stmt = conn.createStatement();
+            stmt.execute(Queries.USE_APP_DB_QUERY);
+            int affected_rows = stmt.executeUpdate("Insert into Banks(bankId, name, ownerId, address) values("
+            +currentBank.bankId+", '"+currentBank.name+"', "+currentUser.userId+", '"+currentBank.address
+            +"')");
+            return currentBank;
+            
+        } catch (SQLException se) {
+            // Handle errors for JDBC
+            currentBank = null;
+            System.out.println(Constants.errorRepeat);
+            se.printStackTrace();
+            System.out.println(Constants.errorRepeat);
+        } catch (Exception e) {
+            currentBank = null;
+            System.out.println(Constants.errorRepeat);
+            e.printStackTrace();
+            System.out.println(Constants.errorRepeat);
+        } finally {
+            // Finally block used to close resources
+            try {
+                if (stmt != null) stmt.close();
+            } catch (SQLException se) {
+                System.out.println(Constants.errorRepeat);
+                se.printStackTrace();
+                System.out.println(Constants.errorRepeat);
+            }
+            try { 
+                if (conn != null) conn.close();
+            } catch (SQLException se) {
+                System.out.println(Constants.errorRepeat);
+                se.printStackTrace();
+                System.out.println(Constants.errorRepeat);
+            }
+        }
+        return currentBank;
+    }
+
+
+    public static boolean addUserInUserInfoTable(Customer currenCustomer, String bankName, long accountNumber, int branch_code){
+        Connection conn = null;
+        Statement stmt = null;
+        boolean fl = false;
+        try {
+            // Step 1: Register JDBC driver
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            
+            // Step 2: Open a connection
+            String jdbcUrl = "jdbc:mysql://localhost:3306/";
+            String username = "root";
+            String password = "Saurav@2942";
+            conn = DriverManager.getConnection(jdbcUrl, username, password);
+            
+            stmt = conn.createStatement();
+            stmt.execute(Queries.USE_APP_DB_QUERY);
+            ResultSet rs = stmt.executeQuery("select bankId from banks where name = '"+bankName+"'");
+            int bankId = -1;
+            if(rs.next()) bankId = rs.getInt("bankId");
+            int affected_rows = stmt.executeUpdate("Insert into usersBanksInfo(userId, bankId, custId, accountNumber, branch_Code) values("
+            +currenCustomer.userId+", "+bankId+", "+currenCustomer.custId+", "+accountNumber+", "
+            + branch_code
+            +")");
+            if(affected_rows>0) fl = true;
+            return fl;
+            
+        } catch (SQLException se) {
+            // Handle errors for JDBC
+            fl = false;
+            System.out.println(Constants.errorRepeat);
+            se.printStackTrace();
+            System.out.println(Constants.errorRepeat);
+        } catch (Exception e) {
+            fl = false;
+            System.out.println(Constants.errorRepeat);
+            e.printStackTrace();
+            System.out.println(Constants.errorRepeat);
+        } finally {
+            // Finally block used to close resources
+            try {
+                if (stmt != null) stmt.close();
+            } catch (SQLException se) {
+                System.out.println(Constants.errorRepeat);
+                se.printStackTrace();
+                System.out.println(Constants.errorRepeat);
+            }
+            try { 
+                if (conn != null) conn.close();
+            } catch (SQLException se) {
+                System.out.println(Constants.errorRepeat);
+                se.printStackTrace();
+                System.out.println(Constants.errorRepeat);
             }
         }
         return fl;
@@ -317,7 +458,7 @@ public class Database {
             conn = DriverManager.getConnection(jdbcUrl, username, password);
             
             stmt = conn.createStatement();
-            stmt.execute("Use AppDatabase");
+            stmt.execute(Queries.USE_APP_DB_QUERY);
             ResultSet rs = stmt.executeQuery("select * from Users where username = '"+ user +"' and "+ " password = '"+pass+"';");
             if(rs.next()){
                 currentUser = new User(rs.getInt("userId"), rs.getString("firstName"), rs.getString("lastName"), rs.getString("username"), rs.getString("password"), rs.getString("emailId"), rs.getLong("phone"));
@@ -327,89 +468,36 @@ public class Database {
         } catch (SQLException se) {
             // Handle errors for JDBC
             currentUser = null;
-            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            System.out.println(Constants.errorRepeat);
             se.printStackTrace();
-            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            System.out.println(Constants.errorRepeat);
         } catch (Exception e) {
             currentUser = null;
-            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            System.out.println(Constants.errorRepeat);
             e.printStackTrace();
-            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            System.out.println(Constants.errorRepeat);
         } finally {
             // Finally block used to close resources
             try {
                 if (stmt != null) stmt.close();
             } catch (SQLException se) {
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                System.out.println(Constants.errorRepeat);
                 se.printStackTrace();
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                System.out.println(Constants.errorRepeat);
             }
             try {
                 if (conn != null) conn.close();
             } catch (SQLException se) {
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                System.out.println(Constants.errorRepeat);
                 se.printStackTrace();
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                System.out.println(Constants.errorRepeat);
             }
         }
         return currentUser;
     }
 
 
-    public static User InsertUserInTable(User currentUser) {
-        Connection conn = null;
-        Statement stmt = null;
-        try {
-            // Step 1: Register JDBC driver
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            
-            // Step 2: Open a connection
-            String jdbcUrl = "jdbc:mysql://localhost:3306/";
-            String username = "root";
-            String password = "Saurav@2942";
-            conn = DriverManager.getConnection(jdbcUrl, username, password);
-            
-            stmt = conn.createStatement();
-            stmt.execute("Use AppDatabase");
-            int affected_rows = stmt.executeUpdate("Insert into users(userId, username, password, emailId, firstName, lastName, phone) values("
-            +currentUser.userId+", '"+currentUser.username+"', '"+currentUser.password+"', '"+currentUser.emailId+"','"
-            +currentUser.firstName+"', '"+currentUser.lastName+"', "+currentUser.phone
-            +")");
-            return currentUser;
-            
-        } catch (SQLException se) {
-            // Handle errors for JDBC
-            currentUser = null;
-            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-            se.printStackTrace();
-            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-        } catch (Exception e) {
-            currentUser = null;
-            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-            e.printStackTrace();
-            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-        } finally {
-            // Finally block used to close resources
-            try {
-                if (stmt != null) stmt.close();
-            } catch (SQLException se) {
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-                se.printStackTrace();
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-            }
-            try {
-                if (conn != null) conn.close();
-            } catch (SQLException se) {
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-                se.printStackTrace();
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-            }
-        }
-        return currentUser;
-    }
-
-
-    public static boolean checkForBankExist(String bankName) {
+    public static boolean checkForUserExist(String user) {
         Connection conn = null;
         Statement stmt = null;
         boolean fl = false;
@@ -424,157 +512,104 @@ public class Database {
             conn = DriverManager.getConnection(jdbcUrl, username, password);
             
             stmt = conn.createStatement();
-            stmt.execute("Use AppDatabase");
-            ResultSet rs = stmt.executeQuery("select * from Banks where name = '"+bankName+"'");
+            stmt.execute(Queries.USE_APP_DB_QUERY);
+            ResultSet rs = stmt.executeQuery("select * from Users where username = '"+ user +"';");
             if(rs.next()){
                 fl = true;
             }
-            
-        } catch (SQLException se) {
-            // Handle errors for JDBC
-            fl = false;
-            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-            se.printStackTrace();
-            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-        } catch (Exception e) {
-            fl = false;
-            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-            e.printStackTrace();
-            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-        } finally {
-            // Finally block used to close resources
-            try {
-                if (stmt != null) stmt.close();
-            } catch (SQLException se) {
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-                se.printStackTrace();
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-            }
-            try {
-                if (conn != null) conn.close();
-            } catch (SQLException se) {
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-                se.printStackTrace();
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-            }
-        }
-        return fl;
-    }
-
-
-    
-    public static Bank InsertBankInTable(User currentUser, Bank currentBank) {
-        Connection conn = null;
-        Statement stmt = null;
-        try {
-            // Step 1: Register JDBC driver
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            
-            // Step 2: Open a connection
-            String jdbcUrl = "jdbc:mysql://localhost:3306/";
-            String username = "root";
-            String password = "Saurav@2942";
-            conn = DriverManager.getConnection(jdbcUrl, username, password);
-            
-            stmt = conn.createStatement();
-            stmt.execute("Use AppDatabase");
-            int affected_rows = stmt.executeUpdate("Insert into Banks(bankId, name, ownerId, address) values("
-            +currentBank.bankId+", '"+currentBank.name+"', "+currentUser.userId+", '"+currentBank.address
-            +"')");
-            return currentBank;
-            
-        } catch (SQLException se) {
-            // Handle errors for JDBC
-            currentBank = null;
-            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-            se.printStackTrace();
-            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-        } catch (Exception e) {
-            currentBank = null;
-            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-            e.printStackTrace();
-            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-        } finally {
-            // Finally block used to close resources
-            try {
-                if (stmt != null) stmt.close();
-            } catch (SQLException se) {
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-                se.printStackTrace();
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-            }
-            try { 
-                if (conn != null) conn.close();
-            } catch (SQLException se) {
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-                se.printStackTrace();
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-            }
-        }
-        return currentBank;
-    }
-
-
-
-    public static boolean addUserInUserInfoTable(Customer currenCustomer, String bankName, long accountNumber, int branch_code){
-        Connection conn = null;
-        Statement stmt = null;
-        boolean fl = false;
-        try {
-            // Step 1: Register JDBC driver
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            
-            // Step 2: Open a connection
-            String jdbcUrl = "jdbc:mysql://localhost:3306/";
-            String username = "root";
-            String password = "Saurav@2942";
-            conn = DriverManager.getConnection(jdbcUrl, username, password);
-            
-            stmt = conn.createStatement();
-            stmt.execute("Use AppDatabase");
-            ResultSet rs = stmt.executeQuery("select bankId from banks where name = '"+bankName+"'");
-            int bankId = -1;
-            if(rs.next()) bankId = rs.getInt("bankId");
-            int affected_rows = stmt.executeUpdate("Insert into usersBankInfo(userId, bankId, custId, accountNumber, branch_Code) values("
-            +currenCustomer.userId+", "+bankId+", "+currenCustomer.custId+", "+accountNumber+", "
-            + branch_code
-            +")");
-            if(affected_rows>0) fl = true;
             return fl;
             
         } catch (SQLException se) {
             // Handle errors for JDBC
             fl = false;
-            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            System.out.println(Constants.errorRepeat);
             se.printStackTrace();
-            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            System.out.println(Constants.errorRepeat);
         } catch (Exception e) {
             fl = false;
-            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            System.out.println(Constants.errorRepeat);
             e.printStackTrace();
-            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            System.out.println(Constants.errorRepeat);
         } finally {
             // Finally block used to close resources
             try {
                 if (stmt != null) stmt.close();
             } catch (SQLException se) {
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                System.out.println(Constants.errorRepeat);
                 se.printStackTrace();
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                System.out.println(Constants.errorRepeat);
             }
-            try { 
+            try {
                 if (conn != null) conn.close();
             } catch (SQLException se) {
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                System.out.println(Constants.errorRepeat);
                 se.printStackTrace();
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                System.out.println(Constants.errorRepeat);
             }
         }
         return fl;
     }
 
 
-    public static ArrayList<Long> findCustomer(User currentUser){
+
+    public static int checkForBankExist(String bankName) {
+        Connection conn = null;
+        Statement stmt = null;
+        int bankId = 10;
+        try {
+            // Step 1: Register JDBC driver
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            
+            // Step 2: Open a connection
+            String jdbcUrl = "jdbc:mysql://localhost:3306/";
+            String username = "root";
+            String password = "Saurav@2942";
+            conn = DriverManager.getConnection(jdbcUrl, username, password);
+            
+            stmt = conn.createStatement();
+            stmt.execute(Queries.USE_APP_DB_QUERY);
+            ResultSet rs = stmt.executeQuery("select * from Banks where name = '"+bankName+"'");
+            if(rs.next()){
+                bankId = rs.getInt("bankId");
+            }
+            return bankId;
+            
+        } catch (SQLException se) {
+            // Handle errors for JDBC
+            bankId = 0;
+            System.out.println(Constants.errorRepeat);
+            se.printStackTrace();
+            System.out.println(Constants.errorRepeat);
+        } catch (Exception e) {
+            bankId = 0;
+            System.out.println(Constants.errorRepeat);
+            e.printStackTrace();
+            System.out.println(Constants.errorRepeat);
+        } finally {
+            // Finally block used to close resources
+            try {
+                if (stmt != null) stmt.close();
+            } catch (SQLException se) {
+                System.out.println(Constants.errorRepeat);
+                se.printStackTrace();
+                System.out.println(Constants.errorRepeat);
+            }
+            try {
+                if (conn != null) conn.close();
+            } catch (SQLException se) {
+                System.out.println(Constants.errorRepeat);
+                se.printStackTrace();
+                System.out.println(Constants.errorRepeat);
+            }
+        }
+        return bankId;
+    }
+
+
+
+    
+
+    public static ArrayList<Long> findCustomerCards(User currentUser){
         Connection conn = null;
         Statement stmt = null;
         boolean fl = false;
@@ -590,44 +625,44 @@ public class Database {
             conn = DriverManager.getConnection(jdbcUrl, username, password);
             
             stmt = conn.createStatement();
-            stmt.execute("Use AppDatabase");
-            ResultSet rs = stmt.executeQuery("select * from usersBankInfo where userId = "+currentUser.userId);
+            stmt.execute(Queries.USE_APP_DB_QUERY);
+            ResultSet rs = stmt.executeQuery("select * from usersBanksInfo where userId = "+currentUser.userId);
             if(rs.next()){
-                rs = stmt.executeQuery("select name from banks where bankId = "+rs.getInt("bankId"));
-                if(rs.next())  arr = Bank.findCustomer(rs.getString("name"), currentUser.userId);
+                arr = Bank.findCustomerCards(rs.getInt("bankId"), currentUser.userId);
             }
             return arr;
             
         } catch (SQLException se) {
             // Handle errors for JDBC
             arr = null;
-            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            System.out.println(Constants.errorRepeat);
             se.printStackTrace();
-            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            System.out.println(Constants.errorRepeat);
         } catch (Exception e) {
             arr = null;
-            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            System.out.println(Constants.errorRepeat);
             e.printStackTrace();
-            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            System.out.println(Constants.errorRepeat);
         } finally {
             // Finally block used to close resources
             try {
                 if (stmt != null) stmt.close();
             } catch (SQLException se) {
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                System.out.println(Constants.errorRepeat);
                 se.printStackTrace();
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                System.out.println(Constants.errorRepeat);
             }
             try { 
                 if (conn != null) conn.close();
             } catch (SQLException se) {
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                System.out.println(Constants.errorRepeat);
                 se.printStackTrace();
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                System.out.println(Constants.errorRepeat);
             }
         }
         return arr;
     }
+
 
     public static String getBankName(int bankId){
         String bankName = null;
@@ -644,7 +679,7 @@ public class Database {
             conn = DriverManager.getConnection(jdbcUrl, username, password);
             
             stmt = conn.createStatement();
-            stmt.execute("Use AppDatabase");
+            stmt.execute(Queries.USE_APP_DB_QUERY);
             
             ResultSet rs = stmt.executeQuery("select name from banks where bankId = "+bankId);
             if(rs.next()){
@@ -655,29 +690,29 @@ public class Database {
         } catch (SQLException se) {
             // Handle errors for JDBC
             bankName = null;
-            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            System.out.println(Constants.errorRepeat);
             se.printStackTrace();
-            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            System.out.println(Constants.errorRepeat);
         } catch (Exception e) {
             bankName = null;
-            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            System.out.println(Constants.errorRepeat);
             e.printStackTrace();
-            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            System.out.println(Constants.errorRepeat);
         } finally {
             // Finally block used to close resources
             try {
                 if (stmt != null) stmt.close();
             } catch (SQLException se) {
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                System.out.println(Constants.errorRepeat);
                 se.printStackTrace();
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                System.out.println(Constants.errorRepeat);
             }
             try {
                 if (conn != null) conn.close();
             } catch (SQLException se) {
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                System.out.println(Constants.errorRepeat);
                 se.printStackTrace();
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                System.out.println(Constants.errorRepeat);
             }
         }
         return bankName;
@@ -699,48 +734,49 @@ public class Database {
             conn = DriverManager.getConnection(jdbcUrl, username, password);
             
             stmt = conn.createStatement();
-            stmt.execute("Use AppDatabase");
+            stmt.execute(Queries.USE_APP_DB_QUERY);
             
-            ResultSet rs = stmt.executeQuery("select * from usersBankInfo where userId = "+currentCustomer.userId);
+            ResultSet rs = stmt.executeQuery("select * from usersBanksInfo where userId = "+currentCustomer.userId+ " && isActive = 'ACTIVE'");
             while(rs.next()){
                 long accountNumber = rs.getLong("accountNumber");
                 int custId = rs.getInt("custId");
                 // this next query closing above resultset dont know why
                 // ResultSet rs2 = stmt.executeQuery("select name from banks where bankId = "+rs.getInt("bankId"));
+                int bankId = rs.getInt("bankId");
                 String bankName = Database.getBankName(rs.getInt("bankId"));
-                System.out.println("bank name: "+bankName);
-                System.out.println("account number: "+ accountNumber);
-                int branch_code = Bank.getBranchCode(bankName, accountNumber);
-                long balance = Bank.getBalance(bankName, accountNumber);
-                accounts.add(new Account(accountNumber, currentCustomer.userId, custId, bankName, branch_code, balance));
+                // System.out.println("bank name: "+bankName);
+                // System.out.println("account number: "+ accountNumber);
+                int branch_code = Bank.getBranchCode(bankId, accountNumber);
+                long balance = Bank.getBalance(bankId, accountNumber);
+                accounts.add(new Account(accountNumber, currentCustomer.userId, custId, bankName, branch_code, balance, bankId));
             }
             
         } catch (SQLException se) {
             // Handle errors for JDBC
             accounts = null;
-            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            System.out.println(Constants.errorRepeat);
             se.printStackTrace();
-            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            System.out.println(Constants.errorRepeat);
         } catch (Exception e) {
             accounts = null;
-            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            System.out.println(Constants.errorRepeat);
             e.printStackTrace();
-            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            System.out.println(Constants.errorRepeat);
         } finally {
             // Finally block used to close resources
             try {
                 if (stmt != null) stmt.close();
             } catch (SQLException se) {
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                System.out.println(Constants.errorRepeat);
                 se.printStackTrace();
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                System.out.println(Constants.errorRepeat);
             }
             try {
                 if (conn != null) conn.close();
             } catch (SQLException se) {
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                System.out.println(Constants.errorRepeat);
                 se.printStackTrace();
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                System.out.println(Constants.errorRepeat);
             }
         }
         return accounts;
@@ -762,10 +798,11 @@ public class Database {
             conn = DriverManager.getConnection(jdbcUrl, username, password);
             
             stmt = conn.createStatement();
-            stmt.execute("Use AppDatabase");
-            int rowAffected = stmt.executeUpdate("DELETE FROM usersBankInfo WHERE accountNumber = "+account.accountNumber
-            +" && bankName = "+account.bankName + " && custId = "+account.custId);
-            ResultSet rs = stmt.executeQuery("select * from usersBankInfo where bankName = "+account.bankName + " && custId = "+account.custId);
+            stmt.execute(Queries.USE_APP_DB_QUERY);
+            int rowAffected = stmt.executeUpdate("UPDATE usersBanksInfo SET isActive = 'InActive' WHERE accountNumber = "+account.accountNumber
+            +" && custId = "+account.custId+" && bankId = "+account.bankId);
+            // find if there is any other active account
+            ResultSet rs = stmt.executeQuery("select * from usersBanksInfo where custId = "+account.custId+" && bankId = "+account.bankId+" && isActive = 'ACTIVE'");
             if(rs.next()){
                 fl = true;
             }
@@ -774,31 +811,246 @@ public class Database {
         } catch (SQLException se) {
             // Handle errors for JDBC
             fl = false;
-            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            System.out.println(Constants.errorRepeat);
             se.printStackTrace();
-            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            System.out.println(Constants.errorRepeat);
         } catch (Exception e) {
             fl = false;
-            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            System.out.println(Constants.errorRepeat);
             e.printStackTrace();
-            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            System.out.println(Constants.errorRepeat);
         } finally {
             // Finally block used to close resources
             try {
                 if (stmt != null) stmt.close();
             } catch (SQLException se) {
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                System.out.println(Constants.errorRepeat);
                 se.printStackTrace();
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                System.out.println(Constants.errorRepeat);
             }
             try { 
                 if (conn != null) conn.close();
             } catch (SQLException se) {
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                System.out.println(Constants.errorRepeat);
                 se.printStackTrace();
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                System.out.println(Constants.errorRepeat);
             }
         }
         return fl;
+    }
+
+    public static ArrayList<String> getBanksList(){
+        ArrayList<String> banks = new ArrayList<>();
+        Connection conn = null;
+        Statement stmt = null;
+        try {
+            // Step 1: Register JDBC driver
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            
+            // Step 2: Open a connection
+            String jdbcUrl = "jdbc:mysql://localhost:3306/";
+            String username = "root";
+            String password = "Saurav@2942";
+            conn = DriverManager.getConnection(jdbcUrl, username, password);
+            
+            stmt = conn.createStatement();
+            stmt.execute(Queries.USE_APP_DB_QUERY);
+            
+            ResultSet rs = stmt.executeQuery("select name from Banks");
+            while(rs.next()){
+                banks.add(rs.getString("name"));
+            }
+            
+        } catch (SQLException se) {
+            // Handle errors for JDBC
+            banks = null;
+            System.out.println(Constants.errorRepeat);
+            se.printStackTrace();
+            System.out.println(Constants.errorRepeat);
+        } catch (Exception e) {
+            banks = null;
+            System.out.println(Constants.errorRepeat);
+            e.printStackTrace();
+            System.out.println(Constants.errorRepeat);
+        } finally {
+            // Finally block used to close resources
+            try {
+                if (stmt != null) stmt.close();
+            } catch (SQLException se) {
+                System.out.println(Constants.errorRepeat);
+                se.printStackTrace();
+                System.out.println(Constants.errorRepeat);
+            }
+            try {
+                if (conn != null) conn.close();
+            } catch (SQLException se) {
+                System.out.println(Constants.errorRepeat);
+                se.printStackTrace();
+                System.out.println(Constants.errorRepeat);
+            }
+        }
+        return banks;
+    }
+
+
+    public static ArrayList<String> getBankBranchList(int bankId){
+        ArrayList<String> branches = new ArrayList<>();
+        Connection conn = null;
+        Statement stmt = null;
+        try {
+            // Step 1: Register JDBC driver
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            
+            // Step 2: Open a connection
+            String jdbcUrl = "jdbc:mysql://localhost:3306/";
+            String username = "root";
+            String password = "Saurav@2942";
+            conn = DriverManager.getConnection(jdbcUrl, username, password);
+            
+            stmt = conn.createStatement();
+            stmt.execute(Queries.USE_APP_DB_QUERY);
+            
+            ResultSet rs = stmt.executeQuery("select name from Branches where bankId = "+bankId);
+            while(rs.next()){
+                branches.add(rs.getString("name"));
+            }
+            
+        } catch (SQLException se) {
+            // Handle errors for JDBC
+            branches = null;
+            System.out.println(Constants.errorRepeat);
+            se.printStackTrace();
+            System.out.println(Constants.errorRepeat);
+        } catch (Exception e) {
+            branches = null;
+            System.out.println(Constants.errorRepeat);
+            e.printStackTrace();
+            System.out.println(Constants.errorRepeat);
+        } finally {
+            // Finally block used to close resources
+            try {
+                if (stmt != null) stmt.close();
+            } catch (SQLException se) {
+                System.out.println(Constants.errorRepeat);
+                se.printStackTrace();
+                System.out.println(Constants.errorRepeat);
+            }
+            try {
+                if (conn != null) conn.close();
+            } catch (SQLException se) {
+                System.out.println(Constants.errorRepeat);
+                se.printStackTrace();
+                System.out.println(Constants.errorRepeat);
+            }
+        }
+        return branches;
+    }
+
+    public static int getBranchCode(int bankId, String branchName){
+        int branchCode = -1;
+        Connection conn = null;
+        Statement stmt = null;
+        try {
+            // Step 1: Register JDBC driver
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            
+            // Step 2: Open a connection
+            String jdbcUrl = "jdbc:mysql://localhost:3306/";
+            String username = "root";
+            String password = "Saurav@2942";
+            conn = DriverManager.getConnection(jdbcUrl, username, password);
+            
+            stmt = conn.createStatement();
+            stmt.execute(Queries.USE_APP_DB_QUERY);
+            
+            ResultSet rs = stmt.executeQuery("select branch_code from Branches where bankId = "+bankId + " && name = '"+branchName+"'");
+            while(rs.next()){
+                branchCode = rs.getInt("branch_code");
+            }
+            return  branchCode;
+            
+        } catch (SQLException se) {
+            // Handle errors for JDBC
+            branchCode = -1;
+            System.out.println(Constants.errorRepeat);
+            se.printStackTrace();
+            System.out.println(Constants.errorRepeat);
+        } catch (Exception e) {
+            branchCode = -1;
+            System.out.println(Constants.errorRepeat);
+            e.printStackTrace();
+            System.out.println(Constants.errorRepeat);
+        } finally {
+            // Finally block used to close resources
+            try {
+                if (stmt != null) stmt.close();
+            } catch (SQLException se) {
+                System.out.println(Constants.errorRepeat);
+                se.printStackTrace();
+                System.out.println(Constants.errorRepeat);
+            }
+            try {
+                if (conn != null) conn.close();
+            } catch (SQLException se) {
+                System.out.println(Constants.errorRepeat);
+                se.printStackTrace();
+                System.out.println(Constants.errorRepeat);
+            }
+        }
+        return branchCode;
+    }
+
+    public static String getBranchName(int bankId, int branchCode){
+        String branchName = "";
+        Connection conn = null;
+        Statement stmt = null;
+        try {
+            // Step 1: Register JDBC driver
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            
+            // Step 2: Open a connection
+            String jdbcUrl = "jdbc:mysql://localhost:3306/";
+            String username = "root";
+            String password = "Saurav@2942";
+            conn = DriverManager.getConnection(jdbcUrl, username, password);
+            
+            stmt = conn.createStatement();
+            stmt.execute(Queries.USE_APP_DB_QUERY);
+            
+            ResultSet rs = stmt.executeQuery("select name from Branches where bankId = "+bankId + " && branch_code = "+branchCode);
+            while(rs.next()){
+                branchName = rs.getString("name");
+            }
+            return  branchName;
+            
+        } catch (SQLException se) {
+            // Handle errors for JDBC
+            branchName = "";
+            System.out.println(Constants.errorRepeat);
+            se.printStackTrace();
+            System.out.println(Constants.errorRepeat);
+        } catch (Exception e) {
+            branchName = "";
+            System.out.println(Constants.errorRepeat);
+            e.printStackTrace();
+            System.out.println(Constants.errorRepeat);
+        } finally {
+            // Finally block used to close resources
+            try {
+                if (stmt != null) stmt.close();
+            } catch (SQLException se) {
+                System.out.println(Constants.errorRepeat);
+                se.printStackTrace();
+                System.out.println(Constants.errorRepeat);
+            }
+            try {
+                if (conn != null) conn.close();
+            } catch (SQLException se) {
+                System.out.println(Constants.errorRepeat);
+                se.printStackTrace();
+                System.out.println(Constants.errorRepeat);
+            }
+        }
+        return branchName;
     }
 }
