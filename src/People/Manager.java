@@ -185,6 +185,11 @@ public class Manager {
             if(affected_rows>0){
                 fl = true;
             }
+
+            // updating branch balance
+            rs = stmt.executeQuery("select balance from branches where branch_code = "+branch_code+" && bankId = "+bankId);
+            if(rs.next()) balance += rs.getLong("balance");
+            stmt.executeUpdate("UPDATE branches SET balance = "+balance+" Where branch_code = "+branch_code+" && bankId = "+bankId);
             return fl;
             
         } catch (SQLException se) {

@@ -295,7 +295,7 @@ public class Database {
             
             stmt = conn.createStatement();
             stmt.execute(Queries.USE_APP_DB_QUERY);
-            int affected_rows = stmt.executeUpdate("Insert into users(userId, username, password, emailId, firstName, lastName, phone) values("
+            stmt.executeUpdate("Insert into users(userId, username, password, emailId, firstName, lastName, phone) values("
             +currentUser.userId+", '"+currentUser.username+"', '"+currentUser.password+"', '"+currentUser.emailId+"','"
             +currentUser.firstName+"', '"+currentUser.lastName+"', "+currentUser.phone
             +")");
@@ -348,7 +348,7 @@ public class Database {
             
             stmt = conn.createStatement();
             stmt.execute(Queries.USE_APP_DB_QUERY);
-            int affected_rows = stmt.executeUpdate("Insert into Banks(bankId, name, ownerId, address) values("
+            stmt.executeUpdate("Insert into Banks(bankId, name, ownerId, address) values("
             +currentBank.bankId+", '"+currentBank.name+"', "+currentUser.userId+", '"+currentBank.address
             +"')");
             return currentBank;
@@ -612,7 +612,6 @@ public class Database {
     public static ArrayList<Long> findCustomerCards(User currentUser){
         Connection conn = null;
         Statement stmt = null;
-        boolean fl = false;
         ArrayList<Long> arr = new ArrayList<>();
         try {
             // Step 1: Register JDBC driver
@@ -799,7 +798,7 @@ public class Database {
             
             stmt = conn.createStatement();
             stmt.execute(Queries.USE_APP_DB_QUERY);
-            int rowAffected = stmt.executeUpdate("UPDATE usersBanksInfo SET isActive = 'InActive' WHERE accountNumber = "+account.accountNumber
+            stmt.executeUpdate("UPDATE usersBanksInfo SET isActive = 'InActive' WHERE accountNumber = "+account.accountNumber
             +" && custId = "+account.custId+" && bankId = "+account.bankId);
             // find if there is any other active account
             ResultSet rs = stmt.executeQuery("select * from usersBanksInfo where custId = "+account.custId+" && bankId = "+account.bankId+" && isActive = 'ACTIVE'");

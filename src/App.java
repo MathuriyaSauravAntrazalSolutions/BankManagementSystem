@@ -157,50 +157,54 @@ public class App {
         }
     
         key = currentCustomer.askBanking();
-        // while(true){
-        //     if(key==6){
-        //         System.out.println(Constants.repeat);
-        //         System.out.println("Bye! Visit Us Again :)");
-        //         System.exit(0);
-        //     }
-        //     else if(key == 5){
-        //         // Not Implimented
-        //     }
-        //     else if(key==4){
-        //         currentCustomer.printPassbook();
-        //     }
-        //     else if(key==3){
-        //         currentCustomer.checkBalance();
-        //     }
-        //     else if(key==2){
-        //         // we dont have customerId as such bcoz for different banks there might be different ids for currentUser
-        //         // but userId must be same
-        //         // retrieve accounts which will have customerIds
-        //         boolean fl = currentCustomer.deposite();
-        //         if(fl){
-        //             key = currentCustomer.askBanking();
-        //             continue;
-        //         }
-        //         else {
-        //             System.out.println("Something Went Wrong");
-        //             key = currentCustomer.askBanking();
-        //             continue;
-        //         }
-        //     }else{
-        //         boolean fl = currentCustomer.withdraw();
-        //         if(fl){
-        //             System.out.println("Account Added :)");
-        //             key = currentCustomer.askBanking();
-        //             continue;
-        //         }
-        //         else {
-        //             System.out.println("Something Went Wrong");
-        //             key = currentCustomer.askBanking();
-        //             continue;
-        //         }
-        //     }
-        // }
-    
-    
+        while(true){
+            if(key==6){
+                System.out.println(Constants.repeat);
+                System.out.println("Bye! Visit Us Again :)");
+                System.exit(0);
+            }
+            else if(key == 5){
+                currentCustomer.getLoan();
+                key = currentCustomer.askBanking();
+                continue;
+            }
+            else if(key==4){
+                currentCustomer.printPassbook();
+                key = currentCustomer.askBanking();
+                continue;
+            }
+            else if(key==3){
+                currentCustomer.checkBalance();
+                key = currentCustomer.askBanking();
+                continue;
+            }
+            else if(key==2){
+                // we dont have customerId as such bcoz for different banks there might be different ids for currentUser
+                // but userId must be same
+                // retrieve accounts which will have customerIds
+                boolean fl = currentCustomer.deposite();
+                if(fl){
+                    key = currentCustomer.askBanking();
+                    continue;
+                }
+                else {
+                    System.out.println("Something Went Wrong");
+                    key = currentCustomer.askBanking();
+                    continue;
+                }
+            }else{
+                boolean fl = currentCustomer.withdraw();
+                if(fl){
+                    System.out.println("Account Added :)");
+                    key = currentCustomer.askBanking();
+                    continue;
+                }
+                else {
+                    System.out.println("Something Went Wrong");
+                    key = currentCustomer.askBanking();
+                    continue;
+                }
+            }
+        }
     }
 }

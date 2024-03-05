@@ -1,15 +1,12 @@
 package BankManagementSystem.src.Users;
 
 import java.util.ArrayList;
-import java.util.Scanner;
-import java.util.Set;
-
-import javax.xml.crypto.Data;
 
 import BankManagementSystem.src.Bank;
 import BankManagementSystem.src.Constants;
 import BankManagementSystem.src.Accounts.Account;
 import BankManagementSystem.src.DataBases.Database;
+import BankManagementSystem.src.People.Cashier;
 import BankManagementSystem.src.People.Manager;
 
 public class Customer extends User {
@@ -225,9 +222,15 @@ public class Customer extends User {
                 System.out.print("Key: ");
                 key = Integer.parseInt(sc.nextLine());
                 // System.out.println(key);
+                if(key<0 || key>accounts.size()){
+                    System.out.println(Constants.repeat);
+                    System.out.println("Invalid Key");
+                    continue;
+                }
                 break;
             }
             catch(Exception e){
+                System.out.println(Constants.repeat);
                 System.out.println("Please Specify A Number!");
             }
         }
@@ -283,9 +286,15 @@ public class Customer extends User {
                 System.out.print("Key: ");
                 key = Integer.parseInt(sc.nextLine());
                 // System.out.println(key);
+                if(key<0 || key>accounts.size()){
+                    System.out.println(Constants.repeat);
+                    System.out.println("Invalid Key");
+                    continue;
+                }
                 break;
             }
             catch(Exception e){
+                System.out.println(Constants.repeat);
                 System.out.println("Please Specify A Number!");
             }
         }
@@ -320,5 +329,199 @@ public class Customer extends User {
         System.out.println("Account Updated :)");
         return fl;
     }
+
+
+
+    public void checkBalance(){
+        System.out.println(Constants.repeat);
+        this.accounts = Database.findAccounts(this);
+        if(accounts==null || accounts.size() < 1){
+            System.out.println("No Accounts Exists! Please Add One");
+            return;
+        }
+        System.out.println("Your Accounts are Listed Below");
+        int i = 1;
+        for(Account account:accounts){
+            System.out.println(Constants.repeat);
+            System.out.println(i+". "+account.toString());
+            i++;
+        }
+        int key;
+        while(true){
+            try{
+                System.out.println(Constants.repeat);
+                System.out.println("Enter Key To Account To Know Account Balance");
+                System.out.print("Key: ");
+                key = Integer.parseInt(sc.nextLine());
+                // System.out.println(key);
+                if(key<0 || key>accounts.size()){
+                    System.out.println(Constants.repeat);
+                    System.out.println("Invalid Key");
+                    continue;
+                }
+                break;
+            }
+            catch(Exception e){
+                System.out.println(Constants.repeat);
+                System.out.println("Please Specify A Number!");
+            }
+        }
+        long balance = Cashier.checkBalance(accounts.get(key-1));
+        System.out.println("Available Account Balance: "+ balance);
+    }
+
+    public boolean deposite(){
+        System.out.println(Constants.repeat);
+        this.accounts = Database.findAccounts(this);
+        if(accounts==null || accounts.size() < 1){
+            System.out.println("No Accounts Exists! Please Add One");
+            return true;
+        }
+        System.out.println("Your Accounts are Listed Below");
+        int i = 1;
+        for(Account account:accounts){
+            System.out.println(Constants.repeat);
+            System.out.println(i+". "+account.toString());
+            i++;
+        }
+        int key;
+        while(true){
+            try{
+                System.out.println(Constants.repeat);
+                System.out.println("Enter Key To Account To Deposite Ammount");
+                System.out.print("Key: ");
+                key = Integer.parseInt(sc.nextLine());
+                // System.out.println(key);
+                if(key<0 || key>accounts.size()){
+                    System.out.println(Constants.repeat);
+                    System.out.println("Invalid Key");
+                    continue;
+                }
+                break;
+            }
+            catch(Exception e){
+                System.out.println(Constants.repeat);
+                System.out.println("Please Specify A Number!");
+            }
+        }
+        long amount;
+        while(true){
+            try{
+                System.out.println(Constants.repeat);
+                System.out.println("Enter Amount To Deposit");
+                System.out.print("Amount: ");
+                amount = Long.parseLong(sc.nextLine());
+                // System.out.println(key);
+                break;
+            }
+            catch(Exception e){
+                System.out.println("Please Specify A Number!");
+            }
+        }
+        boolean fl = Cashier.depositAmount(accounts.get(key-1), amount);
+        if(fl){
+            System.out.println(amount+ " Added To The Account "+accounts.get(key-1).accountNumber+" :)");
+        }
+        return fl;
+    }
+
+    public boolean withdraw(){
+        System.out.println(Constants.repeat);
+        this.accounts = Database.findAccounts(this);
+        if(accounts==null || accounts.size() < 1){
+            System.out.println("No Accounts Exists! Please Add One");
+            return true;
+        }
+        System.out.println("Your Accounts are Listed Below");
+        int i = 1;
+        for(Account account:accounts){
+            System.out.println(Constants.repeat);
+            System.out.println(i+". "+account.toString());
+            i++;
+        }
+        int key;
+        while(true){
+            try{
+                System.out.println(Constants.repeat);
+                System.out.println("Enter Key To Account To Withdraw Ammount");
+                System.out.print("Key: ");
+                key = Integer.parseInt(sc.nextLine());
+                // System.out.println(key);
+                if(key<0 || key>accounts.size()){
+                    System.out.println(Constants.repeat);
+                    System.out.println("Invalid Key");
+                    continue;
+                }
+                break;
+            }
+            catch(Exception e){
+                System.out.println(Constants.repeat);
+                System.out.println("Please Specify A Number!");
+            }
+        }
+        long amount;
+        while(true){
+            try{
+                System.out.println(Constants.repeat);
+                System.out.println("Enter Amount To Withdraw");
+                System.out.print("Amount: ");
+                amount = Long.parseLong(sc.nextLine());
+                // System.out.println(key);
+                break;
+            }
+            catch(Exception e){
+                System.out.println(Constants.repeat);
+                System.out.println("Please Specify A Number!");
+            }
+        }
+        boolean fl = Cashier.withdrawAmount(accounts.get(key-1), amount);
+        if(fl){
+            System.out.println(amount+ " Withdraw From The Account "+accounts.get(key-1).accountNumber+" :)");
+        }
+        else {
+            System.out.println( "Bank Account Balance Is Insufficient :(");
+        }
+        return fl;
+    }
+
+    public void printPassbook(){
+        System.out.println(Constants.repeat);
+        this.accounts = Database.findAccounts(this);
+        if(accounts==null || accounts.size() < 1){
+            System.out.println("No Accounts Exists! Please Add One");
+            return;
+        }
+        System.out.println("Your Accounts are Listed Below");
+        int i = 1;
+        for(Account account:accounts){
+            System.out.println(Constants.repeat);
+            System.out.println(i+". "+account.toString());
+            i++;
+        }
+        int key;
+        while(true){
+            try{
+                System.out.println(Constants.repeat);
+                System.out.println("Enter Key To Select Account");
+                System.out.print("Key: ");
+                key = Integer.parseInt(sc.nextLine());
+                // System.out.println(key);
+                if(key<0 || key>accounts.size()){
+                    System.out.println(Constants.repeat);
+                    System.out.println("Invalid Key");
+                    continue;
+                }
+                break;
+            }
+            catch(Exception e){
+                System.out.println(Constants.repeat);
+                System.out.println("Please Specify A Number!");
+            }
+        }
+        Cashier.printPassbook(accounts.get(key-1));
+    }
+
+
+    public void getLoan(){}
 
 }

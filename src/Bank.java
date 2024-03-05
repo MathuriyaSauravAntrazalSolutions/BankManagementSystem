@@ -237,7 +237,7 @@ public class Bank extends BankDatabase{
             stmt = conn.createStatement();
             stmt.execute(Queries.USE_APP_DB_QUERY);
             for(Branch br: branches){
-                int affected_rows = stmt.executeUpdate("Insert into branches(bankId, branch_Code, name, address, balance) values("+
+                stmt.executeUpdate("Insert into branches(bankId, branch_Code, name, address, balance) values("+
                 this.bankId+", "+br.branchCode+", '"+br.branchName+"', '"+br.branchAddress
                 +"', "+0+")");
             }
