@@ -16,4 +16,14 @@ public class Account {
         this.custId = custId;
         this.userId = userId;
     }
+
+
+    public String toString(){
+        return "Account Number: "+this.accountNumber+"\n"
+        + "Bank Name: "+this.bankName+"\n"
+        + "Branch Code: "+this.branch_code+"\n"
+        + "Customer Id: "+this.custId+"\n"
+        + "App User Id: "+this.userId+"\n"
+        + "Account Balance: "+this.balance;
+    }
 }

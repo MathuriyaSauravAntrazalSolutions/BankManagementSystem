@@ -1,5 +1,6 @@
 package BankManagementSystem.src;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import javax.xml.crypto.Data;
@@ -132,8 +133,15 @@ public class App {
         }
 
 
-        // now we will impliment normal user
-        currentCustomer = Customer.askCustomerDetails(currentUser); 
+        // now we will impliment normal use
+        // if this customer is new
+        ArrayList<Long> idProof = Database.findCustomer(currentUser);
+        System.out.println(idProof);
+        // check       ---------------------------------------------------------------------------
+        if(idProof==null) currentCustomer = Customer.askCustomerDetails(currentUser);
+        else{
+            currentCustomer = new Customer(currentUser, idProof.get(0), idProof.get(1));
+        } 
         key = currentCustomer.askCustomer();
         while(true){
             if(key==5){
@@ -148,8 +156,23 @@ public class App {
                 break;
             }
             else if(key==2){
-                break;
+                // we dont have customerId as such bcoz for different banks there might be different ids for currentUser
+                // but userId must be same
+                // retrieve accounts which will have customerIds
+                System.out.println(("=".repeat(15)));
+                boolean fl = currentCustomer.deleteAccount();
+                if(fl){
+                    System.out.println("Account Deleted :)");
+                    key = currentCustomer.askCustomer();
+                    continue;
+                }
+                else {
+                    System.out.println("Something Went Wrong");
+                    key = currentCustomer.askCustomer();
+                    continue;
+                }
             }else{
+                System.out.println(("=".repeat(15)));
                 boolean fl = currentCustomer.addAccount();
                 if(fl){
                     System.out.println("Account Added :)");

@@ -151,14 +151,16 @@ public class Manager {
             int branch_code = -1;
             if(rs.next()) branch_code = rs.getInt("branch_code");
             if(currenCustomer.custId==-1){
+                fl = true;
                 currenCustomer.custId = Manager.getUniqueId(bankName, "custId", "customers"); 
             }
 
-            int affected_rows = stmt.executeUpdate("Insert into customers(appUserId, custId, firstName, lastName, panNumber, adharNumber, phone, gmail) values("
+            int affected_rows;
+            if(fl) affected_rows = stmt.executeUpdate("Insert into customers(appUserId, custId, firstName, lastName, panNumber, adharNumber, phone, gmail) values("
                 +currenCustomer.userId+", "+currenCustomer.custId+", '"+currenCustomer.firstName+"', '"+currenCustomer.lastName+"', "
                 +currenCustomer.panNumber+", "+currenCustomer.adharNumber+", "+currenCustomer.phone+", '"+currenCustomer.emailId
                 +"')");
-            
+            fl = false;
             long accountNumber = Manager.getAccountNumber(bankName, "accountNumber", "accounts");    
             
             affected_rows = stmt.executeUpdate("Insert into accounts(custId, accountNumber, branch_code, balance, type) values("
@@ -209,4 +211,77 @@ public class Manager {
         }
         return fl;
     }
+
+
+    public static boolean removeAccount(Account account){
+        boolean fl = false;
+        Connection conn = null;
+        Statement stmt = null;
+        try {
+            // Step 1: Register JDBC driver
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            
+            // Step 2: Open a connection
+            String jdbcUrl = "jdbc:mysql://localhost:3306/";
+            String username = "root";
+            String password = "Saurav@2942";
+            conn = DriverManager.getConnection(jdbcUrl, username, password);
+            
+            stmt = conn.createStatement();
+                        
+            stmt.execute("Use "+account.bankName);
+            ResultSet rs = stmt.executeQuery("select type from accounts WHERE accountNumber = "+account.accountNumber);
+            String type = null;
+            if(rs.next()){
+                type = rs.getString("type");
+            }
+            // remove from account
+            int rowAffected = stmt.executeUpdate("DELETE FROM accounts WHERE accountNumber = "+account.accountNumber);
+            // remove from join if joint account
+            if(type.equalsIgnoreCase("joint")){
+                rowAffected = stmt.executeUpdate("DELETE FROM jointAccounts WHERE accountNumber = "+account.accountNumber);
+            }
+            // returns whether there are any other accounts left in same bank
+            // if not remove from customers also
+            fl = Database.removeAccountFromBankInfo(account);
+            if(!fl){
+                rowAffected = stmt.executeUpdate("DELETE FROM customers WHERE custId = "+account.custId);
+                if(rowAffected>0){
+                    fl = true;
+                }
+                else fl = false;
+            }
+            return fl;
+            
+        } catch (SQLException se) {
+            // Handle errors for JDBC
+            fl = false;
+                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                se.printStackTrace();
+                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+        } catch (Exception e) {
+            fl = false;
+            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            e.printStackTrace();
+            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+        } finally {
+            // Finally block used to close resources
+            try {
+                if (stmt != null) stmt.close();
+            } catch (SQLException se) {
+                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                se.printStackTrace();
+                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            }
+            try { 
+                if (conn != null) conn.close();
+            } catch (SQLException se) {
+                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                se.printStackTrace();
+                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            }
+        }
+        return fl;
+    }
+    
 }

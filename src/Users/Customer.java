@@ -95,6 +95,8 @@ public class Customer extends User {
             System.out.println("Bank Does Not Exists");
             return fl;
         }
+        // depends on bank which customer id he has bcoz for defferent banks user would have different customer id's
+        // getting if user is customer of bank
         this.custId = Bank.getCustomerId(this, bankName);
         System.out.println("Choose Bank Branch To Open An Account");
         String branchName = sc.nextLine();
@@ -117,6 +119,7 @@ public class Customer extends User {
             }
         }
         String type = (num==1)?"Personal":"Joint";
+        // checking if user has an account in banks branch already
         fl = Bank.checkForCustomerExist(this, bankName, branchName, type); // if account already exist
         if(fl){
             System.out.println("Customers Account Already Exists");
@@ -140,6 +143,40 @@ public class Customer extends User {
             anotherCustomer = sc.nextLine();
         }
         fl = Manager.addAccount(this, bankName, branchName, type, balance, anotherCustomer);
+        return fl;
+    }
+
+
+    public boolean deleteAccount(){
+        this.accounts = Database.findAccounts(this);
+        if(accounts==null || accounts.size() < 1){
+            System.out.println("No Accounts Exists! Please Add One");
+            return false;
+        }
+        System.out.println("Your Accounts are Listed Below");
+        int i = 1;
+        for(Account account:accounts){
+            System.out.println("=".repeat(15));
+            System.out.println(i+". "+account.toString());
+            System.out.println("=".repeat(15));
+            i++;
+        }
+        int key;
+        while(true){
+            try{
+                System.out.println("Choose Key To remove account");
+                key = Integer.parseInt(sc.nextLine());
+                // System.out.println(key);
+                break;
+            }
+            catch(Exception e){
+                System.out.println("Please Specify A Number!");
+            }
+        }
+        boolean fl = Manager.removeAccount(accounts.get(key-1));
+        if(fl){
+            this.accounts = Database.findAccounts(this);
+        }
         return fl;
     }
 
