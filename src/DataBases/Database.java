@@ -43,28 +43,20 @@ public class Database {
             }
         } catch (SQLException se) {
             // Handle errors for JDBC
-            System.out.println();
-            se.printStackTrace();
-            System.out.println(Constants.errorRepeat);
+            // System.out.println(se.getLocalizedMessage());
         } catch (Exception e) {
-            System.out.println(Constants.errorRepeat);
-            e.printStackTrace();
-            System.out.println(Constants.errorRepeat);
+            // System.out.println(e.getLocalizedMessage());
         } finally {
             // Finally block used to close resources
             try {
                 if (stmt != null) stmt.close();
             } catch (SQLException se) {
-                System.out.println(Constants.errorRepeat);
-                se.printStackTrace();
-                System.out.println(Constants.errorRepeat);
+                // System.out.println(se.getLocalizedMessage());
             }
             try {
                 if (conn != null) conn.close();
             } catch (SQLException se) {
-                System.out.println(Constants.errorRepeat);
-                se.printStackTrace();
-                System.out.println(Constants.errorRepeat);
+                // System.out.println(se.getLocalizedMessage());
             }
         }
 
@@ -94,30 +86,22 @@ public class Database {
             
         } catch (SQLException se) {
             // Handle errors for JDBC
-            System.out.println(Constants.errorRepeat);
-            se.printStackTrace();
-            System.out.println(Constants.errorRepeat);
+            // System.out.println(se.getLocalizedMessage());
             fl = false;
         } catch (Exception e) {
-            System.out.println(Constants.errorRepeat);
-            e.printStackTrace();
-            System.out.println(Constants.errorRepeat);
+            System.out.println(e.getLocalizedMessage());
             fl = false;
         } finally {
             // Finally block used to close resources
             try {
                 if (stmt != null) stmt.close();
             } catch (SQLException se) {
-                System.out.println(Constants.errorRepeat);
-                se.printStackTrace();
-                System.out.println(Constants.errorRepeat);
+                // System.out.println(se.getLocalizedMessage());
             }
             try {
                 if (conn != null) conn.close();
             } catch (SQLException se) {
-                System.out.println(Constants.errorRepeat);
-                se.printStackTrace();
-                System.out.println(Constants.errorRepeat);
+                // System.out.println(se.getLocalizedMessage());
             }
         }
         return fl;
@@ -147,29 +131,21 @@ public class Database {
         } catch (SQLException se) {
             // Handle errors for JDBC
             fl = false;
-            System.out.println(Constants.errorRepeat);
-            se.printStackTrace();
-            System.out.println(Constants.errorRepeat);
+            // System.out.println(se.getLocalizedMessage());
         } catch (Exception e) {
             fl = false;
-            System.out.println(Constants.errorRepeat);
-            e.printStackTrace();
-            System.out.println(Constants.errorRepeat);
+            System.out.println(e.getLocalizedMessage());
         } finally {
             // Finally block used to close resources
             try {
                 if (stmt != null) stmt.close();
             } catch (SQLException se) {
-                System.out.println(Constants.errorRepeat);
-                se.printStackTrace();
-                System.out.println(Constants.errorRepeat);
+                // System.out.println(se.getLocalizedMessage());
             }
             try {
                 if (conn != null) conn.close();
             } catch (SQLException se) {
-                System.out.println(Constants.errorRepeat);
-                se.printStackTrace();
-                System.out.println(Constants.errorRepeat);
+                // System.out.println(se.getLocalizedMessage());
             }
         }
         return fl;
@@ -199,29 +175,21 @@ public class Database {
         } catch (SQLException se) {
             // Handle errors for JDBC
             fl = false;
-            System.out.println(Constants.errorRepeat);
-            se.printStackTrace();
-            System.out.println(Constants.errorRepeat);
+            // System.out.println(se.getLocalizedMessage());
         } catch (Exception e) {
             fl = false;
-            System.out.println(Constants.errorRepeat);
-            e.printStackTrace();
-            System.out.println(Constants.errorRepeat);
+            System.out.println(e.getLocalizedMessage());
         } finally {
             // Finally block used to close resources
             try {
                 if (stmt != null) stmt.close();
             } catch (SQLException se) {
-                System.out.println(Constants.errorRepeat);
-                se.printStackTrace();
-                System.out.println(Constants.errorRepeat);
+                // System.out.println(se.getLocalizedMessage());
             }
             try {
                 if (conn != null) conn.close();
             } catch (SQLException se) {
-                System.out.println(Constants.errorRepeat);
-                se.printStackTrace();
-                System.out.println(Constants.errorRepeat);
+                // System.out.println(se.getLocalizedMessage());
             }
         }
         return fl;
@@ -251,29 +219,21 @@ public class Database {
         } catch (SQLException se) {
             // Handle errors for JDBC
             fl = false;
-            System.out.println(Constants.errorRepeat);
-            se.printStackTrace();
-            System.out.println(Constants.errorRepeat);
+            // System.out.println(se.getLocalizedMessage());
         } catch (Exception e) {
             fl = false;
-            System.out.println(Constants.errorRepeat);
-            e.printStackTrace();
-            System.out.println(Constants.errorRepeat);
+            System.out.println(e.getLocalizedMessage());
         } finally {
             // Finally block used to close resources
             try {
                 if (stmt != null) stmt.close();
             } catch (SQLException se) {
-                System.out.println(Constants.errorRepeat);
-                se.printStackTrace();
-                System.out.println(Constants.errorRepeat);
+                // System.out.println(se.getLocalizedMessage());
             }
             try {
                 if (conn != null) conn.close();
             } catch (SQLException se) {
-                System.out.println(Constants.errorRepeat);
-                se.printStackTrace();
-                System.out.println(Constants.errorRepeat);
+                // System.out.println(se.getLocalizedMessage());
             }
         }
         return fl;
@@ -304,29 +264,21 @@ public class Database {
         } catch (SQLException se) {
             // Handle errors for JDBC
             currentUser = null;
-            System.out.println(Constants.errorRepeat);
-            se.printStackTrace();
-            System.out.println(Constants.errorRepeat);
+            // System.out.println(se.getLocalizedMessage());
         } catch (Exception e) {
             currentUser = null;
-            System.out.println(Constants.errorRepeat);
-            e.printStackTrace();
-            System.out.println(Constants.errorRepeat);
+            System.out.println(e.getLocalizedMessage());
         } finally {
             // Finally block used to close resources
             try {
                 if (stmt != null) stmt.close();
             } catch (SQLException se) {
-                System.out.println(Constants.errorRepeat);
-                se.printStackTrace();
-                System.out.println(Constants.errorRepeat);
+                // System.out.println(se.getLocalizedMessage());
             }
             try {
                 if (conn != null) conn.close();
             } catch (SQLException se) {
-                System.out.println(Constants.errorRepeat);
-                se.printStackTrace();
-                System.out.println(Constants.errorRepeat);
+                // System.out.println(se.getLocalizedMessage());
             }
         }
         return currentUser;
@@ -356,29 +308,21 @@ public class Database {
         } catch (SQLException se) {
             // Handle errors for JDBC
             currentBank = null;
-            System.out.println(Constants.errorRepeat);
-            se.printStackTrace();
-            System.out.println(Constants.errorRepeat);
+            // System.out.println(se.getLocalizedMessage());
         } catch (Exception e) {
             currentBank = null;
-            System.out.println(Constants.errorRepeat);
-            e.printStackTrace();
-            System.out.println(Constants.errorRepeat);
+            System.out.println(e.getLocalizedMessage());
         } finally {
             // Finally block used to close resources
             try {
                 if (stmt != null) stmt.close();
             } catch (SQLException se) {
-                System.out.println(Constants.errorRepeat);
-                se.printStackTrace();
-                System.out.println(Constants.errorRepeat);
+                // System.out.println(se.getLocalizedMessage());
             }
             try { 
                 if (conn != null) conn.close();
             } catch (SQLException se) {
-                System.out.println(Constants.errorRepeat);
-                se.printStackTrace();
-                System.out.println(Constants.errorRepeat);
+                // System.out.println(se.getLocalizedMessage());
             }
         }
         return currentBank;
@@ -414,29 +358,21 @@ public class Database {
         } catch (SQLException se) {
             // Handle errors for JDBC
             fl = false;
-            System.out.println(Constants.errorRepeat);
-            se.printStackTrace();
-            System.out.println(Constants.errorRepeat);
+            // System.out.println(se.getLocalizedMessage());
         } catch (Exception e) {
             fl = false;
-            System.out.println(Constants.errorRepeat);
-            e.printStackTrace();
-            System.out.println(Constants.errorRepeat);
+            System.out.println(e.getLocalizedMessage());
         } finally {
             // Finally block used to close resources
             try {
                 if (stmt != null) stmt.close();
             } catch (SQLException se) {
-                System.out.println(Constants.errorRepeat);
-                se.printStackTrace();
-                System.out.println(Constants.errorRepeat);
+                // System.out.println(se.getLocalizedMessage());
             }
             try { 
                 if (conn != null) conn.close();
             } catch (SQLException se) {
-                System.out.println(Constants.errorRepeat);
-                se.printStackTrace();
-                System.out.println(Constants.errorRepeat);
+                // System.out.println(se.getLocalizedMessage());
             }
         }
         return fl;
@@ -468,29 +404,21 @@ public class Database {
         } catch (SQLException se) {
             // Handle errors for JDBC
             currentUser = null;
-            System.out.println(Constants.errorRepeat);
-            se.printStackTrace();
-            System.out.println(Constants.errorRepeat);
+            // System.out.println(se.getLocalizedMessage());
         } catch (Exception e) {
             currentUser = null;
-            System.out.println(Constants.errorRepeat);
-            e.printStackTrace();
-            System.out.println(Constants.errorRepeat);
+            System.out.println(e.getLocalizedMessage());
         } finally {
             // Finally block used to close resources
             try {
                 if (stmt != null) stmt.close();
             } catch (SQLException se) {
-                System.out.println(Constants.errorRepeat);
-                se.printStackTrace();
-                System.out.println(Constants.errorRepeat);
+                // System.out.println(se.getLocalizedMessage());
             }
             try {
                 if (conn != null) conn.close();
             } catch (SQLException se) {
-                System.out.println(Constants.errorRepeat);
-                se.printStackTrace();
-                System.out.println(Constants.errorRepeat);
+                // System.out.println(se.getLocalizedMessage());
             }
         }
         return currentUser;
@@ -522,29 +450,21 @@ public class Database {
         } catch (SQLException se) {
             // Handle errors for JDBC
             fl = false;
-            System.out.println(Constants.errorRepeat);
-            se.printStackTrace();
-            System.out.println(Constants.errorRepeat);
+            // System.out.println(se.getLocalizedMessage());
         } catch (Exception e) {
             fl = false;
-            System.out.println(Constants.errorRepeat);
-            e.printStackTrace();
-            System.out.println(Constants.errorRepeat);
+            System.out.println(e.getLocalizedMessage());
         } finally {
             // Finally block used to close resources
             try {
                 if (stmt != null) stmt.close();
             } catch (SQLException se) {
-                System.out.println(Constants.errorRepeat);
-                se.printStackTrace();
-                System.out.println(Constants.errorRepeat);
+                // System.out.println(se.getLocalizedMessage());
             }
             try {
                 if (conn != null) conn.close();
             } catch (SQLException se) {
-                System.out.println(Constants.errorRepeat);
-                se.printStackTrace();
-                System.out.println(Constants.errorRepeat);
+                // System.out.println(se.getLocalizedMessage());
             }
         }
         return fl;
@@ -577,29 +497,21 @@ public class Database {
         } catch (SQLException se) {
             // Handle errors for JDBC
             bankId = 0;
-            System.out.println(Constants.errorRepeat);
-            se.printStackTrace();
-            System.out.println(Constants.errorRepeat);
+            // System.out.println(se.getLocalizedMessage());
         } catch (Exception e) {
             bankId = 0;
-            System.out.println(Constants.errorRepeat);
-            e.printStackTrace();
-            System.out.println(Constants.errorRepeat);
+            System.out.println(e.getLocalizedMessage());
         } finally {
             // Finally block used to close resources
             try {
                 if (stmt != null) stmt.close();
             } catch (SQLException se) {
-                System.out.println(Constants.errorRepeat);
-                se.printStackTrace();
-                System.out.println(Constants.errorRepeat);
+                // System.out.println(se.getLocalizedMessage());
             }
             try {
                 if (conn != null) conn.close();
             } catch (SQLException se) {
-                System.out.println(Constants.errorRepeat);
-                se.printStackTrace();
-                System.out.println(Constants.errorRepeat);
+                // System.out.println(se.getLocalizedMessage());
             }
         }
         return bankId;
@@ -634,29 +546,21 @@ public class Database {
         } catch (SQLException se) {
             // Handle errors for JDBC
             arr = null;
-            System.out.println(Constants.errorRepeat);
-            se.printStackTrace();
-            System.out.println(Constants.errorRepeat);
+            // System.out.println(se.getLocalizedMessage());
         } catch (Exception e) {
             arr = null;
-            System.out.println(Constants.errorRepeat);
-            e.printStackTrace();
-            System.out.println(Constants.errorRepeat);
+            System.out.println(e.getLocalizedMessage());
         } finally {
             // Finally block used to close resources
             try {
                 if (stmt != null) stmt.close();
             } catch (SQLException se) {
-                System.out.println(Constants.errorRepeat);
-                se.printStackTrace();
-                System.out.println(Constants.errorRepeat);
+                // System.out.println(se.getLocalizedMessage());
             }
             try { 
                 if (conn != null) conn.close();
             } catch (SQLException se) {
-                System.out.println(Constants.errorRepeat);
-                se.printStackTrace();
-                System.out.println(Constants.errorRepeat);
+                // System.out.println(se.getLocalizedMessage());
             }
         }
         return arr;
@@ -689,29 +593,21 @@ public class Database {
         } catch (SQLException se) {
             // Handle errors for JDBC
             bankName = null;
-            System.out.println(Constants.errorRepeat);
-            se.printStackTrace();
-            System.out.println(Constants.errorRepeat);
+            // System.out.println(se.getLocalizedMessage());
         } catch (Exception e) {
             bankName = null;
-            System.out.println(Constants.errorRepeat);
-            e.printStackTrace();
-            System.out.println(Constants.errorRepeat);
+            System.out.println(e.getLocalizedMessage());
         } finally {
             // Finally block used to close resources
             try {
                 if (stmt != null) stmt.close();
             } catch (SQLException se) {
-                System.out.println(Constants.errorRepeat);
-                se.printStackTrace();
-                System.out.println(Constants.errorRepeat);
+                // System.out.println(se.getLocalizedMessage());
             }
             try {
                 if (conn != null) conn.close();
             } catch (SQLException se) {
-                System.out.println(Constants.errorRepeat);
-                se.printStackTrace();
-                System.out.println(Constants.errorRepeat);
+                // System.out.println(se.getLocalizedMessage());
             }
         }
         return bankName;
@@ -753,29 +649,21 @@ public class Database {
         } catch (SQLException se) {
             // Handle errors for JDBC
             accounts = null;
-            System.out.println(Constants.errorRepeat);
-            se.printStackTrace();
-            System.out.println(Constants.errorRepeat);
+            // System.out.println(se.getLocalizedMessage());
         } catch (Exception e) {
             accounts = null;
-            System.out.println(Constants.errorRepeat);
-            e.printStackTrace();
-            System.out.println(Constants.errorRepeat);
+            System.out.println(e.getLocalizedMessage());
         } finally {
             // Finally block used to close resources
             try {
                 if (stmt != null) stmt.close();
             } catch (SQLException se) {
-                System.out.println(Constants.errorRepeat);
-                se.printStackTrace();
-                System.out.println(Constants.errorRepeat);
+                // System.out.println(se.getLocalizedMessage());
             }
             try {
                 if (conn != null) conn.close();
             } catch (SQLException se) {
-                System.out.println(Constants.errorRepeat);
-                se.printStackTrace();
-                System.out.println(Constants.errorRepeat);
+                // System.out.println(se.getLocalizedMessage());
             }
         }
         return accounts;
@@ -810,29 +698,21 @@ public class Database {
         } catch (SQLException se) {
             // Handle errors for JDBC
             fl = false;
-            System.out.println(Constants.errorRepeat);
-            se.printStackTrace();
-            System.out.println(Constants.errorRepeat);
+            // System.out.println(se.getLocalizedMessage());
         } catch (Exception e) {
             fl = false;
-            System.out.println(Constants.errorRepeat);
-            e.printStackTrace();
-            System.out.println(Constants.errorRepeat);
+            System.out.println(e.getLocalizedMessage());
         } finally {
             // Finally block used to close resources
             try {
                 if (stmt != null) stmt.close();
             } catch (SQLException se) {
-                System.out.println(Constants.errorRepeat);
-                se.printStackTrace();
-                System.out.println(Constants.errorRepeat);
+                // System.out.println(se.getLocalizedMessage());
             }
             try { 
                 if (conn != null) conn.close();
             } catch (SQLException se) {
-                System.out.println(Constants.errorRepeat);
-                se.printStackTrace();
-                System.out.println(Constants.errorRepeat);
+                // System.out.println(se.getLocalizedMessage());
             }
         }
         return fl;
@@ -863,29 +743,21 @@ public class Database {
         } catch (SQLException se) {
             // Handle errors for JDBC
             banks = null;
-            System.out.println(Constants.errorRepeat);
-            se.printStackTrace();
-            System.out.println(Constants.errorRepeat);
+            // System.out.println(se.getLocalizedMessage());
         } catch (Exception e) {
             banks = null;
-            System.out.println(Constants.errorRepeat);
-            e.printStackTrace();
-            System.out.println(Constants.errorRepeat);
+            System.out.println(e.getLocalizedMessage());
         } finally {
             // Finally block used to close resources
             try {
                 if (stmt != null) stmt.close();
             } catch (SQLException se) {
-                System.out.println(Constants.errorRepeat);
-                se.printStackTrace();
-                System.out.println(Constants.errorRepeat);
+                // System.out.println(se.getLocalizedMessage());
             }
             try {
                 if (conn != null) conn.close();
             } catch (SQLException se) {
-                System.out.println(Constants.errorRepeat);
-                se.printStackTrace();
-                System.out.println(Constants.errorRepeat);
+                // System.out.println(se.getLocalizedMessage());
             }
         }
         return banks;
@@ -917,29 +789,21 @@ public class Database {
         } catch (SQLException se) {
             // Handle errors for JDBC
             branches = null;
-            System.out.println(Constants.errorRepeat);
-            se.printStackTrace();
-            System.out.println(Constants.errorRepeat);
+            // System.out.println(se.getLocalizedMessage());
         } catch (Exception e) {
             branches = null;
-            System.out.println(Constants.errorRepeat);
-            e.printStackTrace();
-            System.out.println(Constants.errorRepeat);
+            System.out.println(e.getLocalizedMessage());
         } finally {
             // Finally block used to close resources
             try {
                 if (stmt != null) stmt.close();
             } catch (SQLException se) {
-                System.out.println(Constants.errorRepeat);
-                se.printStackTrace();
-                System.out.println(Constants.errorRepeat);
+                // System.out.println(se.getLocalizedMessage());
             }
             try {
                 if (conn != null) conn.close();
             } catch (SQLException se) {
-                System.out.println(Constants.errorRepeat);
-                se.printStackTrace();
-                System.out.println(Constants.errorRepeat);
+                // System.out.println(se.getLocalizedMessage());
             }
         }
         return branches;
@@ -971,29 +835,21 @@ public class Database {
         } catch (SQLException se) {
             // Handle errors for JDBC
             branchCode = -1;
-            System.out.println(Constants.errorRepeat);
-            se.printStackTrace();
-            System.out.println(Constants.errorRepeat);
+            // System.out.println(se.getLocalizedMessage());
         } catch (Exception e) {
             branchCode = -1;
-            System.out.println(Constants.errorRepeat);
-            e.printStackTrace();
-            System.out.println(Constants.errorRepeat);
+            System.out.println(e.getLocalizedMessage());
         } finally {
             // Finally block used to close resources
             try {
                 if (stmt != null) stmt.close();
             } catch (SQLException se) {
-                System.out.println(Constants.errorRepeat);
-                se.printStackTrace();
-                System.out.println(Constants.errorRepeat);
+                // System.out.println(se.getLocalizedMessage());
             }
             try {
                 if (conn != null) conn.close();
             } catch (SQLException se) {
-                System.out.println(Constants.errorRepeat);
-                se.printStackTrace();
-                System.out.println(Constants.errorRepeat);
+                // System.out.println(se.getLocalizedMessage());
             }
         }
         return branchCode;
@@ -1025,29 +881,21 @@ public class Database {
         } catch (SQLException se) {
             // Handle errors for JDBC
             branchName = "";
-            System.out.println(Constants.errorRepeat);
-            se.printStackTrace();
-            System.out.println(Constants.errorRepeat);
+            // System.out.println(se.getLocalizedMessage());
         } catch (Exception e) {
             branchName = "";
-            System.out.println(Constants.errorRepeat);
-            e.printStackTrace();
-            System.out.println(Constants.errorRepeat);
+            System.out.println(e.getLocalizedMessage());
         } finally {
             // Finally block used to close resources
             try {
                 if (stmt != null) stmt.close();
             } catch (SQLException se) {
-                System.out.println(Constants.errorRepeat);
-                se.printStackTrace();
-                System.out.println(Constants.errorRepeat);
+                // System.out.println(se.getLocalizedMessage());
             }
             try {
                 if (conn != null) conn.close();
             } catch (SQLException se) {
-                System.out.println(Constants.errorRepeat);
-                se.printStackTrace();
-                System.out.println(Constants.errorRepeat);
+                // System.out.println(se.getLocalizedMessage());
             }
         }
         return branchName;
