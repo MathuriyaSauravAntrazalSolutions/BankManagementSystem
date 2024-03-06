@@ -129,8 +129,27 @@ public class Customer extends User {
             i++;
         }
         System.out.println(Constants.repeat);
-        System.out.print("Bank Name: ");
-        String bankName = sc.nextLine();
+        System.out.print("Bank Name As Key");
+        int key;
+        while(true){
+            try{
+                System.out.println(Constants.repeat);
+                System.out.print("Key:");
+                key = Integer.parseInt(sc.nextLine());
+                // System.out.println(key);
+                if(key<=0 || key>banks.size()){
+                    System.out.println(Constants.repeat);
+                    System.out.println("Invalid Key");
+                    continue;
+                }
+                break;
+            }
+            catch(Exception e){
+                System.out.println(Constants.repeat);
+                System.out.println("Please Specify A Number!");
+            }
+        }
+        String bankName = banks.get(key-1);
         System.out.println(Constants.repeat);
         int bankId = Database.checkForBankExist(bankName);
         if(bankId<1001){
@@ -148,8 +167,25 @@ public class Customer extends User {
             i++;
         }
         System.out.println(Constants.repeat);
-        System.out.print("Bank Branch Name: ");
-        String branchName = sc.nextLine();
+        System.out.print("Bank Branch Name As Key ");
+        while(true){
+            try{
+                System.out.println(Constants.repeat);
+                System.out.print("Key:");
+                key = Integer.parseInt(sc.nextLine());
+                // System.out.println(key);
+                if(key<=0 || key>bankBranches.size()){
+                    System.out.println(Constants.repeat);
+                    System.out.println("Invalid Key");
+                    continue;
+                }
+                break;
+            }
+            catch(Exception e){
+                System.out.println("Please Specify A Number!");
+            }
+        }
+        String branchName = bankBranches.get(key-1);
         System.out.println(Constants.repeat);
         fl = Bank.checkForBranchExist(bankName, branchName, bankId);
         if(!fl){
@@ -163,10 +199,16 @@ public class Customer extends User {
             try{
                 System.out.print("Enter Account Type As Key:");
                 num = Integer.parseInt(sc.nextLine());
+                if(num<=0 || num>2){
+                    System.out.println(Constants.repeat);
+                    System.out.println("Invalid Key");
+                    continue;
+                }
                 // System.out.println(num);
                 break;
             }
             catch(Exception e){
+                System.out.println(Constants.repeat);
                 System.out.println("Please Specify A Number!");
             }
         }
@@ -222,7 +264,7 @@ public class Customer extends User {
                 System.out.print("Key: ");
                 key = Integer.parseInt(sc.nextLine());
                 // System.out.println(key);
-                if(key<0 || key>accounts.size()){
+                if(key<=0 || key>accounts.size()){
                     System.out.println(Constants.repeat);
                     System.out.println("Invalid Key");
                     continue;
@@ -286,7 +328,7 @@ public class Customer extends User {
                 System.out.print("Key: ");
                 key = Integer.parseInt(sc.nextLine());
                 // System.out.println(key);
-                if(key<0 || key>accounts.size()){
+                if(key<=0 || key>accounts.size()){
                     System.out.println(Constants.repeat);
                     System.out.println("Invalid Key");
                     continue;
@@ -354,7 +396,7 @@ public class Customer extends User {
                 System.out.print("Key: ");
                 key = Integer.parseInt(sc.nextLine());
                 // System.out.println(key);
-                if(key<0 || key>accounts.size()){
+                if(key<=0 || key>accounts.size()){
                     System.out.println(Constants.repeat);
                     System.out.println("Invalid Key");
                     continue;
@@ -392,7 +434,7 @@ public class Customer extends User {
                 System.out.print("Key: ");
                 key = Integer.parseInt(sc.nextLine());
                 // System.out.println(key);
-                if(key<0 || key>accounts.size()){
+                if(key<=0 || key>accounts.size()){
                     System.out.println(Constants.repeat);
                     System.out.println("Invalid Key");
                     continue;
@@ -447,7 +489,7 @@ public class Customer extends User {
                 System.out.print("Key: ");
                 key = Integer.parseInt(sc.nextLine());
                 // System.out.println(key);
-                if(key<0 || key>accounts.size()){
+                if(key<=0 || key>accounts.size()){
                     System.out.println(Constants.repeat);
                     System.out.println("Invalid Key");
                     continue;
@@ -506,7 +548,7 @@ public class Customer extends User {
                 System.out.print("Key: ");
                 key = Integer.parseInt(sc.nextLine());
                 // System.out.println(key);
-                if(key<0 || key>accounts.size()){
+                if(key<=0 || key>accounts.size()){
                     System.out.println(Constants.repeat);
                     System.out.println("Invalid Key");
                     continue;

@@ -165,8 +165,10 @@ public class App {
             }
             else if(key == 5){
                 currentCustomer.getLoan();
+                System.out.println("Yet To Imppliment!");
                 key = currentCustomer.askBanking();
-                continue;
+                // continue;
+                break;
             }
             else if(key==4){
                 currentCustomer.printPassbook();
