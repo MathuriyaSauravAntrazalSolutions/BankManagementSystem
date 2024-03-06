@@ -6,14 +6,14 @@ import java.sql.*;
 
 import BankManagementSystem.src.Accounts.Account;
 import BankManagementSystem.src.Branches.Branch;
-import BankManagementSystem.src.DataBases.BankDatabase;
+import BankManagementSystem.src.DataBases.BankDatabaseHelperMethods;
 import BankManagementSystem.src.DataBases.Database;
 import BankManagementSystem.src.DataBases.DatabaseConnection;
 import BankManagementSystem.src.DataBases.Queries;
 import BankManagementSystem.src.Users.Customer;
 import BankManagementSystem.src.Validation.Validator;
 
-public class Bank extends BankDatabase{
+public class Bank extends BankDatabaseHelperMethods{
     public final String name;
     public final String address;
     public final int bankId;

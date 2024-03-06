@@ -12,7 +12,7 @@
 **Branch Code:** 1001
 **Customer ID:** 1001
 **App User ID:** 1001
-**Today Date:** 2024-03-06 14:26:53
+**Today Date:** 2024-03-06 14:32:59
 
 
 | Bank ID | Account Number | Amount | Type Of Transaction | Date Of Transaction |

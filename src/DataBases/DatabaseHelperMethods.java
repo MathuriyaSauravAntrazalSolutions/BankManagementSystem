@@ -1,5 +1,5 @@
 package BankManagementSystem.src.DataBases;
 
-public interface DatabaseMethods {
+public interface DatabaseHelperMethods {
     public int getId(String column, String tableName);
 }
