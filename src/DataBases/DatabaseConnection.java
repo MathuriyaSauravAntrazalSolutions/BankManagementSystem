@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import BankManagementSystem.src.Constants;
+
 // Database Connection Singelton Class
 
 public class DatabaseConnection {
@@ -44,10 +46,10 @@ public class DatabaseConnection {
         try {
             if (this.connection != null) this.connection.close();
         } catch (SQLException error) {
-            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-            System.out.println("error in closing the connection" + error.getMessage());
-            // error.printStackTrace();
-            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            System.out.println(Constants.errorRepeat);
+            // System.out.println("error in closing the connection" + error.getMessage());
+            error.printStackTrace();
+            System.out.println(Constants.errorRepeat);
         }
     }
 }

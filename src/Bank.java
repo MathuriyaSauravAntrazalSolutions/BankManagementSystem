@@ -7,6 +7,7 @@ import java.sql.*;
 import BankManagementSystem.src.Branches.Branch;
 import BankManagementSystem.src.DataBases.BankDatabase;
 import BankManagementSystem.src.DataBases.Database;
+import BankManagementSystem.src.DataBases.DatabaseConnection;
 import BankManagementSystem.src.DataBases.Queries;
 import BankManagementSystem.src.Users.Customer;
 import BankManagementSystem.src.Validation.Validator;
@@ -72,14 +73,8 @@ public class Bank extends BankDatabase{
         Connection conn = null;
         Statement stmt = null;
         try {
-            // Step 1: Register JDBC driver
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            
-            // Step 2: Open a connection
-            String jdbcUrl = "jdbc:mysql://localhost:3306/";
-            String username = "root";
-            String password = "Saurav@2942";
-            conn = DriverManager.getConnection(jdbcUrl, username, password);
+            // Step 1: Get Connection
+            conn = DatabaseConnection.getInstance().getConnection();
             
             // Step 3: Execute a query to create a database
             stmt = conn.createStatement();
@@ -113,13 +108,6 @@ public class Bank extends BankDatabase{
                 se.printStackTrace();
                 System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
             }
-            try {
-                if (conn != null) conn.close();
-            } catch (SQLException se) {
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-                se.printStackTrace();
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-            }
         }
 
         return uniqueNumber;
@@ -130,14 +118,8 @@ public class Bank extends BankDatabase{
         Statement stmt = null;
         boolean fl = false;
         try {
-            // Step 1: Register JDBC driver
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            
-            // Step 2: Open a connection
-            String jdbcUrl = "jdbc:mysql://localhost:3306/";
-            String username = "root";
-            String password = "Saurav@2942";
-            conn = DriverManager.getConnection(jdbcUrl, username, password);
+            // Step 1: Get Connection
+            conn = DatabaseConnection.getInstance().getConnection();
             
             // Step 3: Execute a query to create a database
             stmt = conn.createStatement();
@@ -165,13 +147,6 @@ public class Bank extends BankDatabase{
             // Finally block used to close resources
             try {
                 if (stmt != null) stmt.close();
-            } catch (SQLException se) {
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-                se.printStackTrace();
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-            }
-            try {
-                if (conn != null) conn.close();
             } catch (SQLException se) {
                 System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
                 se.printStackTrace();
@@ -225,14 +200,8 @@ public class Bank extends BankDatabase{
         Connection conn = null;
         Statement stmt = null;
         try {
-            // Step 1: Register JDBC driver
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            
-            // Step 2: Open a connection
-            String jdbcUrl = "jdbc:mysql://localhost:3306/";
-            String username = "root";
-            String password = "Saurav@2942";
-            conn = DriverManager.getConnection(jdbcUrl, username, password);
+            // Step 1: Get Connection
+            conn = DatabaseConnection.getInstance().getConnection();
             
             stmt = conn.createStatement();
             stmt.execute(Queries.USE_APP_DB_QUERY);
@@ -263,13 +232,6 @@ public class Bank extends BankDatabase{
                 se.printStackTrace();
                 System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
             }
-            try { 
-                if (conn != null) conn.close();
-            } catch (SQLException se) {
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-                se.printStackTrace();
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-            }
         }
         return fl;
     }
@@ -279,14 +241,8 @@ public class Bank extends BankDatabase{
         Connection conn = null;
         Statement stmt = null;
         try {
-            // Step 1: Register JDBC driver
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            
-            // Step 2: Open a connection
-            String jdbcUrl = "jdbc:mysql://localhost:3306/";
-            String username = "root";
-            String password = "Saurav@2942";
-            conn = DriverManager.getConnection(jdbcUrl, username, password);
+            // Step 1: Get Connection
+            conn = DatabaseConnection.getInstance().getConnection();
             
             stmt = conn.createStatement();
             stmt.execute(Queries.USE_APP_DB_QUERY);
@@ -316,13 +272,6 @@ public class Bank extends BankDatabase{
                 se.printStackTrace();
                 System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
             }
-            try { 
-                if (conn != null) conn.close();
-            } catch (SQLException se) {
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-                se.printStackTrace();
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-            }
         }
         return fl;
     }
@@ -333,14 +282,8 @@ public class Bank extends BankDatabase{
         Connection conn = null;
         Statement stmt = null;
         try {
-            // Step 1: Register JDBC driver
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            
-            // Step 2: Open a connection
-            String jdbcUrl = "jdbc:mysql://localhost:3306/";
-            String username = "root";
-            String password = "Saurav@2942";
-            conn = DriverManager.getConnection(jdbcUrl, username, password);
+            // Step 1: Get Connection
+            conn = DatabaseConnection.getInstance().getConnection();
             
             stmt = conn.createStatement();
             stmt.execute(Queries.USE_APP_DB_QUERY);
@@ -374,13 +317,6 @@ public class Bank extends BankDatabase{
                 se.printStackTrace();
                 System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
             }
-            try { 
-                if (conn != null) conn.close();
-            } catch (SQLException se) {
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-                se.printStackTrace();
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-            }
         }
         return fl;
     }
@@ -391,14 +327,8 @@ public class Bank extends BankDatabase{
         Connection conn = null;
         Statement stmt = null;
         try {
-            // Step 1: Register JDBC driver
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            
-            // Step 2: Open a connection
-            String jdbcUrl = "jdbc:mysql://localhost:3306/";
-            String username = "root";
-            String password = "Saurav@2942";
-            conn = DriverManager.getConnection(jdbcUrl, username, password);
+            // Step 1: Get Connection
+            conn = DatabaseConnection.getInstance().getConnection();
             
             stmt = conn.createStatement();
             stmt.execute(Queries.USE_APP_DB_QUERY);
@@ -428,13 +358,6 @@ public class Bank extends BankDatabase{
                 se.printStackTrace();
                 System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
             }
-            try { 
-                if (conn != null) conn.close();
-            } catch (SQLException se) {
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-                se.printStackTrace();
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-            }
         }
         return custId;
     }
@@ -445,14 +368,8 @@ public class Bank extends BankDatabase{
         Connection conn = null;
         Statement stmt = null;
         try {
-            // Step 1: Register JDBC driver
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            
-            // Step 2: Open a connection
-            String jdbcUrl = "jdbc:mysql://localhost:3306/";
-            String username = "root";
-            String password = "Saurav@2942";
-            conn = DriverManager.getConnection(jdbcUrl, username, password);
+            // Step 1: Get Connection
+            conn = DatabaseConnection.getInstance().getConnection();
             
             stmt = conn.createStatement();
             stmt.execute(Queries.USE_APP_DB_QUERY);
@@ -482,13 +399,6 @@ public class Bank extends BankDatabase{
                 se.printStackTrace();
                 System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
             }
-            try { 
-                if (conn != null) conn.close();
-            } catch (SQLException se) {
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-                se.printStackTrace();
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-            }
         }
         return branch_code;
     }
@@ -498,14 +408,8 @@ public class Bank extends BankDatabase{
         Connection conn = null;
         Statement stmt = null;
         try {
-            // Step 1: Register JDBC driver
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            
-            // Step 2: Open a connection
-            String jdbcUrl = "jdbc:mysql://localhost:3306/";
-            String username = "root";
-            String password = "Saurav@2942";
-            conn = DriverManager.getConnection(jdbcUrl, username, password);
+            // Step 1: Get Connection
+            conn = DatabaseConnection.getInstance().getConnection();
             
             stmt = conn.createStatement();
             stmt.execute(Queries.USE_APP_DB_QUERY);
@@ -535,13 +439,6 @@ public class Bank extends BankDatabase{
                 se.printStackTrace();
                 System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
             }
-            try { 
-                if (conn != null) conn.close();
-            } catch (SQLException se) {
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-                se.printStackTrace();
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-            }
         }
         return balance;
     }
@@ -551,14 +448,8 @@ public class Bank extends BankDatabase{
         Connection conn = null;
         Statement stmt = null;
         try {
-            // Step 1: Register JDBC driver
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            
-            // Step 2: Open a connection
-            String jdbcUrl = "jdbc:mysql://localhost:3306/";
-            String username = "root";
-            String password = "Saurav@2942";
-            conn = DriverManager.getConnection(jdbcUrl, username, password);
+            // Step 1: Get Connection
+            conn = DatabaseConnection.getInstance().getConnection();
             
             stmt = conn.createStatement();
             stmt.execute(Queries.USE_APP_DB_QUERY);
@@ -584,13 +475,6 @@ public class Bank extends BankDatabase{
             // Finally block used to close resources
             try {
                 if (stmt != null) stmt.close();
-            } catch (SQLException se) {
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-                se.printStackTrace();
-                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
-            }
-            try { 
-                if (conn != null) conn.close();
             } catch (SQLException se) {
                 System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
                 se.printStackTrace();

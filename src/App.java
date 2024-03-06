@@ -6,6 +6,7 @@ import java.util.Scanner;
 import javax.xml.crypto.Data;
 
 import BankManagementSystem.src.DataBases.Database;
+import BankManagementSystem.src.DataBases.DatabaseConnection;
 import BankManagementSystem.src.Users.Customer;
 import BankManagementSystem.src.Users.User;
 
@@ -208,5 +209,6 @@ public class App {
                 }
             }
         }
+        DatabaseConnection.getInstance().closeConnection();
     }
 }

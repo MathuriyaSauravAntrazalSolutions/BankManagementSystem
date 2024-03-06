@@ -18,14 +18,8 @@ public class Database {
         Connection conn = null;
         Statement stmt = null;
         try {
-            // Step 1: Register JDBC driver
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            
-            // Step 2: Open a connection
-            String jdbcUrl = "jdbc:mysql://localhost:3306/";
-            String username = "root";
-            String password = "Saurav@2942";
-            conn = DriverManager.getConnection(jdbcUrl, username, password);
+            // Step 1: Get Connection
+            conn = DatabaseConnection.getInstance().getConnection();
             
             // Step 3: Execute a query to create a database
             stmt = conn.createStatement();
@@ -53,11 +47,6 @@ public class Database {
             } catch (SQLException se) {
                 // System.out.println(se.getLocalizedMessage());
             }
-            try {
-                if (conn != null) conn.close();
-            } catch (SQLException se) {
-                // System.out.println(se.getLocalizedMessage());
-            }
         }
 
         return uniqueNumber;
@@ -69,14 +58,8 @@ public class Database {
         Statement stmt = null;
         boolean fl = false;
         try {
-            // Step 1: Register JDBC driver
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            
-            // Step 2: Open a connection
-            String jdbcUrl = "jdbc:mysql://localhost:3306/";
-            String username = "root";
-            String password = "Saurav@2942";
-            conn = DriverManager.getConnection(jdbcUrl, username, password);
+            // Step 1: Get Connection
+            conn = DatabaseConnection.getInstance().getConnection();
             
             // Step 3: Execute a query to create a database
             stmt = conn.createStatement();
@@ -98,11 +81,6 @@ public class Database {
             } catch (SQLException se) {
                 // System.out.println(se.getLocalizedMessage());
             }
-            try {
-                if (conn != null) conn.close();
-            } catch (SQLException se) {
-                // System.out.println(se.getLocalizedMessage());
-            }
         }
         return fl;
     }
@@ -113,14 +91,8 @@ public class Database {
         Statement stmt = null;
         boolean fl = false;
         try {
-            // Step 1: Register JDBC driver
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            
-            // Step 2: Open a connection
-            String jdbcUrl = "jdbc:mysql://localhost:3306/";
-            String username = "root";
-            String password = "Saurav@2942";
-            conn = DriverManager.getConnection(jdbcUrl, username, password);
+            // Step 1: Get Connection
+            conn = DatabaseConnection.getInstance().getConnection();
             
             // Step 3: Execute a query to create a usertable
             stmt = conn.createStatement();
@@ -142,11 +114,6 @@ public class Database {
             } catch (SQLException se) {
                 // System.out.println(se.getLocalizedMessage());
             }
-            try {
-                if (conn != null) conn.close();
-            } catch (SQLException se) {
-                // System.out.println(se.getLocalizedMessage());
-            }
         }
         return fl;
     }
@@ -157,14 +124,8 @@ public class Database {
         Statement stmt = null;
         boolean fl = false;
         try {
-            // Step 1: Register JDBC driver
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            
-            // Step 2: Open a connection
-            String jdbcUrl = "jdbc:mysql://localhost:3306/";
-            String username = "root";
-            String password = "Saurav@2942";
-            conn = DriverManager.getConnection(jdbcUrl, username, password);
+            // Step 1: Get Connection
+            conn = DatabaseConnection.getInstance().getConnection();
             
             // Step 3: Execute a query to create a usertable
             stmt = conn.createStatement();
@@ -186,11 +147,6 @@ public class Database {
             } catch (SQLException se) {
                 // System.out.println(se.getLocalizedMessage());
             }
-            try {
-                if (conn != null) conn.close();
-            } catch (SQLException se) {
-                // System.out.println(se.getLocalizedMessage());
-            }
         }
         return fl;
     }
@@ -201,14 +157,8 @@ public class Database {
         Statement stmt = null;
         boolean fl = false;
         try {
-            // Step 1: Register JDBC driver
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            
-            // Step 2: Open a connection
-            String jdbcUrl = "jdbc:mysql://localhost:3306/";
-            String username = "root";
-            String password = "Saurav@2942";
-            conn = DriverManager.getConnection(jdbcUrl, username, password);
+            // Step 1: Get Connection
+            conn = DatabaseConnection.getInstance().getConnection();
             
             // Step 3: Execute a query to create a usertable
             stmt = conn.createStatement();
@@ -230,11 +180,6 @@ public class Database {
             } catch (SQLException se) {
                 // System.out.println(se.getLocalizedMessage());
             }
-            try {
-                if (conn != null) conn.close();
-            } catch (SQLException se) {
-                // System.out.println(se.getLocalizedMessage());
-            }
         }
         return fl;
     }
@@ -244,14 +189,8 @@ public class Database {
         Connection conn = null;
         Statement stmt = null;
         try {
-            // Step 1: Register JDBC driver
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            
-            // Step 2: Open a connection
-            String jdbcUrl = "jdbc:mysql://localhost:3306/";
-            String username = "root";
-            String password = "Saurav@2942";
-            conn = DriverManager.getConnection(jdbcUrl, username, password);
+            // Step 1: Get Connection
+            conn = DatabaseConnection.getInstance().getConnection();
             
             stmt = conn.createStatement();
             stmt.execute(Queries.USE_APP_DB_QUERY);
@@ -275,11 +214,6 @@ public class Database {
             } catch (SQLException se) {
                 // System.out.println(se.getLocalizedMessage());
             }
-            try {
-                if (conn != null) conn.close();
-            } catch (SQLException se) {
-                // System.out.println(se.getLocalizedMessage());
-            }
         }
         return currentUser;
     }
@@ -289,14 +223,8 @@ public class Database {
         Connection conn = null;
         Statement stmt = null;
         try {
-            // Step 1: Register JDBC driver
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            
-            // Step 2: Open a connection
-            String jdbcUrl = "jdbc:mysql://localhost:3306/";
-            String username = "root";
-            String password = "Saurav@2942";
-            conn = DriverManager.getConnection(jdbcUrl, username, password);
+            // Step 1: Get Connection
+            conn = DatabaseConnection.getInstance().getConnection();
             
             stmt = conn.createStatement();
             stmt.execute(Queries.USE_APP_DB_QUERY);
@@ -319,11 +247,6 @@ public class Database {
             } catch (SQLException se) {
                 // System.out.println(se.getLocalizedMessage());
             }
-            try { 
-                if (conn != null) conn.close();
-            } catch (SQLException se) {
-                // System.out.println(se.getLocalizedMessage());
-            }
         }
         return currentBank;
     }
@@ -334,14 +257,8 @@ public class Database {
         Statement stmt = null;
         boolean fl = false;
         try {
-            // Step 1: Register JDBC driver
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            
-            // Step 2: Open a connection
-            String jdbcUrl = "jdbc:mysql://localhost:3306/";
-            String username = "root";
-            String password = "Saurav@2942";
-            conn = DriverManager.getConnection(jdbcUrl, username, password);
+            // Step 1: Get Connection
+            conn = DatabaseConnection.getInstance().getConnection();
             
             stmt = conn.createStatement();
             stmt.execute(Queries.USE_APP_DB_QUERY);
@@ -369,11 +286,6 @@ public class Database {
             } catch (SQLException se) {
                 // System.out.println(se.getLocalizedMessage());
             }
-            try { 
-                if (conn != null) conn.close();
-            } catch (SQLException se) {
-                // System.out.println(se.getLocalizedMessage());
-            }
         }
         return fl;
     }
@@ -384,14 +296,8 @@ public class Database {
         Statement stmt = null;
         User currentUser = null;
         try {
-            // Step 1: Register JDBC driver
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            
-            // Step 2: Open a connection
-            String jdbcUrl = "jdbc:mysql://localhost:3306/";
-            String username = "root";
-            String password = "Saurav@2942";
-            conn = DriverManager.getConnection(jdbcUrl, username, password);
+            // Step 1: Get Connection
+            conn = DatabaseConnection.getInstance().getConnection();
             
             stmt = conn.createStatement();
             stmt.execute(Queries.USE_APP_DB_QUERY);
@@ -415,11 +321,6 @@ public class Database {
             } catch (SQLException se) {
                 // System.out.println(se.getLocalizedMessage());
             }
-            try {
-                if (conn != null) conn.close();
-            } catch (SQLException se) {
-                // System.out.println(se.getLocalizedMessage());
-            }
         }
         return currentUser;
     }
@@ -430,14 +331,8 @@ public class Database {
         Statement stmt = null;
         boolean fl = false;
         try {
-            // Step 1: Register JDBC driver
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            
-            // Step 2: Open a connection
-            String jdbcUrl = "jdbc:mysql://localhost:3306/";
-            String username = "root";
-            String password = "Saurav@2942";
-            conn = DriverManager.getConnection(jdbcUrl, username, password);
+            // Step 1: Get Connection
+            conn = DatabaseConnection.getInstance().getConnection();
             
             stmt = conn.createStatement();
             stmt.execute(Queries.USE_APP_DB_QUERY);
@@ -461,11 +356,6 @@ public class Database {
             } catch (SQLException se) {
                 // System.out.println(se.getLocalizedMessage());
             }
-            try {
-                if (conn != null) conn.close();
-            } catch (SQLException se) {
-                // System.out.println(se.getLocalizedMessage());
-            }
         }
         return fl;
     }
@@ -477,14 +367,8 @@ public class Database {
         Statement stmt = null;
         int bankId = 10;
         try {
-            // Step 1: Register JDBC driver
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            
-            // Step 2: Open a connection
-            String jdbcUrl = "jdbc:mysql://localhost:3306/";
-            String username = "root";
-            String password = "Saurav@2942";
-            conn = DriverManager.getConnection(jdbcUrl, username, password);
+            // Step 1: Get Connection
+            conn = DatabaseConnection.getInstance().getConnection();
             
             stmt = conn.createStatement();
             stmt.execute(Queries.USE_APP_DB_QUERY);
@@ -508,11 +392,6 @@ public class Database {
             } catch (SQLException se) {
                 // System.out.println(se.getLocalizedMessage());
             }
-            try {
-                if (conn != null) conn.close();
-            } catch (SQLException se) {
-                // System.out.println(se.getLocalizedMessage());
-            }
         }
         return bankId;
     }
@@ -526,14 +405,8 @@ public class Database {
         Statement stmt = null;
         ArrayList<Long> arr = new ArrayList<>();
         try {
-            // Step 1: Register JDBC driver
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            
-            // Step 2: Open a connection
-            String jdbcUrl = "jdbc:mysql://localhost:3306/";
-            String username = "root";
-            String password = "Saurav@2942";
-            conn = DriverManager.getConnection(jdbcUrl, username, password);
+            // Step 1: Get Connection
+            conn = DatabaseConnection.getInstance().getConnection();
             
             stmt = conn.createStatement();
             stmt.execute(Queries.USE_APP_DB_QUERY);
@@ -557,11 +430,6 @@ public class Database {
             } catch (SQLException se) {
                 // System.out.println(se.getLocalizedMessage());
             }
-            try { 
-                if (conn != null) conn.close();
-            } catch (SQLException se) {
-                // System.out.println(se.getLocalizedMessage());
-            }
         }
         return arr;
     }
@@ -572,14 +440,8 @@ public class Database {
         Connection conn = null;
         Statement stmt = null;
         try {
-            // Step 1: Register JDBC driver
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            
-            // Step 2: Open a connection
-            String jdbcUrl = "jdbc:mysql://localhost:3306/";
-            String username = "root";
-            String password = "Saurav@2942";
-            conn = DriverManager.getConnection(jdbcUrl, username, password);
+            // Step 1: Get Connection
+            conn = DatabaseConnection.getInstance().getConnection();
             
             stmt = conn.createStatement();
             stmt.execute(Queries.USE_APP_DB_QUERY);
@@ -604,11 +466,6 @@ public class Database {
             } catch (SQLException se) {
                 // System.out.println(se.getLocalizedMessage());
             }
-            try {
-                if (conn != null) conn.close();
-            } catch (SQLException se) {
-                // System.out.println(se.getLocalizedMessage());
-            }
         }
         return bankName;
     }
@@ -619,14 +476,8 @@ public class Database {
         Connection conn = null;
         Statement stmt = null;
         try {
-            // Step 1: Register JDBC driver
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            
-            // Step 2: Open a connection
-            String jdbcUrl = "jdbc:mysql://localhost:3306/";
-            String username = "root";
-            String password = "Saurav@2942";
-            conn = DriverManager.getConnection(jdbcUrl, username, password);
+            // Step 1: Get Connection
+            conn = DatabaseConnection.getInstance().getConnection();
             
             stmt = conn.createStatement();
             stmt.execute(Queries.USE_APP_DB_QUERY);
@@ -660,11 +511,6 @@ public class Database {
             } catch (SQLException se) {
                 // System.out.println(se.getLocalizedMessage());
             }
-            try {
-                if (conn != null) conn.close();
-            } catch (SQLException se) {
-                // System.out.println(se.getLocalizedMessage());
-            }
         }
         return accounts;
     }
@@ -675,14 +521,8 @@ public class Database {
         Statement stmt = null;
         boolean fl = false;
         try {
-            // Step 1: Register JDBC driver
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            
-            // Step 2: Open a connection
-            String jdbcUrl = "jdbc:mysql://localhost:3306/";
-            String username = "root";
-            String password = "Saurav@2942";
-            conn = DriverManager.getConnection(jdbcUrl, username, password);
+            // Step 1: Get Connection
+            conn = DatabaseConnection.getInstance().getConnection();
             
             stmt = conn.createStatement();
             stmt.execute(Queries.USE_APP_DB_QUERY);
@@ -709,11 +549,6 @@ public class Database {
             } catch (SQLException se) {
                 // System.out.println(se.getLocalizedMessage());
             }
-            try { 
-                if (conn != null) conn.close();
-            } catch (SQLException se) {
-                // System.out.println(se.getLocalizedMessage());
-            }
         }
         return fl;
     }
@@ -723,14 +558,8 @@ public class Database {
         Connection conn = null;
         Statement stmt = null;
         try {
-            // Step 1: Register JDBC driver
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            
-            // Step 2: Open a connection
-            String jdbcUrl = "jdbc:mysql://localhost:3306/";
-            String username = "root";
-            String password = "Saurav@2942";
-            conn = DriverManager.getConnection(jdbcUrl, username, password);
+            // Step 1: Get Connection
+            conn = DatabaseConnection.getInstance().getConnection();
             
             stmt = conn.createStatement();
             stmt.execute(Queries.USE_APP_DB_QUERY);
@@ -754,11 +583,6 @@ public class Database {
             } catch (SQLException se) {
                 // System.out.println(se.getLocalizedMessage());
             }
-            try {
-                if (conn != null) conn.close();
-            } catch (SQLException se) {
-                // System.out.println(se.getLocalizedMessage());
-            }
         }
         return banks;
     }
@@ -769,14 +593,8 @@ public class Database {
         Connection conn = null;
         Statement stmt = null;
         try {
-            // Step 1: Register JDBC driver
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            
-            // Step 2: Open a connection
-            String jdbcUrl = "jdbc:mysql://localhost:3306/";
-            String username = "root";
-            String password = "Saurav@2942";
-            conn = DriverManager.getConnection(jdbcUrl, username, password);
+            // Step 1: Get Connection
+            conn = DatabaseConnection.getInstance().getConnection();
             
             stmt = conn.createStatement();
             stmt.execute(Queries.USE_APP_DB_QUERY);
@@ -800,11 +618,6 @@ public class Database {
             } catch (SQLException se) {
                 // System.out.println(se.getLocalizedMessage());
             }
-            try {
-                if (conn != null) conn.close();
-            } catch (SQLException se) {
-                // System.out.println(se.getLocalizedMessage());
-            }
         }
         return branches;
     }
@@ -814,14 +627,8 @@ public class Database {
         Connection conn = null;
         Statement stmt = null;
         try {
-            // Step 1: Register JDBC driver
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            
-            // Step 2: Open a connection
-            String jdbcUrl = "jdbc:mysql://localhost:3306/";
-            String username = "root";
-            String password = "Saurav@2942";
-            conn = DriverManager.getConnection(jdbcUrl, username, password);
+            // Step 1: Get Connection
+            conn = DatabaseConnection.getInstance().getConnection();
             
             stmt = conn.createStatement();
             stmt.execute(Queries.USE_APP_DB_QUERY);
@@ -846,11 +653,6 @@ public class Database {
             } catch (SQLException se) {
                 // System.out.println(se.getLocalizedMessage());
             }
-            try {
-                if (conn != null) conn.close();
-            } catch (SQLException se) {
-                // System.out.println(se.getLocalizedMessage());
-            }
         }
         return branchCode;
     }
@@ -860,14 +662,8 @@ public class Database {
         Connection conn = null;
         Statement stmt = null;
         try {
-            // Step 1: Register JDBC driver
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            
-            // Step 2: Open a connection
-            String jdbcUrl = "jdbc:mysql://localhost:3306/";
-            String username = "root";
-            String password = "Saurav@2942";
-            conn = DriverManager.getConnection(jdbcUrl, username, password);
+            // Step 1: Get Connection
+            conn = DatabaseConnection.getInstance().getConnection();
             
             stmt = conn.createStatement();
             stmt.execute(Queries.USE_APP_DB_QUERY);
@@ -889,11 +685,6 @@ public class Database {
             // Finally block used to close resources
             try {
                 if (stmt != null) stmt.close();
-            } catch (SQLException se) {
-                // System.out.println(se.getLocalizedMessage());
-            }
-            try {
-                if (conn != null) conn.close();
             } catch (SQLException se) {
                 // System.out.println(se.getLocalizedMessage());
             }
