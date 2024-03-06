@@ -49,7 +49,8 @@ public class Queries {
     + "accountNumber BIGINT NOT NULL,"
     + "branch_code INT NOT NULL,"
     + "balance BIGINT NOT NULL,"
-    + "type VARCHAR(255),"
+    + "type VARCHAR(255)  NOT NULL,"
+    + "securityPin INT NOT NULL,"
     + "isActive Varchar(255) DEFAULT 'ACTIVE'"
     +")";
     public static final String CREATE_BRANCHES_TABLE_QUERY = "CREATE TABLE IF NOT Exists AppDB.branches("
@@ -65,7 +66,8 @@ public class Queries {
     + "bankId INT NOT NULL,"
     + "accountNumber BIGINT NOT NULL,"
     + "amount INT NOT NULL,"
-    + "type VARCHAR(255)"
+    + "type VARCHAR(255),"
+    + "date VARCHAR(255)"
     +")";
     public static final String CREATE_LOANS_TABLE_QUERY = "CREATE TABLE IF NOT Exists AppDB.loans("
     + "id INT AUTO_INCREMENT PRIMARY KEY,"
@@ -75,6 +77,7 @@ public class Queries {
     + "loanAmount INT NOT NULL,"
     + "remainingAmount INT NOT NULL,"
     + "creditScore INT NOT NULL,"
+    + "date VARCHAR(255),"
     + "isActive Varchar(255) DEFAULT 'ACTIVE'"
     +")";
     public static final String CREATE_JOINT_ACCOUNTS_TABLE_QUERY = "CREATE TABLE IF NOT Exists AppDB.jointAccounts("
@@ -82,8 +85,10 @@ public class Queries {
     + "bankId INT NOT NULL,"
     + "custId_one INT NOT NULL,"
     + "custId_two INT NOT NULL,"
+    + "custId_two_name varchar(255) NOT NULL,"
     + "accountNumber BIGINT NOT NULL,"
     + "balance BIGINT NOT NULL,"
+    + "Cust2SecurityPin INT NOT NULL,"
     + "isActive Varchar(255) DEFAULT 'ACTIVE'"
     +")";
 }

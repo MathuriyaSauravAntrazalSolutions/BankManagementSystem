@@ -126,7 +126,12 @@ public class App {
                 }
             }
             else if(key==4){
-                break;
+                currentCustomer.accounts = Database.findAccounts(currentCustomer);
+                if(currentCustomer.accounts.size()>0) break;
+                System.out.println(Constants.repeat);
+                System.out.println("No Accounts Exists Please Add One!");
+                key = currentCustomer.askCustomer();
+                continue;
             }
             else if(key==2){
                 // we dont have customerId as such bcoz for different banks there might be different ids for currentUser
@@ -167,7 +172,6 @@ public class App {
             else if(key == 5){
                 currentCustomer.getLoan();
                 System.out.println("Yet To Imppliment!");
-                key = currentCustomer.askBanking();
                 // continue;
                 break;
             }
@@ -198,7 +202,6 @@ public class App {
             }else{
                 boolean fl = currentCustomer.withdraw();
                 if(fl){
-                    System.out.println("Account Added :)");
                     key = currentCustomer.askBanking();
                     continue;
                 }

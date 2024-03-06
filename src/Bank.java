@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.sql.*;
 
+import BankManagementSystem.src.Accounts.Account;
 import BankManagementSystem.src.Branches.Branch;
 import BankManagementSystem.src.DataBases.BankDatabase;
 import BankManagementSystem.src.DataBases.Database;
@@ -443,6 +444,46 @@ public class Bank extends BankDatabase{
         return balance;
     }
 
+    public static String getAccountType(Account account){
+        String type = "";
+        Connection conn = null;
+        Statement stmt = null;
+        try {
+            // Step 1: Get Connection
+            conn = DatabaseConnection.getInstance().getConnection();
+            
+            stmt = conn.createStatement();
+            stmt.execute(Queries.USE_APP_DB_QUERY);
+            ResultSet rs = stmt.executeQuery("select type from accounts WHERE accountNumber = "+account.accountNumber+" && bankId = "+account.bankId);
+            // if accounttype is Joint
+            if(rs.next()){
+                type = rs.getString("type");
+            }
+            
+        } catch (SQLException se) {
+            // Handle errors for JDBC
+            type = "";
+                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                se.printStackTrace();
+                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+        } catch (Exception e) {
+            type = "";
+            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            e.printStackTrace();
+            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+        } finally {
+            // Finally block used to close resources
+            try {
+                if (stmt != null) stmt.close();
+            } catch (SQLException se) {
+                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                se.printStackTrace();
+                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            }
+        }
+        return type;
+    }
+
     public static ArrayList<Long> findCustomerCards(int bankId, int userId){
         ArrayList<Long> arr = new ArrayList<>();
         Connection conn = null;
@@ -483,4 +524,46 @@ public class Bank extends BankDatabase{
         }
         return arr;
     }
+
+    public static String getAnothersName(Account account){
+        String anotherName = "";
+        Connection conn = null;
+        Statement stmt = null;
+        try {
+            // Step 1: Get Connection
+            conn = DatabaseConnection.getInstance().getConnection();
+            
+            stmt = conn.createStatement();
+            stmt.execute(Queries.USE_APP_DB_QUERY);
+            ResultSet rs = stmt.executeQuery("select custId_two_name from jointaccounts WHERE accountNumber = "+account.accountNumber+" && bankId = "+account.bankId);
+            // if accounttype is Joint
+            if(rs.next()){
+                anotherName = rs.getString("custId_two_name");
+            }
+            
+        } catch (SQLException se) {
+            // Handle errors for JDBC
+            anotherName = "";
+                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                se.printStackTrace();
+                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+        } catch (Exception e) {
+            anotherName = "";
+            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            e.printStackTrace();
+            System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+        } finally {
+            // Finally block used to close resources
+            try {
+                if (stmt != null) stmt.close();
+            } catch (SQLException se) {
+                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+                se.printStackTrace();
+                System.out.println(("=".repeat(10))+" Error Message Ignore It "+("=".repeat(10)));
+            }
+        }
+        return anotherName;
+    }
+
+    
 }
