@@ -238,7 +238,7 @@ public class Cashier {
 
 
     public static void printPassbook(String customerName, Account account) {
-        String fileName = "D:\\Projects\\BankManagementSystem\\src\\PassBooks\\"+account.bankName+"_"+account.branch_code+"_"+account.accountNumber+".md"; // Name of the output file
+        String fileName = "D:\\Projects\\BankManagementSystem\\src\\PassBooks\\"+account.bankName+"_"+customerName+"_"+account.accountNumber+".md"; // Name of the output file
         Connection conn = null;
         Statement stmt = null;
         try {
