@@ -1,4 +1,4 @@
-package BankManagementSystem.src.Accounts;
+package BankManagementSystem.src.Modals;
 
 public class Account {
     public long accountNumber;

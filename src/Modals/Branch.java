@@ -1,4 +1,4 @@
-package BankManagementSystem.src.Branches;
+package BankManagementSystem.src.Modals;
 
 public class Branch{
     public int branchCode;
@@ -11,5 +11,9 @@ public class Branch{
         this.branchName = branchName;
         this.branchAddress = branchAddress;
         this.totalBalance = 0;
+    }
+
+    public static Branch getBranchInstance(int branchCode, String branchName, String branchAddress){
+        return new Branch(branchCode, branchName, branchAddress);
     }
 }

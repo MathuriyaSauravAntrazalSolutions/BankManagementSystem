@@ -1,14 +1,13 @@
-package BankManagementSystem.src.Users;
+package BankManagementSystem.src.Services;
 
 import java.util.ArrayList;
 
-import BankManagementSystem.src.Bank;
-import BankManagementSystem.src.Constants;
-import BankManagementSystem.src.Accounts.Account;
-import BankManagementSystem.src.DataBases.Database;
-import BankManagementSystem.src.People.Cashier;
-import BankManagementSystem.src.People.Manager;
-import BankManagementSystem.src.Validation.Validator;
+import BankManagementSystem.src.IRepo.Database;
+import BankManagementSystem.src.Modals.Account;
+import BankManagementSystem.src.Modals.Branch;
+import BankManagementSystem.src.Modals.Cashier;
+import BankManagementSystem.src.Modals.Manager;
+import BankManagementSystem.src.Utils.Constants;
 
 public class Customer extends User {
 
@@ -35,7 +34,7 @@ public class Customer extends User {
         long panNumber, adharNumber;
         while(true){
             try{
-                System.out.println(Constants.repeat);
+                System.out.println(Constants.REPEAT);
                 System.out.print("Enter your PanCard Number:");
                 panNumber = Long.parseLong(sc.nextLine());
                 if(String.valueOf(panNumber).length()!=12){
@@ -46,13 +45,13 @@ public class Customer extends User {
                 break;
             }
             catch(Exception e){
-                System.out.println(Constants.repeat);
+                System.out.println(Constants.REPEAT);
                 System.out.println("Please Specify A Number!");
             }
         }
         while(true){
             try{
-                System.out.println(Constants.repeat);
+                System.out.println(Constants.REPEAT);
                 System.out.print("Enter your Adhar Number:");
                 adharNumber = Long.parseLong(sc.nextLine());
                 // System.out.println(adharNumber);
@@ -63,54 +62,28 @@ public class Customer extends User {
                 break;
             }
             catch(Exception e){
-                System.out.println(Constants.repeat);
+                System.out.println(Constants.REPEAT);
                 System.out.println("Please Specify A Number!");
             }
         }
         return new Customer(currentUser, adharNumber, panNumber);
     }
 
-
-
-    public int askCustomer(){
-        System.out.println(Constants.repeat+"\n");
-        System.out.println(Constants.askCustomer);
-        System.out.println(Constants.repeat);
-        int key;
-        try{
-            System.out.print("Key: ");
-            key = sc.nextInt(); sc.nextLine();
-            if(key<=0 || key >5){
-                System.out.println(Constants.repeat);
-                System.out.println("Invalid Key Please Enter Valid Key!");
-                key = this.askCustomer();
-            }
-        }catch(Exception e){
-            System.out.println(Constants.repeat);
-            System.out.println("Invalid Key Please Enter Valid Key!");
-            sc.nextLine();
-            key = this.askCustomer();
-        }
-        return key;
-    }
-
-
-
     public int askBanking(){
-        System.out.println(Constants.repeat+"\n");
-        System.out.println(Constants.askBanking);
-        System.out.println(Constants.repeat);
+        System.out.println(Constants.REPEAT+"\n");
+        System.out.println(Constants.ASK_BANKING);
+        System.out.println(Constants.REPEAT);
         int key;
         try{
             System.out.print("Key: ");
             key = sc.nextInt(); sc.nextLine();
-            if(key<=0 || key >6){
-                System.out.println(Constants.repeat);
+            if(key<=0 || key >9){
+                System.out.println(Constants.REPEAT);
                 System.out.println("Invalid Key Please Enter Valid Key!");
                 key = this.askBanking();
             }
         }catch(Exception e){
-            System.out.println(Constants.repeat);
+            System.out.println(Constants.REPEAT);
             System.out.println("Invalid Key Please Enter Valid Key!");
             sc.nextLine();
             key = this.askBanking();
@@ -120,63 +93,57 @@ public class Customer extends User {
 
 
     public boolean addAccount(){
-        System.out.println(Constants.repeat);
+        System.out.println(Constants.REPEAT);
         boolean fl = true;
         System.out.println("Choose Bank To Open An Account");
-        ArrayList<String> banks = Database.getBanksList();
+        ArrayList<Bank> banks = Database.getBanks();
         int i = 1;
-        for(String bankName: banks){
-            System.out.println(i+". "+bankName);
+        for(Bank bank: banks){
+            System.out.println(i+". "+bank.name);
             i++;
         }
-        System.out.println(Constants.repeat);
+        System.out.println(Constants.REPEAT);
         System.out.println("Bank Name As Key");
         int key;
         while(true){
             try{
-                System.out.println(Constants.repeat);
+                System.out.println(Constants.REPEAT);
                 System.out.print("Key:");
                 key = Integer.parseInt(sc.nextLine());
                 // System.out.println(key);
                 if(key<=0 || key>banks.size()){
-                    System.out.println(Constants.repeat);
+                    System.out.println(Constants.REPEAT);
                     System.out.println("Invalid Key");
                     continue;
                 }
                 break;
             }
             catch(Exception e){
-                System.out.println(Constants.repeat);
+                System.out.println(Constants.REPEAT);
                 System.out.println("Please Specify A Number!");
             }
         }
-        String bankName = banks.get(key-1);
-        System.out.println(Constants.repeat);
-        int bankId = Database.checkForBankExist(bankName);
-        if(bankId<1001){
-            System.out.println("Bank Does Not Exists");
-            return fl;
-        }
+        Bank bank = banks.get(key-1);
         // depends on bank which customer id he has bcoz for defferent banks user would have different customer id's
         // getting if user is customer of bank than custId else -1
-        this.custId = Bank.getExistingCustomerId(this, bankName, bankId);
+        this.custId = Database.getExistingCustomerId(this, bank.name, bank.bankId);
         System.out.println("Choose Bank Branch To Open An Account");
-        ArrayList<String> bankBranches = Database.getBankBranchList(bankId);
+        ArrayList<Branch> bankBranches = Database.getBankBranches(bank.bankId);
         i = 1;
-        for(String branchName: bankBranches){
-            System.out.println(i+". "+branchName);
+        for(Branch branch: bankBranches){
+            System.out.println(i+". "+branch.branchName);
             i++;
         }
-        System.out.println(Constants.repeat);
+        System.out.println(Constants.REPEAT);
         System.out.println("Bank Branch Name As Key ");
         while(true){
             try{
-                System.out.println(Constants.repeat);
+                System.out.println(Constants.REPEAT);
                 System.out.print("Key:");
                 key = Integer.parseInt(sc.nextLine());
                 // System.out.println(key);
                 if(key<=0 || key>bankBranches.size()){
-                    System.out.println(Constants.repeat);
+                    System.out.println(Constants.REPEAT);
                     System.out.println("Invalid Key");
                     continue;
                 }
@@ -186,22 +153,22 @@ public class Customer extends User {
                 System.out.println("Please Specify A Number!");
             }
         }
-        String branchName = bankBranches.get(key-1);
-        System.out.println(Constants.repeat);
-        fl = Bank.checkForBranchExist(bankName, branchName, bankId);
+        Branch branch = bankBranches.get(key-1);
+        System.out.println(Constants.REPEAT);
+        fl = Database.checkForBranchExist(bank.name, branch.branchName, bank.bankId);
         if(!fl){
             System.out.println("Bank Branch Does Not Exists");
             return fl;
         }
         System.out.println("\nChoose Account Type To Open An Account\n1. Personal Account\n2. Joint Account\n");
-        System.out.println(Constants.repeat);
+        System.out.println(Constants.REPEAT);
         int num;
         while(true){
             try{
                 System.out.print("Enter Account Type As Key:");
                 num = Integer.parseInt(sc.nextLine());
                 if(num<=0 || num>2){
-                    System.out.println(Constants.repeat);
+                    System.out.println(Constants.REPEAT);
                     System.out.println("Invalid Key");
                     continue;
                 }
@@ -209,13 +176,13 @@ public class Customer extends User {
                 break;
             }
             catch(Exception e){
-                System.out.println(Constants.repeat);
+                System.out.println(Constants.REPEAT);
                 System.out.println("Please Specify A Number!");
             }
         }
         String type = (num==1)?"Personal":"Joint";
         // checking if user has an account in banks branch already
-        fl = Bank.checkForActiveCustomerAcountExistOfSameType(this, bankName, branchName, type, bankId); // if account already exist
+        fl = Database.checkForActiveCustomerAcountExistOfSameType(this, bank.name, branch.branchName, type, bank.bankId); // if account already exist
         if(fl){
             System.out.println("Customers Account Already Exists");
             return false;
@@ -223,14 +190,14 @@ public class Customer extends User {
         long balance;
         while(true){
             try{        
-                System.out.println(Constants.repeat);
+                System.out.println(Constants.REPEAT);
                 System.out.print("Enter Initial Account Balance: ");
                 balance = Long.parseLong(sc.nextLine());
                 // System.out.println(balance);
                 break;
             }
             catch(Exception e){
-                System.out.println(Constants.repeat);
+                System.out.println(Constants.REPEAT);
                 System.out.println("Please Specify A Number!");
             }
         }
@@ -239,12 +206,12 @@ public class Customer extends User {
             System.out.println("Give Another Authorised Customer's Name For Joint Account!");
             
             while(true){
-                System.out.println(Constants.repeat);
+                System.out.println(Constants.REPEAT);
                 System.out.print("Enter The Name: ");
                 anotherCustomer = sc.nextLine();
                 boolean tl = Validator.isValidName(anotherCustomer);
                 if(!tl){
-                    System.out.println(Constants.repeat);
+                    System.out.println(Constants.REPEAT);
                     System.out.println("Name Must Not Contain Number Or Special Characters");
                     continue;
                 }
@@ -254,47 +221,47 @@ public class Customer extends User {
         int securityKey1, securityKey2 = 0;
         while(true){
             try{
-                System.out.println(Constants.repeat);
+                System.out.println(Constants.REPEAT);
                 System.out.println("Please Set Up Your 4 Degit Account's Security Pin ");
                 System.out.print("Enter The Pin: ");
                 securityKey1 = Integer.parseInt(sc.nextLine());
                 if(String.valueOf(securityKey1).length() != 4){
-                    System.out.println(Constants.repeat);
+                    System.out.println(Constants.REPEAT);
                     System.out.println("Please Specify 4 Degit Number");
                 }
                 // System.out.println(balance);
                 break;
             }
             catch(Exception e){
-                System.out.println(Constants.repeat);
+                System.out.println(Constants.REPEAT);
                 System.out.println("Please Specify A Number!");
             }
         }
         while(anotherCustomer!=null){
             try{
-                System.out.println(Constants.repeat);
+                System.out.println(Constants.REPEAT);
                 System.out.println(anotherCustomer+" Please Set Up Your 4 Degit Account's Security Pin");
                 System.out.print("Enter The Pin: ");
                 securityKey2 = Integer.parseInt(sc.nextLine());
                 if(String.valueOf(securityKey1).length() != 4){
-                    System.out.println(Constants.repeat);
+                    System.out.println(Constants.REPEAT);
                     System.out.println("Please Specify 4 Degit Number");
                 }
                 // System.out.println(balance);
                 break;
             }
             catch(Exception e){
-                System.out.println(Constants.repeat);
+                System.out.println(Constants.REPEAT);
                 System.out.println("Please Specify A Number!");
             }
         }
-        fl = Manager.addAccount(this, bankName, branchName, type, balance, anotherCustomer, bankId, securityKey1, securityKey2);
+        fl = Manager.addAccount(this, bank.name, branch.branchName, type, balance, anotherCustomer, bank.bankId, securityKey1, securityKey2);
         return fl;
     }
 
 
     public boolean deleteAccount(){
-        System.out.println(Constants.repeat);
+        System.out.println(Constants.REPEAT);
         this.accounts = Database.findAccounts(this);
         if(accounts==null || accounts.size() < 1){
             System.out.println("No Accounts Exists! Please Add One");
@@ -303,34 +270,34 @@ public class Customer extends User {
         System.out.println("Your Accounts are Listed Below");
         int i = 1;
         for(Account account:accounts){
-            System.out.println(Constants.repeat);
+            System.out.println(Constants.REPEAT);
             System.out.println(i+". "+account.toString());
             i++;
         }
         int key;
         while(true){
             try{
-                System.out.println(Constants.repeat);
+                System.out.println(Constants.REPEAT);
                 System.out.println("Choose Key To remove account");
                 System.out.print("Key: ");
                 key = Integer.parseInt(sc.nextLine());
                 // System.out.println(key);
                 if(key<=0 || key>accounts.size()){
-                    System.out.println(Constants.repeat);
+                    System.out.println(Constants.REPEAT);
                     System.out.println("Invalid Key");
                     continue;
                 }
                 break;
             }
             catch(Exception e){
-                System.out.println(Constants.repeat);
+                System.out.println(Constants.REPEAT);
                 System.out.println("Please Specify A Number!");
             }
         }
         int securityPin, securityKey2;
         while(true){
             try{
-                System.out.println(Constants.repeat);
+                System.out.println(Constants.REPEAT);
                 System.out.println("Enter Your Security Pin");
                 System.out.print("PIN: ");
                 securityPin = Integer.parseInt(sc.nextLine());
@@ -338,40 +305,40 @@ public class Customer extends User {
                 break;
             }
             catch(Exception e){
-                System.out.println(Constants.repeat);
+                System.out.println(Constants.REPEAT);
                 System.out.println("Please Specify A Number!");
             }
         }
         boolean fl = Cashier.verifyPin(accounts.get(key-1), securityPin);
         if(!fl){
-            System.out.println(Constants.repeat);
+            System.out.println(Constants.REPEAT);
             System.out.println("Wrong Security Pin Entered!");
             return true;
         }
-        String type = Bank.getAccountType(accounts.get(key-1));
+        String type = Database.getAccountType(accounts.get(key-1));
         if(type.equalsIgnoreCase("joint")){
-            String anotherCustomer = Bank.getAnothersName(accounts.get(key-1));
+            String anotherCustomer = Database.getAnothersName(accounts.get(key-1));
             while(true){
                 try{
-                    System.out.println(Constants.repeat);
+                    System.out.println(Constants.REPEAT);
                     System.out.println(anotherCustomer+" Please Enter Your 4 Degit Account's Security Pin For Authorisation");
                     System.out.print("Enter The Pin: ");
                     securityKey2 = Integer.parseInt(sc.nextLine());
                     if(String.valueOf(securityKey2).length() != 4){
-                        System.out.println(Constants.repeat);
+                        System.out.println(Constants.REPEAT);
                         System.out.println("Please Specify 4 Degit Number");
                     }
                     // System.out.println(balance);
                     break;
                 }
                 catch(Exception e){
-                    System.out.println(Constants.repeat);
+                    System.out.println(Constants.REPEAT);
                     System.out.println("Please Specify A Number!");
                 }
             }
             fl = Cashier.verifySecondPin(accounts.get(key-1), securityKey2);
             if(!fl){
-                System.out.println(Constants.repeat);
+                System.out.println(Constants.REPEAT);
                 System.out.println("Wrong Security Pin Entered!");
                 return true;
             }
@@ -386,7 +353,7 @@ public class Customer extends User {
 
 
     public boolean updateAccount(){
-        System.out.println(Constants.repeat);
+        System.out.println(Constants.REPEAT);
         System.out.println("You Can Change The Branch Of Your Account Only\n1. Change Branch\n2. Go Back");
         int key;
         while(true){
@@ -394,17 +361,17 @@ public class Customer extends User {
             try{
                 key = Integer.parseInt(sc.nextLine());
                 if(key!=1 && key!=2){
-                    System.out.println(Constants.repeat);
+                    System.out.println(Constants.REPEAT);
                     System.out.println("Please Specify A Valid Key");
-                    System.out.println(Constants.repeat);
+                    System.out.println(Constants.REPEAT);
                     continue;
                 }
                 break;
             }
             catch(Exception e){
-                System.out.println(Constants.repeat);
+                System.out.println(Constants.REPEAT);
                 System.out.println("Please Specify A Valid Key");
-                System.out.println(Constants.repeat);
+                System.out.println(Constants.REPEAT);
             }
         }
         if(key==2) return true;
@@ -416,60 +383,81 @@ public class Customer extends User {
         System.out.println("Your Accounts are Listed Below");
         int i = 1;
         for(Account account:accounts){
-            System.out.println(Constants.repeat);
+            System.out.println(Constants.REPEAT);
             System.out.println(i+". "+account.toString());
             i++;
         }
         key = 0;
         while(true){
             try{
-                System.out.println(Constants.repeat);
+                System.out.println(Constants.REPEAT);
                 System.out.println("Choose Key To Update Account");
                 System.out.print("Key: ");
                 key = Integer.parseInt(sc.nextLine());
                 // System.out.println(key);
                 if(key<=0 || key>accounts.size()){
-                    System.out.println(Constants.repeat);
+                    System.out.println(Constants.REPEAT);
                     System.out.println("Invalid Key");
                     continue;
                 }
                 break;
             }
             catch(Exception e){
-                System.out.println(Constants.repeat);
+                System.out.println(Constants.REPEAT);
                 System.out.println("Please Specify A Number!");
             }
         }
         int bankId = accounts.get(key-1).bankId;
         String bankName = accounts.get(key-1).bankName;
         int branchCode = accounts.get(key-1).branch_code;
-        ArrayList<String> bankBranches = Database.getBankBranchList(bankId);
+        ArrayList<Branch> bankBranches = Database.getBankBranches(bankId);
         if(bankBranches.size()==1){
             System.out.println("No Bank Branches Available To Switch");
             return false;
         }
-        String brName = Database.getBranchName(bankId, branchCode); 
-        System.out.println("Choose Bank Branch To Update With");
-        i = 1;
-        for(String branchName: bankBranches){
-            if(branchName.equalsIgnoreCase(brName)) continue;
-            System.out.println(i+". "+branchName);
+        String brName = Database.getBranch(bankId, branchCode).branchName; 
+        System.out.println("Choose Bank Branch To Update With As A Key");
+        i = 1; int index = 0;
+        for(Branch branch: bankBranches){
+            if(branch.branchName.equalsIgnoreCase(brName)){
+                index = i;
+                continue;
+            }
+            System.out.println(i+". "+branch.branchName);
             i++;
         }
-        System.out.println(Constants.repeat);
-        System.out.print("Bank Branch Name: ");
-        String branchName = sc.nextLine();
-        System.out.println(Constants.repeat);
-        boolean fl = Bank.checkForBranchExist(bankName, branchName, bankId);
+        System.out.println(Constants.REPEAT);
+        key = 0;
+        while(true){
+            try{
+                System.out.println(Constants.REPEAT);
+                System.out.print("Key: ");
+                key = Integer.parseInt(sc.nextLine());
+                // System.out.println(key);
+                if(key<=0 || key>bankBranches.size()){
+                    System.out.println(Constants.REPEAT);
+                    System.out.println("Invalid Key");
+                    continue;
+                }
+                break;
+            }
+            catch(Exception e){
+                System.out.println(Constants.REPEAT);
+                System.out.println("Please Specify A Number!");
+            }
+        }
+        System.out.println(Constants.REPEAT);
+        boolean fl = Database.checkForBranchExist(bankName, bankBranches.get(key-1).branchName, bankId);
         if(!fl){
             System.out.println("Bank Branch Does Not Exists");
             return fl;
         }
-        branchCode = Database.getBranchCode(bankId, branchName);
+        branchCode = Database.getBranch(bankId, ((key<index)?bankBranches.get(key-1).branchName:bankBranches.get(key).branchName)).branchCode;
+        System.out.println("index "+index+" branch code: "+branchCode);
         int securityPin, securityKey2;
         while(true){
             try{
-                System.out.println(Constants.repeat);
+                System.out.println(Constants.REPEAT);
                 System.out.println("Enter Your Security Pin");
                 System.out.print("PIN: ");
                 securityPin = Integer.parseInt(sc.nextLine());
@@ -477,40 +465,40 @@ public class Customer extends User {
                 break;
             }
             catch(Exception e){
-                System.out.println(Constants.repeat);
+                System.out.println(Constants.REPEAT);
                 System.out.println("Please Specify A Number!");
             }
         }
         fl = Cashier.verifyPin(accounts.get(key-1), securityPin);
         if(!fl){
-            System.out.println(Constants.repeat);
+            System.out.println(Constants.REPEAT);
             System.out.println("Wrong Security Pin Entered!");
             return true;
         }
-        String type = Bank.getAccountType(accounts.get(key-1));
+        String type = Database.getAccountType(accounts.get(key-1));
         if(type.equalsIgnoreCase("joint")){
-            String anotherCustomer = Bank.getAnothersName(accounts.get(key-1));
+            String anotherCustomer = Database.getAnothersName(accounts.get(key-1));
             while(true){
                 try{
-                    System.out.println(Constants.repeat);
+                    System.out.println(Constants.REPEAT);
                     System.out.println(anotherCustomer+" Please Enter Your 4 Degit Account's Security Pin For Authorisation");
                     System.out.print("Enter The Pin: ");
                     securityKey2 = Integer.parseInt(sc.nextLine());
                     if(String.valueOf(securityKey2).length() != 4){
-                        System.out.println(Constants.repeat);
+                        System.out.println(Constants.REPEAT);
                         System.out.println("Please Specify 4 Degit Number");
                     }
                     // System.out.println(balance);
                     break;
                 }
                 catch(Exception e){
-                    System.out.println(Constants.repeat);
+                    System.out.println(Constants.REPEAT);
                     System.out.println("Please Specify A Number!");
                 }
             }
             fl = Cashier.verifySecondPin(accounts.get(key-1), securityKey2);
             if(!fl){
-                System.out.println(Constants.repeat);
+                System.out.println(Constants.REPEAT);
                 System.out.println("Wrong Security Pin Entered!");
                 return true;
             }
@@ -524,7 +512,7 @@ public class Customer extends User {
 
 
     public void checkBalance(){
-        System.out.println(Constants.repeat);
+        System.out.println(Constants.REPEAT);
         this.accounts = Database.findAccounts(this);
         if(accounts==null || accounts.size() < 1){
             System.out.println("No Accounts Exists! Please Add One");
@@ -533,34 +521,34 @@ public class Customer extends User {
         System.out.println("Your Accounts are Listed Below");
         int i = 1;
         for(Account account:accounts){
-            System.out.println(Constants.repeat);
+            System.out.println(Constants.REPEAT);
             System.out.println(i+". "+account.toString());
             i++;
         }
         int key;
         while(true){
             try{
-                System.out.println(Constants.repeat);
+                System.out.println(Constants.REPEAT);
                 System.out.println("Enter Key To Account To Know Account Balance");
                 System.out.print("Key: ");
                 key = Integer.parseInt(sc.nextLine());
                 // System.out.println(key);
                 if(key<=0 || key>accounts.size()){
-                    System.out.println(Constants.repeat);
+                    System.out.println(Constants.REPEAT);
                     System.out.println("Invalid Key");
                     continue;
                 }
                 break;
             }
             catch(Exception e){
-                System.out.println(Constants.repeat);
+                System.out.println(Constants.REPEAT);
                 System.out.println("Please Specify A Number!");
             }
         }
         int securityPin;
         while(true){
             try{
-                System.out.println(Constants.repeat);
+                System.out.println(Constants.REPEAT);
                 System.out.println("Enter Your Security Pin");
                 System.out.print("PIN: ");
                 securityPin = Integer.parseInt(sc.nextLine());
@@ -568,13 +556,13 @@ public class Customer extends User {
                 break;
             }
             catch(Exception e){
-                System.out.println(Constants.repeat);
+                System.out.println(Constants.REPEAT);
                 System.out.println("Please Specify A Number!");
             }
         }
         boolean fl = Cashier.verifyPin(accounts.get(key-1), securityPin);
         if(!fl){
-            System.out.println(Constants.repeat);
+            System.out.println(Constants.REPEAT);
             System.out.println("Wrong Security Pin Entered!");
             return;
         }
@@ -583,7 +571,7 @@ public class Customer extends User {
     }
 
     public boolean deposite(){
-        System.out.println(Constants.repeat);
+        System.out.println(Constants.REPEAT);
         this.accounts = Database.findAccounts(this);
         if(accounts==null || accounts.size() < 1){
             System.out.println("No Accounts Exists! Please Add One");
@@ -592,34 +580,34 @@ public class Customer extends User {
         System.out.println("Your Accounts are Listed Below");
         int i = 1;
         for(Account account:accounts){
-            System.out.println(Constants.repeat);
+            System.out.println(Constants.REPEAT);
             System.out.println(i+". "+account.toString());
             i++;
         }
         int key;
         while(true){
             try{
-                System.out.println(Constants.repeat);
+                System.out.println(Constants.REPEAT);
                 System.out.println("Choose Account As Key To Deposite Amount");
                 System.out.print("Key: ");
                 key = Integer.parseInt(sc.nextLine());
                 // System.out.println(key);
                 if(key<=0 || key>accounts.size()){
-                    System.out.println(Constants.repeat);
+                    System.out.println(Constants.REPEAT);
                     System.out.println("Invalid Key");
                     continue;
                 }
                 break;
             }
             catch(Exception e){
-                System.out.println(Constants.repeat);
+                System.out.println(Constants.REPEAT);
                 System.out.println("Please Specify A Number!");
             }
         }
         long amount;
         while(true){
             try{
-                System.out.println(Constants.repeat);
+                System.out.println(Constants.REPEAT);
                 System.out.println("Enter Amount To Deposit");
                 System.out.print("Amount: ");
                 amount = Long.parseLong(sc.nextLine());
@@ -633,7 +621,7 @@ public class Customer extends User {
         int securityPin, securityKey2;
         while(true){
             try{
-                System.out.println(Constants.repeat);
+                System.out.println(Constants.REPEAT);
                 System.out.println("Enter Your Security Pin");
                 System.out.print("PIN: ");
                 securityPin = Integer.parseInt(sc.nextLine());
@@ -641,41 +629,41 @@ public class Customer extends User {
                 break;
             }
             catch(Exception e){
-                System.out.println(Constants.repeat);
+                System.out.println(Constants.REPEAT);
                 System.out.println("Please Specify A Number!");
             }
         }
         boolean fl = Cashier.verifyPin(accounts.get(key-1), securityPin);
         if(!fl){
-            System.out.println(Constants.repeat);
+            System.out.println(Constants.REPEAT);
             System.out.println("Wrong Security Pin Entered!");
             return fl;
         }
         // checking if account is joint to get authorised by second account holder
-        String type = Bank.getAccountType(accounts.get(key-1));
+        String type = Database.getAccountType(accounts.get(key-1));
         if(type.equalsIgnoreCase("joint")){
-            String anotherCustomer = Bank.getAnothersName(accounts.get(key-1));
+            String anotherCustomer = Database.getAnothersName(accounts.get(key-1));
             while(true){
                 try{
-                    System.out.println(Constants.repeat);
+                    System.out.println(Constants.REPEAT);
                     System.out.println(anotherCustomer+" Please Enter Your 4 Degit Account's Security Pin For Authorisation");
                     System.out.print("Enter The Pin: ");
                     securityKey2 = Integer.parseInt(sc.nextLine());
                     if(String.valueOf(securityKey2).length() != 4){
-                        System.out.println(Constants.repeat);
+                        System.out.println(Constants.REPEAT);
                         System.out.println("Please Specify 4 Degit Number");
                     }
                     // System.out.println(balance);
                     break;
                 }
                 catch(Exception e){
-                    System.out.println(Constants.repeat);
+                    System.out.println(Constants.REPEAT);
                     System.out.println("Please Specify A Number!");
                 }
             }
             fl = Cashier.verifySecondPin(accounts.get(key-1), securityKey2);
             if(!fl){
-                System.out.println(Constants.repeat);
+                System.out.println(Constants.REPEAT);
                 System.out.println("Wrong Security Pin Entered!");
                 return true;
             }
@@ -689,7 +677,7 @@ public class Customer extends User {
     }
 
     public boolean withdraw(){
-        System.out.println(Constants.repeat);
+        System.out.println(Constants.REPEAT);
         this.accounts = Database.findAccounts(this);
         if(accounts==null || accounts.size() < 1){
             System.out.println("No Accounts Exists! Please Add One");
@@ -698,34 +686,34 @@ public class Customer extends User {
         System.out.println("Your Accounts are Listed Below");
         int i = 1;
         for(Account account:accounts){
-            System.out.println(Constants.repeat);
+            System.out.println(Constants.REPEAT);
             System.out.println(i+". "+account.toString());
             i++;
         }
         int key;
         while(true){
             try{
-                System.out.println(Constants.repeat);
+                System.out.println(Constants.REPEAT);
                 System.out.println("Choose Account As Key To Withdraw Ammount");
                 System.out.print("Key: ");
                 key = Integer.parseInt(sc.nextLine());
                 // System.out.println(key);
                 if(key<=0 || key>accounts.size()){
-                    System.out.println(Constants.repeat);
+                    System.out.println(Constants.REPEAT);
                     System.out.println("Invalid Key");
                     continue;
                 }
                 break;
             }
             catch(Exception e){
-                System.out.println(Constants.repeat);
+                System.out.println(Constants.REPEAT);
                 System.out.println("Please Specify A Number!");
             }
         }
         long amount;
         while(true){
             try{
-                System.out.println(Constants.repeat);
+                System.out.println(Constants.REPEAT);
                 System.out.println("Enter Amount To Withdraw");
                 System.out.print("Amount: ");
                 amount = Long.parseLong(sc.nextLine());
@@ -733,14 +721,14 @@ public class Customer extends User {
                 break;
             }
             catch(Exception e){
-                System.out.println(Constants.repeat);
+                System.out.println(Constants.REPEAT);
                 System.out.println("Please Specify A Number!");
             }
         }
         int securityPin, securityKey2;
         while(true){
             try{
-                System.out.println(Constants.repeat);
+                System.out.println(Constants.REPEAT);
                 System.out.println("Enter Your Security Pin");
                 System.out.print("PIN: ");
                 securityPin = Integer.parseInt(sc.nextLine());
@@ -748,40 +736,40 @@ public class Customer extends User {
                 break;
             }
             catch(Exception e){
-                System.out.println(Constants.repeat);
+                System.out.println(Constants.REPEAT);
                 System.out.println("Please Specify A Number!");
             }
         }
         boolean fl = Cashier.verifyPin(accounts.get(key-1), securityPin);
         if(!fl){
-            System.out.println(Constants.repeat);
+            System.out.println(Constants.REPEAT);
             System.out.println("Wrong Security Pin Entered!");
             return fl;
         }
-        String type = Bank.getAccountType(accounts.get(key-1));
+        String type = Database.getAccountType(accounts.get(key-1));
         if(type.equalsIgnoreCase("joint")){
-            String anotherCustomer = Bank.getAnothersName(accounts.get(key-1));
+            String anotherCustomer = Database.getAnothersName(accounts.get(key-1));
             while(true){
                 try{
-                    System.out.println(Constants.repeat);
+                    System.out.println(Constants.REPEAT);
                     System.out.println(anotherCustomer+" Please Enter Your 4 Degit Account's Security Pin For Authorisation");
                     System.out.print("Enter The Pin: ");
                     securityKey2 = Integer.parseInt(sc.nextLine());
                     if(String.valueOf(securityKey2).length() != 4){
-                        System.out.println(Constants.repeat);
+                        System.out.println(Constants.REPEAT);
                         System.out.println("Please Specify 4 Degit Number");
                     }
                     // System.out.println(balance);
                     break;
                 }
                 catch(Exception e){
-                    System.out.println(Constants.repeat);
+                    System.out.println(Constants.REPEAT);
                     System.out.println("Please Specify A Number!");
                 }
             }
             fl = Cashier.verifySecondPin(accounts.get(key-1), securityKey2);
             if(!fl){
-                System.out.println(Constants.repeat);
+                System.out.println(Constants.REPEAT);
                 System.out.println("Wrong Security Pin Entered!");
                 return true;
             }
@@ -794,11 +782,11 @@ public class Customer extends User {
         else {
             System.out.println( "Bank Account Balance Is Insufficient :(");
         }
-        return fl;
+        return true;
     }
 
     public void printPassbook(){
-        System.out.println(Constants.repeat);
+        System.out.println(Constants.REPEAT);
         this.accounts = Database.findAccounts(this);
         if(accounts==null || accounts.size() < 1){
             System.out.println("No Accounts Exists! Please Add One");
@@ -807,27 +795,27 @@ public class Customer extends User {
         System.out.println("Your Accounts are Listed Below");
         int i = 1;
         for(Account account:accounts){
-            System.out.println(Constants.repeat);
+            System.out.println(Constants.REPEAT);
             System.out.println(i+". "+account.toString());
             i++;
         }
         int key;
         while(true){
             try{
-                System.out.println(Constants.repeat);
+                System.out.println(Constants.REPEAT);
                 System.out.println("Enter Key To Select Account");
                 System.out.print("Key: ");
                 key = Integer.parseInt(sc.nextLine());
                 // System.out.println(key);
                 if(key<=0 || key>accounts.size()){
-                    System.out.println(Constants.repeat);
+                    System.out.println(Constants.REPEAT);
                     System.out.println("Invalid Key");
                     continue;
                 }
                 break;
             }
             catch(Exception e){
-                System.out.println(Constants.repeat);
+                System.out.println(Constants.REPEAT);
                 System.out.println("Please Specify A Number!");
             }
         }

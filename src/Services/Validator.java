@@ -1,4 +1,4 @@
-package BankManagementSystem.src.Validation;
+package BankManagementSystem.src.Services;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

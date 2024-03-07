@@ -1,10 +1,10 @@
-package BankManagementSystem.src.DataBases;
+package BankManagementSystem.src.IRepo;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import BankManagementSystem.src.Constants;
+import BankManagementSystem.src.Utils.Constants;
 
 // Database Connection Singelton Class
 
@@ -46,10 +46,10 @@ public class DatabaseConnection {
         try {
             if (this.connection != null) this.connection.close();
         } catch (SQLException error) {
-            System.out.println(Constants.errorRepeat);
+            System.out.println(Constants.ERROR_REPEAT);
             // System.out.println("error in closing the connection" + error.getMessage());
             error.printStackTrace();
-            System.out.println(Constants.errorRepeat);
+            System.out.println(Constants.ERROR_REPEAT);
         }
     }
 }

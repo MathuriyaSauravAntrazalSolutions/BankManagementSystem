@@ -1,6 +1,6 @@
-package BankManagementSystem.src.DataBases;
+package BankManagementSystem.src.Utils;
 
-public class Queries {
+public class DatabaseQueries {
     public static final String CREATE_APP_DB_QUERY = "CREATE DATABASE AppDB";
     public static final String USE_APP_DB_QUERY = "Use AppDB";
     public static final String CREATE_USERS_TABLE_QUERY = "CREATE TABLE AppDB.Users("

@@ -1,10 +1,10 @@
-package BankManagementSystem.src.Users;
+package BankManagementSystem.src.Services;
 
 import java.util.Scanner;
 
-import BankManagementSystem.src.Constants;
-import BankManagementSystem.src.DataBases.Database;
-import BankManagementSystem.src.Validation.Validator;
+import BankManagementSystem.src.IRepo.Database;
+import BankManagementSystem.src.Operations.AskUserInput;
+import BankManagementSystem.src.Utils.Constants;
 
 public class User{
     public final int userId;
@@ -26,48 +26,32 @@ public class User{
         this.phone = phone;
     }
 
-    // using recursion here
-    public static final int AskUser(){
-        System.out.println(Constants.repeat+"\n");
-        System.out.println(Constants.askNewUser);
-        System.out.println(Constants.repeat);
-        int key;
-        try{
-            System.out.print("Key: ");
-            key = sc.nextInt(); sc.nextLine();
-            if(key<=0 || key >3){
-                System.out.println(Constants.repeat);
-                System.out.println(Constants.inValidKeyError);
-                key = User.AskUser();
-            }
-        }catch(Exception e){
-            System.out.println(Constants.repeat);
-            System.out.println(Constants.inValidKeyError);
-            sc.nextLine();
-            key = User.AskUser();
-        }
-        return key;
+
+
+    public static User getUserInstance(int userId, String firstName, String lastName, String username, String password, String emailId, long phone){
+        return new User(userId, firstName, lastName, username, password, emailId, phone);
     }
 
+
     public static final User signIn(){
-            System.out.println(Constants.repeat);
-            System.out.print("enter your username: ");
-            String username = sc.nextLine();
-            boolean fl = Database.checkForUserExist(username);
+            System.out.println(Constants.REPEAT);
+            System.out.print("Enter your username: ");
+            String username = AskUserInput.getUserInput();
+            boolean fl = Database.getUser(username)==null?false:true;
             String password;
             while(true){
                 System.out.print("Enter Your Password: ");
-                password = sc.nextLine();
+                password = AskUserInput.getUserInput();
                 boolean tl = Validator.isValidPassword(password);
                 if(!tl){
-                    System.out.println(Constants.repeat+"\n");
-                    System.out.println(Constants.passwordError);
-                    System.out.println(Constants.repeat);
+                    System.out.println(Constants.REPEAT+"\n");
+                    System.out.println(Constants.WRONG_PASSWORD_ERROR);
+                    System.out.println(Constants.REPEAT);
                     continue;
                 }
                 break;
             }
-            User currentUser = Database.checkForUserExist(username, password); // cheking if user exists
+            User currentUser = Database.getUser(username, password); // cheking if user exists
             if(currentUser==null && fl == true){
                 System.out.println("Wrong Password Sign-In Again!");   
             }
@@ -79,11 +63,11 @@ public class User{
 
     public static final User signUp(){
         boolean fl = false;
-        System.out.println(Constants.repeat);
+        System.out.println(Constants.REPEAT);
         String firstName;
         while(true){
             System.out.print("Enter Your FirstName: ");
-            firstName = sc.nextLine();
+            firstName = AskUserInput.getUserInput();
             // System.out.println(firstName);
             fl = Validator.isValidName(firstName);
             if(!fl){
@@ -95,7 +79,7 @@ public class User{
         String lastName;
         while(true){
             System.out.print("Enter Your LastName: ");
-            lastName = sc.nextLine();
+            lastName = AskUserInput.getUserInput();
             // System.out.println(lastName);
             fl = Validator.isValidName(lastName);
             if(!fl){
@@ -107,7 +91,7 @@ public class User{
         String emailId;
         while(true){
             System.out.print("Enter Your EmailId: ");
-            emailId = sc.nextLine();
+            emailId = AskUserInput.getUserInput();
             // System.out.println(emailId);
             fl = Validator.isValidEmail(emailId);
             if(!fl){
@@ -136,9 +120,9 @@ public class User{
         String username;
         while(true){
             System.out.print("Enter Your Username: ");
-            username = sc.nextLine();
+            username = AskUserInput.getUserInput();
             // System.out.println(username);
-            fl = Database.checkForUserExist(username);
+            fl = Database.getUser(username)==null?false:true;
             if(fl){
                 System.out.println("This username is not available :(");
                 continue;
@@ -148,47 +132,24 @@ public class User{
         String password;
         while(true){
             System.out.print("Enter Your Password: ");
-            password = sc.nextLine();
+            password = AskUserInput.getUserInput();
             fl = Validator.isValidPassword(password);
             if(!fl){
-                System.out.println(Constants.repeat+"\n");
-                System.out.println(Constants.passwordError);
-                System.out.println(Constants.repeat);
+                System.out.println(Constants.REPEAT+"\n");
+                System.out.println(Constants.WRONG_PASSWORD_ERROR);
+                System.out.println(Constants.REPEAT);
                 continue;
             }
             break;
         }
         // System.out.println(password);
-        User currentUser = Database.checkForUserExist(username, password);
+        User currentUser = Database.getUser(username, password);
         if(currentUser!=null){
             return null;
         }
-        int userId = Database.getId("userId", "users"); // will work fine
+        int userId = Database.GET_UNIQUE_ID("userId", "users"); // will work fine
         currentUser = new User(userId, firstName, lastName, username, password, emailId, phone); // creating new user
         return currentUser;
-    }
-
-
-    public static final int AskCurrentUser(){
-        System.out.println(Constants.repeat+"\n");
-        System.out.println(Constants.askCurrentUser);
-        System.out.println(Constants.repeat);
-        int key;
-        try{
-            System.out.print("Key: ");
-            key = sc.nextInt(); sc.nextLine();
-            if(key<=0 || key >3){
-                System.out.println(Constants.repeat);
-                System.out.println(Constants.inValidKeyError);
-                key = User.AskCurrentUser();
-        }
-        }catch(Exception e){
-            System.out.println(Constants.repeat);
-            System.out.println(Constants.inValidKeyError);
-            sc.nextLine();
-            key = User.AskCurrentUser();
-        }
-        return key;
     }
     
 }
