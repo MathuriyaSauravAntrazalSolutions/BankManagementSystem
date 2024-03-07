@@ -63,14 +63,18 @@ public class App {
         // System.out.println("currentUser "+currentUser.firstName+" "+currentUser.lastName);
         key = User.AskCurrentUser();
         while(true){
+            // Exit From App
             if(key==3){
                 System.out.println(Constants.repeat);
                 System.out.println("Bye! Visit Us Again :)");
                 System.exit(0);
             }
             else if(key == 1){
-                break;
+                if(Database.getBanksList().size()>0) break;
+                System.out.println("No Banks Are Available");
+                key = User.AskCurrentUser();
             }
+            // Add Bank
             else if(key==2){
                 currentBank = Bank.registerBank();
                 if(currentBank == null){

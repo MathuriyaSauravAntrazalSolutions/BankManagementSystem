@@ -11,6 +11,9 @@ import BankManagementSystem.src.DataBases.Queries;
 import BankManagementSystem.src.Users.Customer;
 
 public class Manager {
+
+
+    
     public static int getUniqueId(String bankName, String column, String tableName, int bankId){
         int uniqueNumber = 1001;
         Connection conn = null;
