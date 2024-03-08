@@ -12,7 +12,7 @@
 **Branch Code:** 1001
 **Customer ID:** 1001
 **App User ID:** 1001
-**Today Date:** 2024-03-08 17:17:33
+**Today Date:** 2024-03-08 17:48:18
 
 
 | Bank ID | Account Number | Amount | Type Of Transaction | Date Of Transaction |
@@ -23,3 +23,5 @@
 | 1003 | 1111111111 | 122 | DEPOSIT | 2024-03-08 17:10:41 |
 | 1003 | 1111111111 | 123 | DEPOSIT | 2024-03-08 17:10:54 |
 | 1003 | 1111111111 | 101 | WITHDRAW | 2024-03-08 17:11:05 |
+| 1003 | 1111111111 | 122 | WITHDRAW | 2024-03-08 17:46:20 |
+| 1003 | 1111111111 | 122 | DEPOSIT | 2024-03-08 17:46:27 |

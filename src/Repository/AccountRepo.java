@@ -106,7 +106,6 @@ public class AccountRepo {
         return accounts;
     }
 
-
     public static boolean removeAccountFromUsersBanksInfo(Account account){
         Connection conn = null;
         Statement stmt = null;
@@ -139,8 +138,6 @@ public class AccountRepo {
         }
         return fl;
     }
-
-
 
     public static String getAnothersName(Account account){
         String anotherName = "";
@@ -182,8 +179,6 @@ public class AccountRepo {
         return anotherName;
     }
 
-
-
     public static String getAccountType(Account account){
         String type = "";
         Connection conn = null;
@@ -224,7 +219,6 @@ public class AccountRepo {
         return type;
     }
 
-
     public static long getBalance(int bankId, long accountNumber){
         int balance = -1;
         Connection conn = null;
@@ -264,7 +258,6 @@ public class AccountRepo {
         }
         return balance;
     }
-
 
     public static boolean verifyPin(Account account, int securityPin){
         boolean fl = false;
@@ -307,8 +300,6 @@ public class AccountRepo {
         }
         return fl;
     }
-
-
 
     public static boolean verifySecondPin(Account account, int securityPin){
         boolean fl = false;
@@ -407,7 +398,6 @@ public class AccountRepo {
         }
         return fl;
     }
-
 
     public static boolean withdrawAmount(Account account, long amount){
         boolean fl = true;
@@ -532,7 +522,6 @@ public class AccountRepo {
         } catch (Exception e) {
             System.out.println(Errors.ERROR_REPEAT);
             e.printStackTrace();
-            e.printStackTrace();
             System.out.println(Errors.ERROR_REPEAT);
         } finally {
             // Finally block used to close resources
@@ -545,8 +534,6 @@ public class AccountRepo {
             }
         }
     }
-
-
 
     public static boolean addAccount(Customer currenCustomer, String bankName, String branchName, String type, long balance, String anotherCustomer, int bankId, int securityKey, int securityKey2){
         boolean fl = false;
@@ -630,7 +617,6 @@ public class AccountRepo {
         return fl;
     }
 
-
     public static boolean removeAccount(Account account){
         boolean fl = false;
         Connection conn = null;
@@ -687,8 +673,6 @@ public class AccountRepo {
         }
         return fl;
     }
-
-
 
     public static boolean updateAccount(Account account, int branchCode){
         boolean fl = false;
