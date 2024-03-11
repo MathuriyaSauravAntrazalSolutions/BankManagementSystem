@@ -1,5 +1,16 @@
 package BankManagementSystem.src.Constatnts;
 
+
+/*
+*********************************************************************************************************
+ *  @Java Class Name :   Constants
+ *  @Author          :   <Saurav Mathuriya>(saurav.mathuriya@antrazal.com)
+ *  @Company         :   Antrazal
+ *  @Date            :   10-03-2024
+ *  @Description     :   This class contains all the constants varialbles which would remain constant throughout the program
+ * 
+ ********************************************************************************************************
+*/
 public class Constants {
     public final static String REPEAT = ("=").repeat(15);
 

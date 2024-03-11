@@ -8,8 +8,28 @@ import BankManagementSystem.src.Constatnts.DatabaseQueries;
 import BankManagementSystem.src.Modals.Bank;
 import BankManagementSystem.src.Modals.Branch;
 
+/*
+*********************************************************************************************************
+ *  @Java Class Name :   BankingMenuController
+ *  @Author          :   <Saurav Mathuriya>(saurav.mathuriya@antrazal.com)
+ *  @Company         :   Antrazal
+ *  @Date            :   10-03-2024
+ *  @Description     :   This controller class contains all the controller methods which shold handle banking menu actions
+ * 
+ ********************************************************************************************************
+*/
 public class BranchRepo {
     
+    /*
+    *********************************************************
+     *  @Method Name    :   initialiseApplication
+     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Company        :   Antrazal
+     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
+     *  @param          :   --------
+     *  @return         :   --------            
+    *********************************************************
+    */
     public static ArrayList<Branch> getBankBranches(int bankId){
         ArrayList<Branch> branches = new ArrayList<>();
         Connection conn = null;
@@ -43,6 +63,16 @@ public class BranchRepo {
     }
 
 
+    /*
+    *********************************************************
+     *  @Method Name    :   initialiseApplication
+     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Company        :   Antrazal
+     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
+     *  @param          :   --------
+     *  @return         :   --------            
+    *********************************************************
+    */
     public static boolean insertBranchesToTable(Bank bank){
         boolean fl = true;
         Connection conn = null;
@@ -85,6 +115,16 @@ public class BranchRepo {
     }
 
 
+    /*
+    *********************************************************
+     *  @Method Name    :   initialiseApplication
+     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Company        :   Antrazal
+     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
+     *  @param          :   --------
+     *  @return         :   --------            
+    *********************************************************
+    */
     public static Branch getBranch(int bankId, String branchName){
         Branch branch = null;
         Connection conn = null;
@@ -119,6 +159,16 @@ public class BranchRepo {
     }
 
 
+    /*
+    *********************************************************
+     *  @Method Name    :   initialiseApplication
+     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Company        :   Antrazal
+     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
+     *  @param          :   --------
+     *  @return         :   --------            
+    *********************************************************
+    */
     public static Branch getBranch(int bankId, int branchCode){
         Branch branch = null;
         Connection conn = null;
@@ -152,7 +202,16 @@ public class BranchRepo {
     }
 
 
-
+    /*
+    *********************************************************
+     *  @Method Name    :   initialiseApplication
+     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Company        :   Antrazal
+     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
+     *  @param          :   --------
+     *  @return         :   --------            
+    *********************************************************
+    */
     public static int getBranchCode(int bankId, long accountNumber){
         int branch_code = -1;
         Connection conn = null;
@@ -194,6 +253,16 @@ public class BranchRepo {
     }  
     
     
+    /*
+    *********************************************************
+     *  @Method Name    :   initialiseApplication
+     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Company        :   Antrazal
+     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
+     *  @param          :   --------
+     *  @return         :   --------            
+    *********************************************************
+    */
     public static boolean checkForBranchExist(String bankName, String branchName, int bankId){
         boolean fl = false;
         Connection conn = null;

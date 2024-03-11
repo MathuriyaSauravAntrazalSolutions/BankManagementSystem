@@ -4,8 +4,28 @@ import java.sql.*;
 import BankManagementSystem.src.Constatnts.Errors;
 import BankManagementSystem.src.Constatnts.DatabaseQueries;
 
+/*
+*********************************************************************************************************
+ *  @Java Class Name :   BankingMenuController
+ *  @Author          :   <Saurav Mathuriya>(saurav.mathuriya@antrazal.com)
+ *  @Company         :   Antrazal
+ *  @Date            :   10-03-2024
+ *  @Description     :   This controller class contains all the controller methods which shold handle banking menu actions
+ * 
+ ********************************************************************************************************
+*/
 public class DatabaseRepo {
 
+    /*
+    *********************************************************
+     *  @Method Name    :   initialiseApplication
+     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Company        :   Antrazal
+     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
+     *  @param          :   --------
+     *  @return         :   --------            
+    *********************************************************
+    */
     public static int GET_UNIQUE_ID(String column, String tableName){
         int uniqueNumber = 1001;
         Connection conn = null;
@@ -45,6 +65,16 @@ public class DatabaseRepo {
     }
 
 
+    /*
+    *********************************************************
+     *  @Method Name    :   initialiseApplication
+     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Company        :   Antrazal
+     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
+     *  @param          :   --------
+     *  @return         :   --------            
+    *********************************************************
+    */
     public static int GET_UNIQUE_ID(String column, String tableName, int conditional){
         int uniqueNumber = 1001;
         Connection conn = null;
@@ -91,6 +121,16 @@ public class DatabaseRepo {
     }
 
 
+    /*
+    *********************************************************
+     *  @Method Name    :   initialiseApplication
+     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Company        :   Antrazal
+     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
+     *  @param          :   --------
+     *  @return         :   --------            
+    *********************************************************
+    */
     public static boolean createDatabaseAndTables() {
         Connection conn = null;
         Statement stmt = null;

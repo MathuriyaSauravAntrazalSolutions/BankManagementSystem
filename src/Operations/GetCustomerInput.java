@@ -5,7 +5,28 @@ import BankManagementSystem.src.Constatnts.Constants;
 import BankManagementSystem.src.Modals.User;
 import BankManagementSystem.src.Utils.Validator;
 
+/*
+*********************************************************************************************************
+ *  @Java Class Name :   BankingMenuController
+ *  @Author          :   <Saurav Mathuriya>(saurav.mathuriya@antrazal.com)
+ *  @Company         :   Antrazal
+ *  @Date            :   10-03-2024
+ *  @Description     :   This controller class contains all the controller methods which shold handle banking menu actions
+ * 
+ ********************************************************************************************************
+*/
 public class GetCustomerInput extends App {
+
+    /*
+    *********************************************************
+     *  @Method Name    :   initialiseApplication
+     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Company        :   Antrazal
+     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
+     *  @param          :   --------
+     *  @return         :   --------            
+    *********************************************************
+    */
     public static long getCustomerPan(User currentUser){
         long panNumber;
         while(true){
@@ -28,6 +49,17 @@ public class GetCustomerInput extends App {
         return panNumber;
     }
 
+
+    /*
+    *********************************************************
+     *  @Method Name    :   initialiseApplication
+     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Company        :   Antrazal
+     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
+     *  @param          :   --------
+     *  @return         :   --------            
+    *********************************************************
+    */
     public static long getCustomerAdhar(User currentUser){
         long adharNumber;
         while(true){
@@ -51,6 +83,16 @@ public class GetCustomerInput extends App {
     }
 
 
+    /*
+    *********************************************************
+     *  @Method Name    :   initialiseApplication
+     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Company        :   Antrazal
+     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
+     *  @param          :   --------
+     *  @return         :   --------            
+    *********************************************************
+    */
     public static long getAmount(){
         long amount;
         while(true){
@@ -73,6 +115,17 @@ public class GetCustomerInput extends App {
         return amount;
      }
 
+
+    /*
+    *********************************************************
+     *  @Method Name    :   initialiseApplication
+     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Company        :   Antrazal
+     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
+     *  @param          :   --------
+     *  @return         :   --------            
+    *********************************************************
+    */
     public static String getName(){
         String name;
         while(true){
@@ -90,6 +143,16 @@ public class GetCustomerInput extends App {
     }
 
 
+    /*
+    *********************************************************
+     *  @Method Name    :   initialiseApplication
+     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Company        :   Antrazal
+     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
+     *  @param          :   --------
+     *  @return         :   --------            
+    *********************************************************
+    */
     public static int setPin(String name){
         int pin;
         while(true){
@@ -113,6 +176,16 @@ public class GetCustomerInput extends App {
         return pin;
     }
 
+    /*
+    *********************************************************
+     *  @Method Name    :   initialiseApplication
+     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Company        :   Antrazal
+     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
+     *  @param          :   --------
+     *  @return         :   --------            
+    *********************************************************
+    */
     public static int getPin(String name){
         int pin;
         while(true){

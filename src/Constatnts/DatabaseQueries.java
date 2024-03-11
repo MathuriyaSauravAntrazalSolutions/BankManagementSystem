@@ -1,5 +1,15 @@
 package BankManagementSystem.src.Constatnts;
 
+/*
+*********************************************************************************************************
+ *  @Java Class Name :   DatabaseQueries
+ *  @Author          :   <Saurav Mathuriya>(saurav.mathuriya@antrazal.com)
+ *  @Company         :   Antrazal
+ *  @Date            :   10-03-2024
+ *  @Description     :   This class contains all the queries which is used to interact to database.
+ * 
+ ********************************************************************************************************
+*/
 public class DatabaseQueries {
 
     // Create App

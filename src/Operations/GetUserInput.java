@@ -3,15 +3,44 @@ package BankManagementSystem.src.Operations;
 import BankManagementSystem.src.App.App;
 import BankManagementSystem.src.Constatnts.Constants;
 import BankManagementSystem.src.Constatnts.Errors;
-import BankManagementSystem.src.Modals.User;
-import BankManagementSystem.src.Repository.UserRepo;
 import BankManagementSystem.src.Utils.Validator;
 
+/*
+*********************************************************************************************************
+ *  @Java Class Name :   BankingMenuController
+ *  @Author          :   <Saurav Mathuriya>(saurav.mathuriya@antrazal.com)
+ *  @Company         :   Antrazal
+ *  @Date            :   10-03-2024
+ *  @Description     :   This controller class contains all the controller methods which shold handle banking menu actions
+ * 
+ ********************************************************************************************************
+*/
 public class GetUserInput extends App {
+
+    /*
+    *********************************************************
+     *  @Method Name    :   initialiseApplication
+     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Company        :   Antrazal
+     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
+     *  @param          :   --------
+     *  @return         :   --------            
+    *********************************************************
+    */
     public static String getUserInput(){
         return sc.nextLine();
     }
 
+    /*
+    *********************************************************
+     *  @Method Name    :   initialiseApplication
+     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Company        :   Antrazal
+     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
+     *  @param          :   --------
+     *  @return         :   --------            
+    *********************************************************
+    */
     public static String getFirstName(){
         String firstName;
         while(true){
@@ -28,6 +57,16 @@ public class GetUserInput extends App {
         return firstName;
     }
 
+    /*
+    *********************************************************
+     *  @Method Name    :   initialiseApplication
+     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Company        :   Antrazal
+     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
+     *  @param          :   --------
+     *  @return         :   --------            
+    *********************************************************
+    */
     public static String getLastName(){
         String lastName;
         while(true){
@@ -44,6 +83,16 @@ public class GetUserInput extends App {
         return lastName;
     }
 
+    /*
+    *********************************************************
+     *  @Method Name    :   initialiseApplication
+     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Company        :   Antrazal
+     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
+     *  @param          :   --------
+     *  @return         :   --------            
+    *********************************************************
+    */
     public static String getEmail(){
         String emailId;
         while(true){
@@ -60,6 +109,16 @@ public class GetUserInput extends App {
         return emailId;
     }
 
+    /*
+    *********************************************************
+     *  @Method Name    :   initialiseApplication
+     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Company        :   Antrazal
+     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
+     *  @param          :   --------
+     *  @return         :   --------            
+    *********************************************************
+    */
     public static long getPhone(){
         long phone;
         while(true){
@@ -85,6 +144,16 @@ public class GetUserInput extends App {
     }
 
 
+    /*
+    *********************************************************
+     *  @Method Name    :   initialiseApplication
+     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Company        :   Antrazal
+     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
+     *  @param          :   --------
+     *  @return         :   --------            
+    *********************************************************
+    */
     public static String getUserName(){
         String username;
         System.out.print("Enter Your Username: ");
@@ -92,6 +161,17 @@ public class GetUserInput extends App {
         return username;
     }
 
+
+    /*
+    *********************************************************
+     *  @Method Name    :   initialiseApplication
+     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Company        :   Antrazal
+     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
+     *  @param          :   --------
+     *  @return         :   --------            
+    *********************************************************
+    */
     public static String getPassword(){
         String password;
         while(true){
@@ -109,6 +189,17 @@ public class GetUserInput extends App {
         return password;
     }
 
+
+    /*
+    *********************************************************
+     *  @Method Name    :   initialiseApplication
+     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Company        :   Antrazal
+     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
+     *  @param          :   --------
+     *  @return         :   --------            
+    *********************************************************
+    */
     public static String getBankName(){
         String bankName;
         while(true){
@@ -126,6 +217,17 @@ public class GetUserInput extends App {
         return bankName;
     }
 
+
+    /*
+    *********************************************************
+     *  @Method Name    :   initialiseApplication
+     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Company        :   Antrazal
+     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
+     *  @param          :   --------
+     *  @return         :   --------            
+    *********************************************************
+    */
     public static String getBankAddress(){
         String address;
         // System.out.println(address);
@@ -145,6 +247,16 @@ public class GetUserInput extends App {
     }
 
 
+    /*
+    *********************************************************
+     *  @Method Name    :   initialiseApplication
+     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Company        :   Antrazal
+     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
+     *  @param          :   --------
+     *  @return         :   --------            
+    *********************************************************
+    */
     public static int getNumberOfBranches(){
         System.out.println((Constants.REPEAT));
         System.out.println("Register Branches!");

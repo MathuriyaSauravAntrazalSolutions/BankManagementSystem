@@ -9,10 +9,28 @@ import BankManagementSystem.src.Constatnts.DatabaseQueries;
 import BankManagementSystem.src.Modals.Customer;
 import BankManagementSystem.src.Modals.User;
 
+/*
+*********************************************************************************************************
+ *  @Java Class Name :   BankingMenuController
+ *  @Author          :   <Saurav Mathuriya>(saurav.mathuriya@antrazal.com)
+ *  @Company         :   Antrazal
+ *  @Date            :   10-03-2024
+ *  @Description     :   This controller class contains all the controller methods which shold handle banking menu actions
+ * 
+ ********************************************************************************************************
+*/
 public class CustomerRepo {
     
-
-
+    /*
+    *********************************************************
+     *  @Method Name    :   initialiseApplication
+     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Company        :   Antrazal
+     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
+     *  @param          :   --------
+     *  @return         :   --------            
+    *********************************************************
+    */
     public static ArrayList<Long> findCustomerIdentityCards(User currentUser){
         ArrayList<Long> cards = new ArrayList<>();
         Connection conn = null;
@@ -54,6 +72,16 @@ public class CustomerRepo {
         return cards;
     }
 
+    /*
+    *********************************************************
+     *  @Method Name    :   initialiseApplication
+     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Company        :   Antrazal
+     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
+     *  @param          :   --------
+     *  @return         :   --------            
+    *********************************************************
+    */
     public static int getExistingCustomerId(Customer currentCustomer,String bankName, int bankId){
         int custId = -1;
         Connection conn = null;
@@ -95,6 +123,16 @@ public class CustomerRepo {
     }
 
 
+    /*
+    *********************************************************
+     *  @Method Name    :   initialiseApplication
+     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Company        :   Antrazal
+     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
+     *  @param          :   --------
+     *  @return         :   --------            
+    *********************************************************
+    */
     public static boolean checkForActiveCustomerAcountExistOfSameType(Customer currentCustomer,String bankName, String branchName, String type, int bankId){
         boolean fl = false;
         Connection conn = null;
@@ -105,11 +143,8 @@ public class CustomerRepo {
             
             stmt = conn.createStatement();
             stmt.execute(DatabaseQueries.USE_APP_DB_QUERY);
-            ResultSet rs = stmt.executeQuery("select branch_code from branches where name = '"+branchName+"' && bankId = "+bankId);
-            int branch_code = -1;
-            if(rs.next()) branch_code = rs.getInt("branch_code");
             // System.out.println("Branch code is "+branch_code);
-            rs = stmt.executeQuery("select * from accounts where type = '"+type+"' && bankId = "+bankId+ " && custId = "+currentCustomer.custId+" && isActive = 'ACTIVE'");
+            ResultSet rs = stmt.executeQuery("select * from accounts where type = '"+type+"' && bankId = "+bankId+ " && custId = "+currentCustomer.custId+" && isActive = 'ACTIVE'");
             if(rs.next()){
                 fl = true;
             }

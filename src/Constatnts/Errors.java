@@ -1,5 +1,15 @@
 package BankManagementSystem.src.Constatnts;
 
+/*
+*********************************************************************************************************
+ *  @Java Class Name :   Errors
+ *  @Author          :   <Saurav Mathuriya>(saurav.mathuriya@antrazal.com)
+ *  @Company         :   Antrazal
+ *  @Date            :   10-03-2024
+ *  @Description     :   This class contains all the Errors which should bve thrown or print on console.
+ * 
+ ********************************************************************************************************
+*/
 public class Errors {
     public static final String SOMETHING_WENT_WRONG_ERROR =    Constants.REPEAT+"\nSomething went wrong!"; 
     public static final String USER_ALREADY_EXISTS_MESSAGE = Constants.REPEAT+"\nThis User Already Exists Please Sign In!";

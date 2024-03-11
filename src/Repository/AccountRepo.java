@@ -12,12 +12,31 @@ import BankManagementSystem.src.Constatnts.DatabaseQueries;
 import BankManagementSystem.src.Constatnts.Errors;
 import BankManagementSystem.src.Modals.Account;
 import BankManagementSystem.src.Modals.Bank;
-import BankManagementSystem.src.Modals.Branch;
 import BankManagementSystem.src.Modals.Customer;
 import BankManagementSystem.src.Utils.Helper;
 
+/*
+*********************************************************************************************************
+ *  @Java Class Name :   BankingMenuController
+ *  @Author          :   <Saurav Mathuriya>(saurav.mathuriya@antrazal.com)
+ *  @Company         :   Antrazal
+ *  @Date            :   10-03-2024
+ *  @Description     :   This controller class contains all the controller methods which shold handle banking menu actions
+ * 
+ ********************************************************************************************************
+*/
 public class AccountRepo {
     
+    /*
+    *********************************************************
+     *  @Method Name    :   initialiseApplication
+     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Company        :   Antrazal
+     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
+     *  @param          :   --------
+     *  @return         :   --------            
+    *********************************************************
+    */
     public static long getAccountNumber(String bankName, String column, String tableName, int bankId){
         long uniqueNumber = 1111111111;
         Connection conn = null;
@@ -64,6 +83,16 @@ public class AccountRepo {
         return uniqueNumber;
     }
 
+    /*
+    *********************************************************
+     *  @Method Name    :   initialiseApplication
+     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Company        :   Antrazal
+     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
+     *  @param          :   --------
+     *  @return         :   --------            
+    *********************************************************
+    */
     public static ArrayList<Account> findAccounts(Customer currentCustomer){
         ArrayList<Account> accounts = new ArrayList<>();
         Connection conn = null;
@@ -106,6 +135,16 @@ public class AccountRepo {
         return accounts;
     }
 
+    /*
+    *********************************************************
+     *  @Method Name    :   initialiseApplication
+     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Company        :   Antrazal
+     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
+     *  @param          :   --------
+     *  @return         :   --------            
+    *********************************************************
+    */
     public static boolean removeAccountFromUsersBanksInfo(Account account){
         Connection conn = null;
         Statement stmt = null;
@@ -139,6 +178,16 @@ public class AccountRepo {
         return fl;
     }
 
+    /*
+    *********************************************************
+     *  @Method Name    :   initialiseApplication
+     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Company        :   Antrazal
+     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
+     *  @param          :   --------
+     *  @return         :   --------            
+    *********************************************************
+    */
     public static String getAnothersName(Account account){
         String anotherName = "";
         Connection conn = null;
@@ -179,6 +228,16 @@ public class AccountRepo {
         return anotherName;
     }
 
+    /*
+    *********************************************************
+     *  @Method Name    :   initialiseApplication
+     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Company        :   Antrazal
+     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
+     *  @param          :   --------
+     *  @return         :   --------            
+    *********************************************************
+    */
     public static String getAccountType(Account account){
         String type = "";
         Connection conn = null;
@@ -219,6 +278,16 @@ public class AccountRepo {
         return type;
     }
 
+    /*
+    *********************************************************
+     *  @Method Name    :   initialiseApplication
+     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Company        :   Antrazal
+     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
+     *  @param          :   --------
+     *  @return         :   --------            
+    *********************************************************
+    */
     public static long getBalance(int bankId, long accountNumber){
         int balance = -1;
         Connection conn = null;
@@ -259,6 +328,16 @@ public class AccountRepo {
         return balance;
     }
 
+    /*
+    *********************************************************
+     *  @Method Name    :   initialiseApplication
+     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Company        :   Antrazal
+     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
+     *  @param          :   --------
+     *  @return         :   --------            
+    *********************************************************
+    */
     public static boolean verifyPin(Account account, int securityPin){
         boolean fl = false;
         Connection conn = null;
@@ -301,6 +380,16 @@ public class AccountRepo {
         return fl;
     }
 
+    /*
+    *********************************************************
+     *  @Method Name    :   initialiseApplication
+     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Company        :   Antrazal
+     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
+     *  @param          :   --------
+     *  @return         :   --------            
+    *********************************************************
+    */
     public static boolean verifySecondPin(Account account, int securityPin){
         boolean fl = false;
         Connection conn = null;
@@ -343,6 +432,16 @@ public class AccountRepo {
         return fl;
     }
 
+    /*
+    *********************************************************
+     *  @Method Name    :   initialiseApplication
+     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Company        :   Antrazal
+     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
+     *  @param          :   --------
+     *  @return         :   --------            
+    *********************************************************
+    */
     public static boolean depositAmount(Account account, long amount){
         boolean fl = true;
         Connection conn = null;
@@ -399,6 +498,16 @@ public class AccountRepo {
         return fl;
     }
 
+    /*
+    *********************************************************
+     *  @Method Name    :   initialiseApplication
+     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Company        :   Antrazal
+     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
+     *  @param          :   --------
+     *  @return         :   --------            
+    *********************************************************
+    */
     public static boolean withdrawAmount(Account account, long amount){
         boolean fl = true;
         Connection conn = null;
@@ -456,6 +565,16 @@ public class AccountRepo {
         return fl;
     }
 
+    /*
+    *********************************************************
+     *  @Method Name    :   initialiseApplication
+     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Company        :   Antrazal
+     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
+     *  @param          :   --------
+     *  @return         :   --------            
+    *********************************************************
+    */
     public static void printPassbook(String customerName, Account account) {
         String fileName = Constants.PASSBOOK_URL+account.bankName+"_"+customerName+"_"+account.accountNumber+".md"; // Name of the output file
         Connection conn = null;
@@ -535,6 +654,16 @@ public class AccountRepo {
         }
     }
 
+    /*
+    *********************************************************
+     *  @Method Name    :   initialiseApplication
+     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Company        :   Antrazal
+     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
+     *  @param          :   --------
+     *  @return         :   --------            
+    *********************************************************
+    */
     public static boolean addAccount(Customer currenCustomer, String bankName, String branchName, String type, long balance, String anotherCustomer, int bankId, int securityKey, int securityKey2){
         boolean fl = false;
         Connection conn = null;
@@ -617,6 +746,16 @@ public class AccountRepo {
         return fl;
     }
 
+    /*
+    *********************************************************
+     *  @Method Name    :   initialiseApplication
+     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Company        :   Antrazal
+     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
+     *  @param          :   --------
+     *  @return         :   --------            
+    *********************************************************
+    */
     public static boolean removeAccount(Account account){
         boolean fl = false;
         Connection conn = null;
@@ -633,18 +772,17 @@ public class AccountRepo {
             if(rs.next()){
                 type = rs.getString("type");
             }
-            // remove from account
-            int rowAffected = stmt.executeUpdate("UPDATE accounts SET isActive = 'InActive' WHERE accountNumber = "+account.accountNumber+" && bankId = "+account.bankId);
+            stmt.executeUpdate("UPDATE accounts SET isActive = 'InActive' WHERE accountNumber = "+account.accountNumber+" && bankId = "+account.bankId);
             // remove from join if joint account
             if(type.equalsIgnoreCase("joint")){
-                rowAffected = stmt.executeUpdate("UPDATE jointAccounts SET isActive = 'InActive' WHERE accountNumber = "+account.accountNumber+" && bankId = "+account.bankId);
+                stmt.executeUpdate("UPDATE jointAccounts SET isActive = 'InActive' WHERE accountNumber = "+account.accountNumber+" && bankId = "+account.bankId);
             }
             // returns whether there are any other accounts left in same bank
             // if not soft remove from customers also
             boolean tl = AccountRepo.removeAccountFromUsersBanksInfo(account);
-            System.out.println(tl);
+            // System.out.println(tl);
             if(!tl){
-                rowAffected = stmt.executeUpdate("UPDATE customers SET isActive = 'InActive' WHERE custId = "+account.custId+" && bankId = "+account.bankId);
+                stmt.executeUpdate("UPDATE customers SET isActive = 'InActive' WHERE custId = "+account.custId+" && bankId = "+account.bankId);
             }
             fl = true;
             return fl;
@@ -674,6 +812,16 @@ public class AccountRepo {
         return fl;
     }
 
+    /*
+    *********************************************************
+     *  @Method Name    :   initialiseApplication
+     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Company        :   Antrazal
+     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
+     *  @param          :   --------
+     *  @return         :   --------            
+    *********************************************************
+    */
     public static boolean updateAccount(Account account, int branchCode){
         boolean fl = false;
         Connection conn = null;
