@@ -20,12 +20,12 @@ public class MainMenuController extends App {
 
     /*
     *********************************************************
-     *  @Method Name    :   initialiseApplication
-     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Method Name    :   signIn
+     *  @Author         :   <Saurav Mathuriya>(saurav.mathuriya@antrazal.com)
      *  @Company        :   Antrazal
-     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
+     *  @description    :   This function is used to call signIn service.
      *  @param          :   --------
-     *  @return         :   --------            
+     *  @return         :   User Object            
     *********************************************************
     */
     public static User signIn() throws Exception{
@@ -34,12 +34,12 @@ public class MainMenuController extends App {
 
     /*
     *********************************************************
-     *  @Method Name    :   initialiseApplication
-     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Method Name    :   signUp
+     *  @Author         :   <Saurav Mathuriya>(saurav.mathuriya@antrazal.com)
      *  @Company        :   Antrazal
-     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
+     *  @description    :   This function is used to call signUp service.
      *  @param          :   --------
-     *  @return         :   --------            
+     *  @return         :   User Object          
     *********************************************************
     */
     public static User signUp() throws Exception{

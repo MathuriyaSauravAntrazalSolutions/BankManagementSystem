@@ -22,12 +22,12 @@ public class CustomerMenuControlller extends MainMenuController{
 
     /*
     *********************************************************
-     *  @Method Name    :   initialiseApplication
-     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Method Name    :   findCustomerCards
+     *  @Author         :   <Saurav Mathuriya>(saurav.mathuriya@antrazal.com)
      *  @Company        :   Antrazal
-     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
+     *  @description    :   this function is used to call findCustomerIdentityCards service.
      *  @param          :   --------
-     *  @return         :   --------            
+     *  @return         :   ArrayList<Long>           
     *********************************************************
     */
     public static ArrayList<Long> findCustomerCards(){
@@ -36,12 +36,12 @@ public class CustomerMenuControlller extends MainMenuController{
 
     /*
     *********************************************************
-     *  @Method Name    :   initialiseApplication
-     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Method Name    :   updateAccount
+     *  @Author         :   <Saurav Mathuriya>(saurav.mathuriya@antrazal.com)
      *  @Company        :   Antrazal
-     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
+     *  @description    :   this function is used to call updateAccount service.
      *  @param          :   --------
-     *  @return         :   --------            
+     *  @return         :   boolean            
     *********************************************************
     */
     public static boolean updateAccount() throws CustomException{
@@ -50,12 +50,12 @@ public class CustomerMenuControlller extends MainMenuController{
 
     /*
     *********************************************************
-     *  @Method Name    :   initialiseApplication
-     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Method Name    :   deleteAccount
+     *  @Author         :   <Saurav Mathuriya>(saurav.mathuriya@antrazal.com)
      *  @Company        :   Antrazal
-     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
+     *  @description    :   this function is used to call deleteAccount service.
      *  @param          :   --------
-     *  @return         :   --------            
+     *  @return         :   boolean            
     *********************************************************
     */
     public static boolean deleteAccount() throws CustomException{
@@ -64,12 +64,12 @@ public class CustomerMenuControlller extends MainMenuController{
 
     /*
     *********************************************************
-     *  @Method Name    :   initialiseApplication
-     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Method Name    :   addAccount
+     *  @Author         :   <Saurav Mathuriya>(saurav.mathuriya@antrazal.com)
      *  @Company        :   Antrazal
-     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
+     *  @description    :   this function is used to call addAccount service.
      *  @param          :   --------
-     *  @return         :   --------            
+     *  @return         :   boolean            
     *********************************************************
     */
     public static boolean addAccount() throws CustomException{

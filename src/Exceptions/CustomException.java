@@ -2,11 +2,11 @@ package BankManagementSystem.src.Exceptions;
 
 /*
 *********************************************************************************************************
- *  @Java Class Name :   BankingMenuController
+ *  @Java Class Name :   CustomException
  *  @Author          :   <Saurav Mathuriya>(saurav.mathuriya@antrazal.com)
  *  @Company         :   Antrazal
  *  @Date            :   10-03-2024
- *  @Description     :   This controller class contains all the controller methods which shold handle banking menu actions
+ *  @Description     :   This class is used to handle custom exceptions from user
  * 
  ********************************************************************************************************
 */
@@ -14,12 +14,12 @@ public class CustomException extends Exception {
     
     /*
     *********************************************************
-     *  @Method Name    :   initialiseApplication
-     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Method Name    :   CustomException
+     *  @Author         :   <Saurav Mathuriya>(saurav.mathuriya@antrazal.com)
      *  @Company        :   Antrazal
-     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
-     *  @param          :   --------
-     *  @return         :   --------            
+     *  @description    :   This function is the constructor of the CustomException class.
+     *  @param          :   (String message)
+     *  @return         :   CustomException Object            
     *********************************************************
     */
     public CustomException(String message) {

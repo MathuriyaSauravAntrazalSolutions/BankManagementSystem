@@ -3,7 +3,7 @@ package BankManagementSystem.src.MIddlewares;
 import java.util.ArrayList;
 
 import BankManagementSystem.src.App.App;
-import BankManagementSystem.src.Constatnts.Errors;
+import BankManagementSystem.src.Constatnts.Printer;
 import BankManagementSystem.src.Controllers.CustomerMenuControlller;
 import BankManagementSystem.src.Exceptions.CustomException;
 import BankManagementSystem.src.Modals.Customer;
@@ -13,11 +13,11 @@ import BankManagementSystem.src.Routes.CustomerMenuRouter;
 
 /*
 *********************************************************************************************************
- *  @Java Class Name :   BankingMenuController
+ *  @Java Class Name :   CustomerMenuMiddlware
  *  @Author          :   <Saurav Mathuriya>(saurav.mathuriya@antrazal.com)
  *  @Company         :   Antrazal
  *  @Date            :   10-03-2024
- *  @Description     :   This controller class contains all the controller methods which shold handle banking menu actions
+ *  @Description     :   This Class used to impliment validations for user input from Customer menu
  * 
  ********************************************************************************************************
 */
@@ -25,25 +25,25 @@ public class CustomerMenuMiddlware extends App {
 
     /*
     *********************************************************
-     *  @Method Name    :   initialiseApplication
-     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Method Name    :   keyMiddleware
+     *  @Author         :   <Saurav Mathuriya>(saurav.mathuriya@antrazal.com)
      *  @Company        :   Antrazal
-     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
-     *  @param          :   --------
+     *  @description    :   This function vaidates the key entered by the user and calls the router of corresponding Menu.
+     *  @param          :   (int start, int end)
      *  @return         :   --------            
     *********************************************************
     */
     public static void keyMiddleware(int start, int end) throws CustomException{
         int key = -1;
         try{
-            System.out.print("Key: ");
+            Printer.printKey();
             key = Integer.parseInt(GetUserInput.getUserInput());
             if(key < start || key > end){
-                System.out.println(Errors.IN_VALID_KEY_ERROR);
+                Printer.printInvalidKeyError();
                 keyMiddleware(start, end);
             }
         }catch(Exception e){
-            System.out.println(Errors.IN_VALID_KEY_ERROR);
+            Printer.printInvalidKeyError();
             keyMiddleware(start, end);
         }
         ArrayList<Long> idProof = CustomerMenuControlller.findCustomerCards();

@@ -7,11 +7,11 @@ import BankManagementSystem.src.Utils.Validator;
 
 /*
 *********************************************************************************************************
- *  @Java Class Name :   BankingMenuController
+ *  @Java Class Name :   GetCustomerInput
  *  @Author          :   <Saurav Mathuriya>(saurav.mathuriya@antrazal.com)
  *  @Company         :   Antrazal
  *  @Date            :   10-03-2024
- *  @Description     :   This controller class contains all the controller methods which shold handle banking menu actions
+ *  @Description     :   This class contains all the functionalities to take input from user.
  * 
  ********************************************************************************************************
 */
@@ -19,12 +19,12 @@ public class GetCustomerInput extends App {
 
     /*
     *********************************************************
-     *  @Method Name    :   initialiseApplication
-     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Method Name    :   getCustomerPan
+     *  @Author         :   <Saurav Mathuriya>(saurav.mathuriya@antrazal.com)
      *  @Company        :   Antrazal
-     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
-     *  @param          :   --------
-     *  @return         :   --------            
+     *  @description    :   This method is used to get pan card details of customer.
+     *  @param          :   User currentUser
+     *  @return         :   long panNumber            
     *********************************************************
     */
     public static long getCustomerPan(User currentUser){
@@ -52,12 +52,12 @@ public class GetCustomerInput extends App {
 
     /*
     *********************************************************
-     *  @Method Name    :   initialiseApplication
-     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Method Name    :   getCustomerAdhar
+     *  @Author         :   <Saurav Mathuriya>(saurav.mathuriya@antrazal.com)
      *  @Company        :   Antrazal
-     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
-     *  @param          :   --------
-     *  @return         :   --------            
+     *  @description    :   This function is used to get users adhar number
+     *  @param          :   User currentUser
+     *  @return         :   long adharNumber            
     *********************************************************
     */
     public static long getCustomerAdhar(User currentUser){
@@ -85,12 +85,12 @@ public class GetCustomerInput extends App {
 
     /*
     *********************************************************
-     *  @Method Name    :   initialiseApplication
-     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Method Name    :   getAmount
+     *  @Author         :   <Saurav Mathuriya>(saurav.mathuriya@antrazal.com)
      *  @Company        :   Antrazal
-     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
+     *  @description    :   This method takes amount input from user
      *  @param          :   --------
-     *  @return         :   --------            
+     *  @return         :   long amount            
     *********************************************************
     */
     public static long getAmount(){
@@ -118,12 +118,12 @@ public class GetCustomerInput extends App {
 
     /*
     *********************************************************
-     *  @Method Name    :   initialiseApplication
-     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Method Name    :   getName
+     *  @Author         :   <Saurav Mathuriya>(saurav.mathuriya@antrazal.com)
      *  @Company        :   Antrazal
-     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
+     *  @description    :   This function is used to take Name input of customer.
      *  @param          :   --------
-     *  @return         :   --------            
+     *  @return         :   String name            
     *********************************************************
     */
     public static String getName(){
@@ -145,12 +145,12 @@ public class GetCustomerInput extends App {
 
     /*
     *********************************************************
-     *  @Method Name    :   initialiseApplication
-     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Method Name    :   setPin
+     *  @Author         :   <Saurav Mathuriya>(saurav.mathuriya@antrazal.com)
      *  @Company        :   Antrazal
-     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
+     *  @description    :   This function is used to set input pin of user account
      *  @param          :   --------
-     *  @return         :   --------            
+     *  @return         :   int pin            
     *********************************************************
     */
     public static int setPin(String name){
@@ -178,12 +178,12 @@ public class GetCustomerInput extends App {
 
     /*
     *********************************************************
-     *  @Method Name    :   initialiseApplication
-     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Method Name    :   getPin
+     *  @Author         :   <Saurav Mathuriya>(saurav.mathuriya@antrazal.com)
      *  @Company        :   Antrazal
-     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
+     *  @description    :   This function is used to get pin as input of user account
      *  @param          :   --------
-     *  @return         :   --------            
+     *  @return         :   int pin            
     *********************************************************
     */
     public static int getPin(String name){

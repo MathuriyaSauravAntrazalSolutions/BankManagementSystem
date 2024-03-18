@@ -7,11 +7,11 @@ import BankManagementSystem.src.Utils.Validator;
 
 /*
 *********************************************************************************************************
- *  @Java Class Name :   BankingMenuController
+ *  @Java Class Name :   GetUserInput
  *  @Author          :   <Saurav Mathuriya>(saurav.mathuriya@antrazal.com)
  *  @Company         :   Antrazal
  *  @Date            :   10-03-2024
- *  @Description     :   This controller class contains all the controller methods which shold handle banking menu actions
+ *  @Description     :   This class contains all the user related input output things.
  * 
  ********************************************************************************************************
 */
@@ -19,12 +19,12 @@ public class GetUserInput extends App {
 
     /*
     *********************************************************
-     *  @Method Name    :   initialiseApplication
-     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Method Name    :   getUserInput
+     *  @Author         :   <Saurav Mathuriya>(saurav.mathuriya@antrazal.com)
      *  @Company        :   Antrazal
-     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
+     *  @description    :   This method takes user input from console.
      *  @param          :   --------
-     *  @return         :   --------            
+     *  @return         :   String            
     *********************************************************
     */
     public static String getUserInput(){
@@ -33,12 +33,12 @@ public class GetUserInput extends App {
 
     /*
     *********************************************************
-     *  @Method Name    :   initialiseApplication
-     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Method Name    :   getFirstName
+     *  @Author         :   <Saurav Mathuriya>(saurav.mathuriya@antrazal.com)
      *  @Company        :   Antrazal
-     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
+     *  @description    :   This function takes and user's firsr
      *  @param          :   --------
-     *  @return         :   --------            
+     *  @return         :   String            
     *********************************************************
     */
     public static String getFirstName(){
@@ -59,10 +59,10 @@ public class GetUserInput extends App {
 
     /*
     *********************************************************
-     *  @Method Name    :   initialiseApplication
-     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Method Name    :   getLastName
+     *  @Author         :   <Saurav Mathuriya>(saurav.mathuriya@antrazal.com)
      *  @Company        :   Antrazal
-     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
+     *  @description    :   This function takes user last name as input
      *  @param          :   --------
      *  @return         :   --------            
     *********************************************************
@@ -85,12 +85,13 @@ public class GetUserInput extends App {
 
     /*
     *********************************************************
-     *  @Method Name    :   initialiseApplication
-     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
-     *  @Company        :   Antrazal
-     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
-     *  @param          :   --------
-     *  @return         :   --------            
+    *  @Method Name    :   getEmail
+    *  @Author         :   <Saurav Mathuriya>(saurav.mathuriya@antrazal.com)
+    *  @Company        :   Antrazal
+    *  @Date           :   18-03-2024
+    *  @description    :   This function takes user email as input.
+    *  @param          :   --------
+    *  @return         :   String
     *********************************************************
     */
     public static String getEmail(){
@@ -111,12 +112,13 @@ public class GetUserInput extends App {
 
     /*
     *********************************************************
-     *  @Method Name    :   initialiseApplication
-     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
-     *  @Company        :   Antrazal
-     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
-     *  @param          :   --------
-     *  @return         :   --------            
+    *  @Method Name    :   getPhone
+    *  @Author         :   <Saurav Mathuriya>(saurav.mathuriya@antrazal.com)
+    *  @Company        :   Antrazal
+    *  @Date           :   18-03-2024
+    *  @description    :   This method takes user's mobile number as input and returns it.
+    *  @param          :   --------
+    *  @return         :   long phoneNumber
     *********************************************************
     */
     public static long getPhone(){
@@ -146,12 +148,13 @@ public class GetUserInput extends App {
 
     /*
     *********************************************************
-     *  @Method Name    :   initialiseApplication
-     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
-     *  @Company        :   Antrazal
-     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
-     *  @param          :   --------
-     *  @return         :   --------            
+    *  @Method Name    :   getUserName
+    *  @Author         :   <Saurav Mathuriya>(saurav.mathuriya@antrazal.com)
+    *  @Company        :   Antrazal
+    *  @Date           :   18-03-2024
+    *  @description    :   This function takes username as input from user.
+    *  @param          :   --------
+    *  @return         :   String
     *********************************************************
     */
     public static String getUserName(){
@@ -164,12 +167,12 @@ public class GetUserInput extends App {
 
     /*
     *********************************************************
-     *  @Method Name    :   initialiseApplication
-     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Method Name    :   getPassword
+     *  @Author         :   <Saurav Mathuriya>(saurav.mathuriya@antrazal.com)
      *  @Company        :   Antrazal
-     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
+     *  @description    :   this function takes user's password as input from user.
      *  @param          :   --------
-     *  @return         :   --------            
+     *  @return         :   String            
     *********************************************************
     */
     public static String getPassword(){
@@ -192,12 +195,12 @@ public class GetUserInput extends App {
 
     /*
     *********************************************************
-     *  @Method Name    :   initialiseApplication
-     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Method Name    :   getBankName
+     *  @Author         :   <Saurav Mathuriya>(saurav.mathuriya@antrazal.com)
      *  @Company        :   Antrazal
-     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
+     *  @description    :   This function takes users bank name as input form user.
      *  @param          :   --------
-     *  @return         :   --------            
+     *  @return         :   String            
     *********************************************************
     */
     public static String getBankName(){
@@ -220,12 +223,12 @@ public class GetUserInput extends App {
 
     /*
     *********************************************************
-     *  @Method Name    :   initialiseApplication
-     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Method Name    :   getBankAddress
+     *  @Author         :   <Saurav Mathuriya>(saurav.mathuriya@antrazal.com)
      *  @Company        :   Antrazal
-     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
+     *  @description    :   This function takes users bank address as input form user.
      *  @param          :   --------
-     *  @return         :   --------            
+     *  @return         :   String            
     *********************************************************
     */
     public static String getBankAddress(){
@@ -249,12 +252,12 @@ public class GetUserInput extends App {
 
     /*
     *********************************************************
-     *  @Method Name    :   initialiseApplication
-     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Method Name    :   getNumberOfBranches
+     *  @Author         :   <Saurav Mathuriya>(saurav.mathuriya@antrazal.com)
      *  @Company        :   Antrazal
-     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
+     *  @description    :   This function takes number of branches as input form user.
      *  @param          :   --------
-     *  @return         :   --------            
+     *  @return         :   int           
     *********************************************************
     */
     public static int getNumberOfBranches(){

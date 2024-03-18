@@ -22,24 +22,24 @@ public class BankingMenuController extends MainMenuController {
 
     /*
     *********************************************************
-     *  @Method Name    :   initialiseApplication
-     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Method Name    :   getLoan
+     *  @Author         :   <Saurav Mathuriya>(saurav.mathuriya@antrazal.com)
      *  @Company        :   Antrazal
-     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
+     *  @description    :   This function used to call the loan service
      *  @param          :   --------
      *  @return         :   --------            
     *********************************************************
     */
     public static void getLoan() throws CustomException {
-        throw new CustomException("Unimplemented method 'getLoan'");
+        throw new CustomException("Unimplemented method 'getLoan'"); 
     }
 
     /*
     *********************************************************
-     *  @Method Name    :   initialiseApplication
-     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Method Name    :   printPassbook
+     *  @Author         :   <Saurav Mathuriya>(saurav.mathuriya@antrazal.com)
      *  @Company        :   Antrazal
-     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
+     *  @description    :   This function used to call the printPassbook service.
      *  @param          :   --------
      *  @return         :   --------            
     *********************************************************
@@ -50,10 +50,10 @@ public class BankingMenuController extends MainMenuController {
 
     /*
     *********************************************************
-     *  @Method Name    :   initialiseApplication
-     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Method Name    :   checkBalance
+     *  @Author         :   <Saurav Mathuriya>(saurav.mathuriya@antrazal.com)
      *  @Company        :   Antrazal
-     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
+     *  @description    :   This function used to call the checkBalance service.
      *  @param          :   --------
      *  @return         :   --------            
     *********************************************************
@@ -64,10 +64,10 @@ public class BankingMenuController extends MainMenuController {
 
     /*
     *********************************************************
-     *  @Method Name    :   initialiseApplication
-     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Method Name    :   deposite
+     *  @Author         :   <Saurav Mathuriya>(saurav.mathuriya@antrazal.com)
      *  @Company        :   Antrazal
-     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
+     *  @description    :   This function used to call the deposite service.
      *  @param          :   --------
      *  @return         :   --------            
     *********************************************************
@@ -78,10 +78,10 @@ public class BankingMenuController extends MainMenuController {
 
     /*
     *********************************************************
-     *  @Method Name    :   initialiseApplication
-     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Method Name    :   withdraw
+     *  @Author         :   <Saurav Mathuriya>(saurav.mathuriya@antrazal.com)
      *  @Company        :   Antrazal
-     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
+     *  @description    :   This function used to call the withdraw service.
      *  @param          :   --------
      *  @return         :   --------            
     *********************************************************

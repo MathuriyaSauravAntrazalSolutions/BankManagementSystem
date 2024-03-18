@@ -16,12 +16,12 @@ public class Customer extends User {
 
     /*
     *********************************************************
-     *  @Method Name    :   initialiseApplication
-     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Method Name    :   Customer
+     *  @Author         :   <Saurav Mathuriya>(saurav.mathuriya@antrazal.com)
      *  @Company        :   Antrazal
-     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
-     *  @param          :   --------
-     *  @return         :   --------            
+     *  @description    :   Customer Class Constructor
+     *  @param          :   (int userId, String firstName, String lastName, String username, String password, String emailId, long phone)
+     *  @return         :   Customer Object            
     *********************************************************
     */
     public Customer(int userId, String firstName, String lastName, String username, String password, String emailId,
@@ -38,11 +38,11 @@ public class Customer extends User {
 
     /*
     *********************************************************
-     *  @Method Name    :   initialiseApplication
-     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Method Name    :   Customer
+     *  @Author         :   <Saurav Mathuriya>(saurav.mathuriya@antrazal.com)
      *  @Company        :   Antrazal
-     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
-     *  @param          :   --------
+     *  @description    :   Customer Class Constructor
+     *  @param          :   (User currentUser, long adharNumber, long panNumber)
      *  @return         :   --------            
     *********************************************************
     */
@@ -55,15 +55,15 @@ public class Customer extends User {
 
     /*
     *********************************************************
-     *  @Method Name    :   initialiseApplication
-     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Method Name    :   getFullName
+     *  @Author         :   <Saurav Mathuriya>(saurav.mathuriya@antrazal.com)
      *  @Company        :   Antrazal
-     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
+     *  @description    :   Returns The Customer's Name By Concatenating The FirstName and LastName
      *  @param          :   --------
-     *  @return         :   --------            
+     *  @return         :   String             
     *********************************************************
     */
-    public String toString(){
+    public String getFullName(){
         System.err.println("Name: "+this.firstName+" "+this.lastName);
         return "";
     }

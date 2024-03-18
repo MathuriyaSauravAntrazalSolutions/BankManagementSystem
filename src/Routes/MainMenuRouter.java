@@ -1,7 +1,7 @@
 package BankManagementSystem.src.Routes;
 
 import BankManagementSystem.src.App.App;
-import BankManagementSystem.src.Constatnts.Messages;
+import BankManagementSystem.src.Constatnts.Printer;
 import BankManagementSystem.src.Controllers.MainMenuController;
 
 /*
@@ -19,7 +19,7 @@ public class MainMenuRouter extends App {
     /*
     *********************************************************
      *  @Method Name    :   initialiseApplication
-     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Author         :   <Saurav Mathuriya>(saurav.mathuriya@antrazal.com)
      *  @Company        :   Antrazal
      *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
      *  @param          :   --------
@@ -28,7 +28,7 @@ public class MainMenuRouter extends App {
     */
     public static void router(int key) throws Exception{
         if(key==3){
-            System.out.println(Messages.EXIT_MESSAGE);
+            System.out.println(Printer.EXIT_MESSAGE);
             System.exit(0);
         }
         else if(key == 1){

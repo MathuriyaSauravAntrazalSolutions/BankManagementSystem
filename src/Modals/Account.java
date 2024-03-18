@@ -2,11 +2,11 @@ package BankManagementSystem.src.Modals;
 
 /*
 *********************************************************************************************************
- *  @Java Class Name :   BankingMenuController
+ *  @Java Class Name :   Account
  *  @Author          :   <Saurav Mathuriya>(saurav.mathuriya@antrazal.com)
  *  @Company         :   Antrazal
  *  @Date            :   10-03-2024
- *  @Description     :   This controller class contains all the controller methods which shold handle banking menu actions
+ *  @Description     :   This Class Contains Account Model/POJO
  * 
  ********************************************************************************************************
 */
@@ -21,12 +21,12 @@ public class Account {
 
     /*
     *********************************************************
-     *  @Method Name    :   initialiseApplication
-     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Method Name    :   Account
+     *  @Author         :   <Saurav Mathuriya>(saurav.mathuriya@antrazal.com)
      *  @Company        :   Antrazal
-     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
-     *  @param          :   --------
-     *  @return         :   --------            
+     *  @description    :   Constructor of Account class
+     *  @param          :   long accountNumber, int userId, int custId, String bankName, int branch_code, long balance, int bankId
+     *  @return         :   Account Object            
     *********************************************************
     */
     public Account(long accountNumber, int userId, int custId, String bankName, int branch_code, long balance, int bankId){
@@ -42,12 +42,12 @@ public class Account {
 
     /*
     *********************************************************
-     *  @Method Name    :   initialiseApplication
-     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Method Name    :   toString()
+     *  @Author         :   <Saurav Mathuriya>(saurav.mathuriya@antrazal.com)
      *  @Company        :   Antrazal
-     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
+     *  @description    :   This function returns the Account Object as An String
      *  @param          :   --------
-     *  @return         :   --------            
+     *  @return         :   String            
     *********************************************************
     */
     public String toString(){

@@ -18,12 +18,12 @@ public class Branch{
 
     /*
     *********************************************************
-     *  @Method Name    :   initialiseApplication
-     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Method Name    :   Branch
+     *  @Author         :   <Saurav Mathuriya>(saurav.mathuriya@antrazal.com)
      *  @Company        :   Antrazal
-     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
-     *  @param          :   --------
-     *  @return         :   --------            
+     *  @description    :   Branch Class Constructor
+     *  @param          :   (int branchCode, String branchName, String branchAddress)
+     *  @return         :   Branch Object            
     *********************************************************
     */
     public Branch(int branchCode, String branchName, String branchAddress){
@@ -35,12 +35,12 @@ public class Branch{
 
     /*
     *********************************************************
-     *  @Method Name    :   initialiseApplication
-     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Method Name    :   getBranchInstance
+     *  @Author         :   <Saurav Mathuriya>(saurav.mathuriya@antrazal.com)
      *  @Company        :   Antrazal
-     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
-     *  @param          :   --------
-     *  @return         :   --------            
+     *  @description    :   Returns New Branch Instance
+     *  @param          :   (int branchCode, String branchName, String branchAddress)
+     *  @return         :   Branch Object            
     *********************************************************
     */
     public static Branch getBranchInstance(int branchCode, String branchName, String branchAddress){

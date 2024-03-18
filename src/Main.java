@@ -14,12 +14,12 @@ import BankManagementSystem.src.App.App;
 */
 public class Main {
 
-            /*
+    /*
     *********************************************************
-     *  @Method Name    :   main
-     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Method Name    :   initialiseApplication
+     *  @Author         :   <Saurav Mathuriya>(saurav.mathuriya@antrazal.com)
      *  @Company        :   Antrazal
-     *  @description    :   this functions starts the application
+     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
      *  @param          :   --------
      *  @return         :   --------            
     *********************************************************

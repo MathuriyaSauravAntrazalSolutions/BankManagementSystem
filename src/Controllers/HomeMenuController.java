@@ -22,12 +22,12 @@ public class HomeMenuController extends App {
     
     /*
     *********************************************************
-     *  @Method Name    :   initialiseApplication
-     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Method Name    :   getBanks
+     *  @Author         :   <Saurav Mathuriya>(saurav.mathuriya@antrazal.com)
      *  @Company        :   Antrazal
-     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
+     *  @description    :   This function is used to call getBanks service.
      *  @param          :   --------
-     *  @return         :   --------            
+     *  @return         :   ArrayList<Bank>          
     *********************************************************
     */
     public static ArrayList<Bank> getBanks() throws CustomException{
@@ -36,12 +36,12 @@ public class HomeMenuController extends App {
 
     /*
     *********************************************************
-     *  @Method Name    :   initialiseApplication
-     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Method Name    :   registerBank
+     *  @Author         :   <Saurav Mathuriya>(saurav.mathuriya@antrazal.com)
      *  @Company        :   Antrazal
-     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
+     *  @description    :   This function is used to call registerBank service.
      *  @param          :   --------
-     *  @return         :   --------            
+     *  @return         :   Bank Object            
     *********************************************************
     */
     public static Bank registerBank() throws CustomException{

@@ -4,11 +4,11 @@ import java.util.Scanner;
 
 /*
 *********************************************************************************************************
- *  @Java Class Name :   BankingMenuController
+ *  @Java Class Name :   User
  *  @Author          :   <Saurav Mathuriya>(saurav.mathuriya@antrazal.com)
  *  @Company         :   Antrazal
  *  @Date            :   10-03-2024
- *  @Description     :   This controller class contains all the controller methods which shold handle banking menu actions
+ *  @Description     :   This class Contains User Model Or POJO
  * 
  ********************************************************************************************************
 */
@@ -24,12 +24,12 @@ public class User {
 
     /*
     *********************************************************
-     *  @Method Name    :   initialiseApplication
-     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Method Name    :   User
+     *  @Author         :   <Saurav Mathuriya>(saurav.mathuriya@antrazal.com)
      *  @Company        :   Antrazal
-     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
-     *  @param          :   --------
-     *  @return         :   --------            
+     *  @description    :   User Class Constructor
+     *  @param          :   (int userId, String firstName, String lastName, String username, String password, String emailId, long phone)
+     *  @return         :   returnns The User Object            
     *********************************************************
     */
     public User(int userId, String firstName, String lastName, String username, String password, String emailId, long phone){
@@ -46,12 +46,12 @@ public class User {
 
     /*
     *********************************************************
-     *  @Method Name    :   initialiseApplication
-     *  @author         :   <Himanshu Vaswani>(Himanshu.Vaswani@antrazal.com)
+     *  @Method Name    :   getUserInstance
+     *  @Author         :   <Saurav Mathuriya>(saurav.mathuriya@antrazal.com)
      *  @Company        :   Antrazal
-     *  @description    :   This Function Initialise The Code To Take Care Of The Console As It Shows The User The Main Menu Of The Overall Application
-     *  @param          :   --------
-     *  @return         :   --------            
+     *  @description    :   returns new instance of the User class.
+     *  @param          :   (int userId, String firstName, String lastName, String username, String password, String emailId, long phone)
+     *  @return         :   Returns New User Instance            
     *********************************************************
     */
     public static User getUserInstance(int userId, String firstName, String lastName, String username, String password, String emailId, long phone){

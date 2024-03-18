@@ -2,7 +2,7 @@ package BankManagementSystem.src.Constatnts;
 
 /*
 *********************************************************************************************************
- *  @Java Class Name :   Messages
+ *  @Java Class Name :   Printer
  *  @Author          :   <Saurav Mathuriya>(saurav.mathuriya@antrazal.com)
  *  @Company         :   Antrazal
  *  @Date            :   10-03-2024
@@ -10,7 +10,15 @@ package BankManagementSystem.src.Constatnts;
  * 
  ********************************************************************************************************
 */
-public class Messages {
+public class Printer {
     public static final String WELCOME_MESSAGE = Constants.REPEAT+"\nWelcome To My App!";
     public static final String EXIT_MESSAGE = Constants.REPEAT+"\nBye! Visit Us Again :)";
+
+    public static void printInvalidKeyError(){
+        System.out.println(Errors.IN_VALID_KEY_ERROR);
+    }
+
+    public static void printKey(){
+        System.out.print("Key: ");
+    }
 }
