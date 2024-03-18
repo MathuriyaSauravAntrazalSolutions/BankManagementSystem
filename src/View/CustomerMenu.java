@@ -46,7 +46,7 @@ public class CustomerMenu extends App {
             }
             System.out.println(Constants.REPEAT);
             System.out.println(e.getMessage());
-            e.printStackTrace();
+            // e.printStackTrace();
             viewCustmerMenu();
         }
         BankingMenu.viewBankingMenu();
